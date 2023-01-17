@@ -1,9 +1,0 @@
-## Just a text file
-
-What questions can we answer with this data?
-What percentage of renewable vs nonrenewable energy is being created within the US in 2021?
-Is there an overall upward trend towards renewable energy across the states?
-How does minnesota compare to other states in terms of renewable sources?
-Do different geographic areas trend towards certain energy sources?
-
-## change
