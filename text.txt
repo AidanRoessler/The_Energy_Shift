@@ -1,4 +1,4 @@
-### Energy Sources/Output in the US in 2021
+### Energy Sources/Output in the US
 
 Our data encompasses the monthly energy output by source and quantity per State in the US. Our dataset
 will allow users to discern trends and information from nation wide energy output data from 2021.
