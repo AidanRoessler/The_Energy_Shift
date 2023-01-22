@@ -1,10 +1,8 @@
-from flask import Flask
 '''
 
 API Devliverable
 
 '''
-app = Flask(__name__)
 
 # First line is summary
 
@@ -36,6 +34,3 @@ def getEnergyByMonth():
     """
     
     return 0
-
-if __name__ == "__main__":
-    app.run(debug=True)
