@@ -17,6 +17,8 @@ def isolateDatasetByState(state):
             A paired down version of the data base containing only the columns labeled the specific state(s).
     """
     
+    print("The database has be paried to only include", state)
+    
     return 0
 
 def isolateDatasetByMonth(month):
@@ -35,6 +37,8 @@ def isolateDatasetByMonth(month):
 
         
     """
+
+    print("The database has be paried to only include", month)
     
     return 0
 
@@ -53,6 +57,9 @@ def isolateDatasetByCategoryOfProduction(categoryOfProduction):
             specified 
 
     '''
+
+    print("The database has be paried to only include", categoryOfProduction)
+
     return 0
 
 def getTotalEnergyForCategoryOfProduction(categoryOfProduction):
@@ -68,6 +75,8 @@ def getTotalEnergyForCategoryOfProduction(categoryOfProduction):
         returns an integer indicating the sum of total energy production from the provided energy source
 
     """
+
+    print()
 
     return 0
 
@@ -123,6 +132,7 @@ def getRenewableEnergy():
             for the current state in the current working dataset
 
     '''
+    return 0
 
 @app.route("/")
 def home():
