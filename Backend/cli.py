@@ -50,9 +50,11 @@ while(1):
         break
     else:
         print("That is not a valid function name. ")
+        continue
     
     # prompt the user if they would like to continue
     userChoice = input("Would you like to continue? Y/N: ")
 
-    if userChoice == "N":
+    if userChoice == "N" or userChoice == "n":
+        print("Exiting the program")
         break
