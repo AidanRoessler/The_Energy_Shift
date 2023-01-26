@@ -55,6 +55,6 @@ while(1):
     # prompt the user if they would like to continue
     userChoice = input("Would you like to continue? Y/N: ")
 
-    if userChoice == "N" or userChoice == "n":
+    if userChoice.lower()== "n":
         print("Exiting the program")
         break
