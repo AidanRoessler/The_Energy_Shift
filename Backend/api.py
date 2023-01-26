@@ -14,10 +14,10 @@ def isolateDatasetByState(state):
             state: a string containing the specified state in written format
 
         Returns:
-            A paired down version of the data base containing only the columns labeled the specific state(s).
+            A list of data that contains all of the cells that correspond to the specified state(s).
     """
     
-    print("The database has be paried down to only include", state)
+    print("The database has be paired down to only include", state)
     
     return 0
 
@@ -25,7 +25,7 @@ def isolateDatasetByMonth(month):
     """
         Pairs current dataset down by the given month(s) (ie. the data only for March, May, or/and October)
         
-        Retrieves all columns in the current working datset 
+        Retrieves all columns in the current working dataset 
         for each state that containing the given month.
 
         Args:
@@ -33,9 +33,8 @@ def isolateDatasetByMonth(month):
             with no non-numeric symbols in between. For example: 2021/1: 012021; 2020/12: 122020)
         
         Returns:
-            A paired down version of the data base containing only the columns labeled the specific month(s).
+            A list of data that contains all of the cells that correspond to the specified month(s).
 
-        
     """
     match month:
         case 1:
@@ -78,8 +77,7 @@ def isolateDatasetByCategoryOfProduction(categoryOfProduction):
             categoryOfProduction: a string indicating a specified category of energy production
         
         Returns:
-            A paired down version of the data base containing only the columns of the category
-            specified 
+            A list of data that contains all of the cells that correspond to the specified month(s).
 
     '''
 
@@ -188,7 +186,7 @@ def getRenewableEnergy():
 
     '''
 
-    print("The total energy generated renewably was 14 billion KWH")
+    print("The total energy generated renewable was 14 billion KWH")
 
     return 0
 

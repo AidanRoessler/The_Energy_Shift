@@ -1,7 +1,7 @@
 '''
 
 Imports functions from api.py,
-Written by: Liam Keane, Aidan Roesller, Rachel Tan
+Written by: Liam Keane, Aidan Roessler, Rachel Tan
 
 '''
 from api import *
@@ -25,20 +25,20 @@ while(1):
                 userInputedState = input("This function takes a string as a parameter, modifies the dataset, and then returns void \nPlease enter a state: ")
                 isolateDatasetByState(userInputedState)
             case "isolateDatasetByMonth":
-                userInputedMonth = input("This function takes an integer representing a month as a paramenter, modifies the dataset, and then returns void. \nPlease enter a month: ")
+                userInputedMonth = input("This function takes an integer representing a month as a parameter, modifies the dataset, and then returns void. \nPlease enter a month: ")
                 userInputedMonth = int(userInputedMonth)
                 isolateDatasetByMonth(userInputedMonth)
             case "isolateDatasetByCategoryOfProduction":
-                userInputedSource = input("This function takes a string as a paramenter, modifies the dataset, and then returns void. \nPlease enter a specific source of energy production: ")
+                userInputedSource = input("This function takes a string as a parameter, modifies the dataset, and then returns void. \nPlease enter a specific source of energy production: ")
                 isolateDatasetByCategoryOfProduction(userInputedSource)
             case "getTotalEnergyForCategoryOfProduction":
-                userInputedSource = input("This function takes a string as a paramenter and returns the total energy generated via that source as an int in KWH. \nPlease enter a specific source of energy production: ")
+                userInputedSource = input("This function takes a string as a parameter and returns the total energy generated via that source as an int in KWH. \nPlease enter a specific source of energy production: ")
                 getTotalEnergyForCategoryOfProduction(userInputedSource)
             case "getEnergyForState":
-                userInputedState = input("This function takes a string as a paramenter and returns the total energy generated in that State as an int in KWH. \nPlease enter a state: ")
+                userInputedState = input("This function takes a string as a parameter and returns the total energy generated in that State as an int in KWH. \nPlease enter a state: ")
                 getEnergyForState(userInputedState)
             case "getEnergyForMonth":
-                userInputedMonth = input("This function takes an integer representing a month as a paramenter and returns the total energy generated during that month as an int in KWH. \nPlease enter a month: ")
+                userInputedMonth = input("This function takes an integer representing a month as a parameter and returns the total energy generated during that month as an int in KWH. \nPlease enter a month: ")
                 userInputedMonth = int(userInputedMonth)
                 getEnergyForMonth(userInputedMonth)
             case "getRenewableEnergy":
