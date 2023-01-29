@@ -7,8 +7,19 @@ class EnergyProductionAPI:
         with open(filename, newline='') as energyFile:
             self.energy_production = list(csv.DictReader(energyFile))
             
-            
-
+    
+    """
+    Equivalence Classes:
+        -Valid state
+            -Input: Alabama, ... , Wyoming
+        
+        -Not a valid state but still a string
+            -Input: Ontario
+        
+        -Not a string:
+            -Input: 10
+        
+    """
     def isolateDatasetByState(state):
         """
             Prunes the working dataset down by the given State (ie. only Wisconsin's data)
@@ -27,7 +38,14 @@ class EnergyProductionAPI:
 
         return 0
 
-
+    """
+    Equivalence Classes:
+        -Valid month
+            -Input: January, February, ... , December
+        
+        -Not a valid month but still a string
+            -Input: Wisconsin, 25, Bilbo Baggins
+    """
     def isolateDatasetByMonth(month):
         """
             Pairs current dataset down by the given month (ie. the data only for March, May, or/and October)
@@ -54,7 +72,14 @@ class EnergyProductionAPI:
 
         return 0    
 
-
+    """
+    Equivalence Classes:
+        -Valid category of production
+            -Input: 
+        
+        -Not a valid category but still a string
+            -Input: Wisconsin, 25, Bilbo Baggins
+    """
     def isolateDatasetByCategoryOfProduction(categoryOfProduction):
         '''
             Pairs data down to just a single category of production 
