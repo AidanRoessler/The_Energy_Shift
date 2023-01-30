@@ -98,7 +98,11 @@ class EnergyProductionAPI:
         print("The database has be paired down to only include", categoryOfProduction)
 
         return 0
-
+    
+    '''
+    Equivalence classes:
+        
+    '''
 
     def getTotalEnergyForCategoryOfProduction(categoryOfProduction):
         """Sums energy use across all states and months with a specified category of production
