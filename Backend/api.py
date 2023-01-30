@@ -9,6 +9,8 @@ class EnergyProductionAPI:
             self.energy_production = list(csv.DictReader(energyFile))
 
     """
+    NOT NEEDED
+
     Equivalence Classes:
         -Valid state (as a string):
             -Input: "Alabama"
@@ -36,6 +38,8 @@ class EnergyProductionAPI:
         return 0
 
     """
+    NOT NEEDED
+
     Equivalence Classes:
         -List of valid months in the integer format specified in the Args documentation below
             -Input: [12,2, ... ,10]
@@ -74,6 +78,8 @@ class EnergyProductionAPI:
         return 0
 
     """
+    NOT NEEDED
+
     Equivalence Classes:
         -List of valid categories of production (as strings)
             -Input: ['Nuclear', ... 'All Fuels']
@@ -102,6 +108,8 @@ class EnergyProductionAPI:
         return 0
 
     """
+    NEEDED
+
     Equivalence Classes:
         -Valid category of production (as a string)
             -Input: 'Nuclear' or 'All Fuels'
@@ -129,7 +137,9 @@ class EnergyProductionAPI:
 
         return 0
 
-    """ 
+    """
+    NEEDED
+
     Equivalence Classes:
         -Valid state (as a string):
             -Input: "Alabama"
@@ -159,6 +169,8 @@ class EnergyProductionAPI:
         return 0
 
     """
+    NEEDED
+
     Equivalence Classes:
         -A valid month (as an integer between 1-12)
             -Input: 12 or 10 or 1
@@ -170,7 +182,7 @@ class EnergyProductionAPI:
             -Input: 'Bilbo Baggins' or 'Foo' or 10.56 or True
 
     """
-    def getEnergyForMonth(month):
+    def getEnergyByMonthForState(month):
         """Sums all electricity generation by all catagories in a given month
 
         Retrieves columns in the current working dataset pertaining to each category of electricity
@@ -199,6 +211,8 @@ class EnergyProductionAPI:
         return 0
 
     """
+    NEEDED
+
     Equivalence Classes:
         -Valid state (as a string):
             -Input: "Alabama"
