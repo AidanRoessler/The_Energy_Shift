@@ -1,202 +1,203 @@
+import csv
 
-# from flask import Flask
-
-# app = Flask(__name__)
-
-def isolateDatasetByState(state):
+class EnergyProductionAPI:
+    
+    def __init__(self, filename):
+            
+        with open(filename, newline='') as energyFile:
+            self.energy_production = list(csv.DictReader(energyFile))
+            
+    
     """
-        Prunes the working dataset down by the given State (ie. only Wisconsin's data)
+    Equivalence Classes:
+        -Valid state
+            -Input: Alabama, ... , Wyoming
         
-        Retrieves all columns in the current working data set containing the given State, 
-        regardless of category of production.
+        -Not a valid state but still a string
+            -Input: Ontario
         
+        -Not a string:
+            -Input: 10
+        
+    """
+    def isolateDatasetByState(state):
+        """
+            Prunes the working dataset down by the given State (ie. only Wisconsin's data)
+
+            Retrieves all columns in the current working data set containing the given State, 
+            regardless of category of production.
+
+            Args:
+                state: a string containing the specified state in written format
+
+            Returns:
+                A list of data that contains all of the cells that correspond to the specified state.
+        """
+
+        print("The database has be paired down to only include", state)
+
+        return 0
+
+    """
+    Equivalence Classes:
+        -Valid month
+            -Input: January, February, ... , December
+        
+        -Not a valid month but still a string
+            -Input: Wisconsin, 25, Bilbo Baggins
+    """
+    def isolateDatasetByMonth(month):
+        """
+            Pairs current dataset down by the given month (ie. the data only for March, May, or/and October)
+
+            Retrieves all columns in the current working dataset 
+            for each state that containing the given month.
+
+            Args:
+                month: an integer indicating the specified month(It must be written in the format of month + year, 
+                with no non-numeric symbols in between. For example: 2021/1: 012021; 2020/12: 122020)
+
+            Returns:
+                A list of data that contains all of the cells that correspond to the specified month.
+
+        """
+        monthDictionary = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
+                7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
+                
+        if month not in monthDictionary.keys():
+            print("Not a valid month. Please enter an integer from 1-12 (inclusive)")
+            return 0
+
+        print("The database has be paired down to only include", monthDictionary[month])
+
+        return 0    
+
+    """
+    Equivalence Classes:
+        -Valid category of production
+            -Input: 
+        
+        -Not a valid category but still a string
+            -Input: Wisconsin, 25, Bilbo Baggins
+    """
+    def isolateDatasetByCategoryOfProduction(categoryOfProduction):
+        '''
+            Pairs data down to just a single category of production 
+
+            Retrieves all columns in the current working dataset that contain the category of 
+            production specified in the parameter
+
+            Args:
+                categoryOfProduction: a string indicating a specified category of energy production
+
+            Returns:
+                A list of data that contains all of the cells that correspond to the specified month.
+
+        '''
+
+        print("The database has be paired down to only include", categoryOfProduction)
+
+        return 0
+    
+    '''
+    Equivalence classes:
+        
+    '''
+
+    def getTotalEnergyForCategoryOfProduction(categoryOfProduction):
+        """Sums energy use across all states and months with a specified category of production
+
+        Retrieves columns in the current working dataset pertaining to the given category of
+        production for all states and months
+
         Args:
-            state: a string containing the specified state in written format
+            categoryOfProduction: a string indicating a specified category of energy production
 
         Returns:
-            A paired down version of the data base containing only the columns labeled the specific state(s).
-    """
-    
-    print("The database has be paried down to only include", state)
-    
-    return 0
+            returns an integer indicating the sum of total energy production from the provided energy source
 
-def isolateDatasetByMonth(month):
-    """
-        Pairs current dataset down by the given month(s) (ie. the data only for March, May, or/and October)
-        
-        Retrieves all columns in the current working datset 
-        for each state that containing the given month.
+        """
+
+        print("The total energy generated by",
+            categoryOfProduction, "was 14 billion KWH")
+
+        return 0
+
+
+    def getEnergyForState(state):
+        """Sums all electricity generation by all catagories in a given state
+
+        Retrieves columns in the current working dataset pertaining to each category of electricity 
+        generation for a single state, sums the values in these columns and returns that number
+
+        Args:
+            state: a string indicating the specified state (must spell the states name out,
+            no abbreviations like MN)
+
+        Returns:
+            returns an integer indicating the sum of the total electricity generation for the
+            provided state
+
+        """
+
+        print("The total energy generated by", state, "was 14 billion KWH")
+
+        return 0
+
+
+    def getEnergyForMonth(month):
+        """Sums all electricity generation by all catagories in a given month
+
+        Retrieves columns in the current working dataset pertaining to each category of electricity
+        generation for each state in a specific month, sums the values in these columns and returns 
+        that number
 
         Args:
             month: an integer indicating the specified month(It must be written in the format of month + year, 
             with no non-numeric symbols in between. For example: 2021/1: 012021; 2020/12: 122020)
-        
-        Returns:
-            A paired down version of the data base containing only the columns labeled the specific month(s).
-
-        
-    """
-    match month:
-        case 1:
-            monthStr = "January"
-        case 2:
-            monthStr = "February"
-        case 3:
-            monthStr = "March"
-        case 4:
-            monthStr = "April"
-        case 5:
-            monthStr = "May"
-        case 6:
-            monthStr = "June"
-        case 7:
-            monthStr = "July"
-        case 8:
-            monthStr = "August"
-        case 9:
-            monthStr = "September"
-        case 10:
-            monthStr = "October"
-        case 11:
-            monthStr = "November"
-        case 12:
-            monthStr = "December"
-
-    print("The database has be paried down to only include", monthStr)
-    
-    return 0
-
-def isolateDatasetByCategoryOfProduction(categoryOfProduction):
-    '''
-        Pairs data down to just a single catagory of production 
-
-        Retrives all columns in the current working dataset that contain the category of 
-        production specified in the parameter
-
-        Args:
-            categoryOfProduction: a string indicating a specified category of energy production
-        
-        Returns:
-            A paired down version of the data base containing only the columns of the category
-            specified 
-
-    '''
-
-    print("The database has be paried down to only include", categoryOfProduction)
-
-    return 0
-
-def getTotalEnergyForCategoryOfProduction(categoryOfProduction):
-    """Sums energy use across all states and months with a specified category of production
-    
-    Retrieves columns in the current working dataset pertaining to the given category of
-    production for all states and months
-
-    Args:
-        categoryOfProduction: a string indicating a specified category of energy production
-    
-    Returns:
-        returns an integer indicating the sum of total energy production from the provided energy source
-
-    """
-
-    print("The total energy generated by", categoryOfProduction, "was 14 billion KWH")
-
-    return 0
-
-def getEnergyForState(state):
-    """Sums all electricity generation by all catagories in a given state
-
-    Retrieves columns in the current working dataset pertaining to each category of electricity 
-    generation for a single state, sums the values in these columns and returns that number
-
-    Args:
-        state: a string indicating the specified state (must spell the states name out,
-        no abbreviations like MN)
-    
-    Returns:
-        returns an integer indicating the sum of the total electricity generation for the
-        provided state
-
-    """
-
-    print("The total energy generated by", state, "was 14 billion KWH")
-
-    return 0
-
-def getEnergyForMonth(month):
-    """Sums all electricity generation by all catagories in a given month
-    
-    Retrieves columns in the current working dataset pertaining to each category of electricity
-    generation for each state in a specific month, sums the values in these columns and returns 
-    that number
-    
-    Args:
-        month: an integer indicating the specified month(It must be written in the format of month + year, 
-        with no non-numeric symbols in between. For example: 2021/1: 012021; 2020/12: 122020)
-        
-    Returns:
-        returns an integer indicating the sum of the total electricity generation for the
-        provided month
-    
-    """
-
-    match month:
-        case 1:
-            monthStr = "January"
-        case 2:
-            monthStr = "February"
-        case 3:
-            monthStr = "March"
-        case 4:
-            monthStr = "April"
-        case 5:
-            monthStr = "May"
-        case 6:
-            monthStr = "June"
-        case 7:
-            monthStr = "July"
-        case 8:
-            monthStr = "August"
-        case 9:
-            monthStr = "September"
-        case 10:
-            monthStr = "October"
-        case 11:
-            monthStr = "November"
-        case 12:
-            monthStr = "December"
-
-    print("The total energy generated during", monthStr, "was 14 billion KWH")
-    
-    return 0
-
-def getRenewableEnergy():
-    '''
-        Sums and returns the total amount of renewable energy for the current state that the dataset has 
-        been "paired down to" 
-
-        Retrieves columns in the current working dataset pertaining to each category of renewable 
-        electricity generation for each state in a specific month, sums the values in these columns 
-        and returns that number
-
 
         Returns:
-            returns an integer indicating the sum of the total electricity generation from renewable sources 
-            for the current state in the current working dataset
+            returns an integer indicating the sum of the total electricity generation for the
+            provided month
 
-    '''
+        """
+        
+        monthDictionary = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
+                7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
 
-    print("The total energy generated renewably was 14 billion KWH")
+        if month not in monthDictionary.keys():
+            print("Not a valid month. Please enter an integer from 1-12 (inclusive)")
+            return 0
 
-    return 0
+        print("The total energy generated during", monthDictionary[month], "was 14 billion KWH")
 
-# @app.route("/")
-# def home():
-#     return "<h1> Home Page!! <h1>"
+        return 0
 
 
+    def getRenewableEnergy():
+        '''
+            Sums and returns the total amount of renewable energy for the current state that the dataset has 
+            been "paired down to" 
 
-# if __name__ == '__main__':
-#     app.run(host="0.0.0.0",port=1522)
+            Retrieves columns in the current working dataset pertaining to each category of renewable 
+            electricity generation for each state in a specific month, sums the values in these columns 
+            and returns that number
+
+
+            Returns:
+                returns an integer indicating the sum of the total electricity generation from renewable sources 
+                for the current state in the current working dataset
+
+        '''
+
+        print("The total energy generated renewable was 14 billion KWH")
+
+        return 0
+    
+
+if __name__ == "__main__":
+    energy = EnergyProductionAPI('data/total_energy_production_modified.csv')
+
+    print(energy.energy_production)
+
+
