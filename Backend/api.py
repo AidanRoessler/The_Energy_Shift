@@ -9,105 +9,6 @@ class EnergyProductionAPI:
             self.energy_production = list(csv.DictReader(energyFile))
 
     """
-    NOT NEEDED
-
-    Equivalence Classes:
-        -Valid state (as a string):
-            -Input: "Alabama"
-        
-        -A not valid state (either as a string or another data-types)
-            -Input: 56 or 'Test' or True or 'Bilbo Baggins', 'MN'       
-    
-    """
-    def isolateDatasetByState(state):
-        """
-            Prunes the working dataset down by the given State (ie. only Wisconsin's data)
-
-            Retrieves all columns in the current working data set containing the given State, 
-            regardless of category of production.
-
-            Args:
-                stateList: a string containing specified state
-
-            Returns:
-                A list of data that contains all of the cells that correspond to the specified state.
-        """
-
-        # print("The database has be paired down to only include", stateList)
-
-        return 0
-
-    """
-    NOT NEEDED
-
-    Equivalence Classes:
-        -List of valid months in the integer format specified in the Args documentation below
-            -Input: [12,2, ... ,10]
-        
-        -A list with one or more invalid month integers 
-            -Input: [13, 25, -6, 0]
-        
-        -A list with one or more invalid month integers that are different data types:
-            -Input: ['Bilbo Baggins', 'Foo', 10.56, True]
-
-    """
-    def isolateDatasetByMonth(monthList):
-        """
-            Pairs current dataset down by the given month (ie. the data only for March, May, or/and October)
-
-            Retrieves all columns in the current working dataset 
-            for each state that containing the given month.
-
-            Args:
-                monthList: a list of integers indicating the specified month(A month integer must be written in the format of month + year, 
-                with no non-numeric symbols in between. For example: January = 1, December = 12 )
-
-            Returns:
-                A list of data that contains all of the cells that correspond to the specified month.
-
-        """
-        # monthDictionary = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
-        #         7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
-
-        # if monthList not in monthDictionary.keys():
-        #     print("Not a valid month. Please enter an integer from 1-12 (inclusive)")
-        #     return 0
-
-        # print("The database has be paired down to only include", monthDictionary[monthList])
-
-        return 0
-
-    """
-    NOT NEEDED
-
-    Equivalence Classes:
-        -List of valid categories of production (as strings)
-            -Input: ['Nuclear', ... 'All Fuels']
-        
-        -A list with one or more invalid catagories of production (either as invalid strings or other data types)
-            -Input: ['Nucelar', 'Test', 56, True]
-        
-    """
-    def isolateDatasetByCategoryOfProduction(categoryOfProductionList):
-        '''
-            Pairs data down to just a single category of production 
-
-            Retrieves all columns in the current working dataset that contain the category of 
-            production specified in the parameter
-
-            Args:
-                categoryOfProductionList: a list of strings indicating specified categories of energy production
-
-            Returns:
-                A list of data that contains all of the cells that correspond to the specified month.
-
-        '''
-
-        # print("The database has be paired down to only include", categoryOfProductionList)
-
-        return 0
-
-    """
         Equivalence Classes:
         -Valid state (as a string):
             -Input: "Alabama"
@@ -124,7 +25,7 @@ class EnergyProductionAPI:
         each month's record and returns this data as a object where the keys are the category of 
         renewable energy production and the values are the summed value that was calculated
 
-        Args:
+        Arguments:
             state: a string indicating a specified state (abbreviations like MN won't work)
 
         Returns:
