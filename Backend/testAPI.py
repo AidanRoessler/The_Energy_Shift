@@ -9,8 +9,20 @@ class APITester(unittest.TestCase):
     # def test_getEnergyByMonthForState(self):
     #     return 0
 
-    # def test_getEnergyByCategoryForState(self):
-    #     return 0
+    def test_sucessful_getEnergyByCategoryForState(self):
+        """
+        Testt osee if getEnergyByCategoryForState() can succcesfully return the corrent list of
+        floats when given the valid input of 'Wisconsin'
+        """
+        input = 'Wisconsin'
+        result = self.energy_test.getEnergyByCategoryForState(self, input)
+        self.assertEqual(result, [3031.96, 2144.8900000000003, 9970.199999999999, 366.82, 366.82, 548.86, 1593.48])
+    
+    def test_fail_getEnergyByCategoryForState(self):
+        """
+        Test to see if getEnergyByCategoryForState() can successfully return a message to the user
+        when their input is invalid
+        """
 
     # def test_getTotalEnergyForState(self):
     #     return 0
@@ -34,7 +46,7 @@ class APITester(unittest.TestCase):
 
     def test_fail_getTotalRenewableEnergyByState(self):
         """
-        Test to see if getTotalRenewableEnergyByState() can successfully return the a message to the 
+        Test to see if getTotalRenewableEnergyByState() can successfully return a message to the 
         user when their input is invalid
         """
         input = 56
