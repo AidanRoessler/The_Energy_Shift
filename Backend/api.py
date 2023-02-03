@@ -1,4 +1,3 @@
-import csv
 import pandas as pd
 import numpy as np
 
@@ -6,6 +5,9 @@ import numpy as np
 class EnergyProductionAPI:
 
     def __init__(self, filename):
+        '''
+        Read in our csv data set and initialize a list of all states as an instance variable
+        '''
 
         with open(filename, newline='') as energyFile:
             self.energy_df = pd.read_csv(energyFile)
@@ -173,7 +175,6 @@ class EnergyProductionAPI:
             if state in self.state_list:
                 state_for_each_month = self.energy_df.loc[(self.energy_df["Location"] == state)
                                                          & (self.energy_df["Category of Production"] == 'All fuels')]
-                print(state_for_each_month)
                 return state_for_each_month.to_dict('records')[0]
             else:
                 raise ("Invalid state input")

@@ -4,6 +4,8 @@ import api
 class APITester(unittest.TestCase):
     """
     A suite of tests for the EnergyProductionAPI classes' methods
+    Please note, your current working directory must be the Backend folder for all tests to work
+    because otherwise api will not be imported 
     """
     def setUp(self):
         '''
