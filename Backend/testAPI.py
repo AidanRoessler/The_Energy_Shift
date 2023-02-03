@@ -2,12 +2,22 @@ import unittest
 import api
 
 class APITester(unittest.TestCase):
+    """
+    A suite of tests for the EnergyProductionAPI classes' methods
+    """
     def setUp(self):
+        '''
+        Set up the test methods by creating an instance of the EnergyProductionAPI class with our
+        csv passed in as data
+        '''
         self.energy_test = api.EnergyProductionAPI('../Data/total_energy_production_modified.csv')
         self.maxDiff = None
 
     def test_validState_getEnergyForState(self):
-        
+        """
+        Test to see if getEnergyForState() can successfully return the correct list of
+        floats when given the valid input of 'Alabama'
+        """
         input = "Alabama"
         result = self.energy_test.getEnergyForState(input)
         self.assertEqual(result, 142733.34)

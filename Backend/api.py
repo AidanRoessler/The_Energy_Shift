@@ -9,17 +9,16 @@ class EnergyProductionAPI:
 
         with open(filename, newline='') as energyFile:
             self.energy_df = pd.read_csv(energyFile)
-            
+
         self.state_list = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
                            'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
                            'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-                           'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 
+                           'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
                            'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
-                           'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 
-                           'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 
-                           'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 
+                           'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+                           'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
+                           'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia',
                            'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming']
-
 
     """
         Equivalence Classes:
@@ -50,28 +49,44 @@ class EnergyProductionAPI:
         """
         try:
             if state in self.state_list:
-                state_only = self.energy_df.loc[(self.energy_df["Location"] == state)]
+                # Isolate only the rows with the given state (excluding the 'All fuels' column)
+                state_only = self.energy_df.loc[(
+                    self.energy_df["Location"] == state)]
                 state_only = state_only[state_only['Category of Production'].str.contains(
                     'All fuels') == False]
-                # save the Cat of Production column as a dictionary
+
+                # save the Category of Production column
                 cat_col = state_only.loc[:, 'Category of Production']
+
+                # drop the non-numerical columns
                 state_only.drop(['Location', 'Category of Production'],
                                 axis=1, inplace=True)
+
+                # Sums the entire years categories of production and inserts the results as the column 'Sums'
                 state_only.insert(0, 'Sums', state_only.sum(axis=1))
+
+                # Inserts the Category of Production column back into the data frame
                 state_only.insert(0, 'Category of Production', cat_col)
-                state_only = state_only.set_index('Category of Production')['Sums'].to_dict()
+
+                state_only = state_only.set_index('Category of Production')[
+                    'Sums'].to_dict()
 
                 return state_only
-                
+
+            # If the state inputted is not valid, raise an exception
             else:
-                raise("Invalid state input")
+                raise ("Invalid state input")
+
+        # Handle an exception by telling the user to enter a valid state, printing out the exception
+        # and returning false
         except Exception as e:
-            print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
+            print(
+                'Please enter the full name of a state in the United States (abbreviations are not accepted)')
             print("Error:")
             print(e)
             return False
     """
-    NEEDED
+    
 
     Equivalence Classes:
         -Valid state (as a string):
@@ -94,24 +109,40 @@ class EnergyProductionAPI:
 
         Returns:
             returns a float indicating the sum of the total electricity generation for the
-            provided state
-
+            provided state      
         """
+
+        # Try to run the function as normal
         try:
+            # If the state is a valid input run the function as normal
             if state in self.state_list:
+                # Filter down the dataframe to just include the specified state states 'All fuels' column
                 state_only = self.energy_df.loc[(self.energy_df["Location"] == state)
                                                 & (self.energy_df["Category of Production"] == 'All fuels')]
+
+                # Turn the dataframe into a list
                 state_minus_strings = list(state_only)
+
+                # drop the non-numerical columns before we add them
                 state_minus_strings.remove('Location')
                 state_minus_strings.remove('Category of Production')
 
-                state_minus_strings_sum = state_only[state_minus_strings].sum(axis=1)
+                # Add all the numerical values in the list
+                state_minus_strings_sum = state_only[state_minus_strings].sum(
+                    axis=1)
 
+                # Return the sum of the operation on the previous line
                 return state_minus_strings_sum.iloc[0]
+
+            # If the state inputted is not valid, raise an exception
             else:
-                raise("Invalid state input")
+                raise ("Invalid state input")
+
+        # Handle an exception by telling the user to enter a valid state, printing out the exception
+        # and returning false
         except Exception as e:
-            print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
+            print(
+                'Please enter the full name of a state in the United States (abbreviations are not accepted)')
             print("Error:")
             print(e)
             return False
@@ -119,7 +150,7 @@ class EnergyProductionAPI:
     """
     Equivalence Classes:
         -A valid state (only in America)
-            -Input: 'Wisconsin' or 'Colorado' or 'Minnesota'
+            -Input: 'Alabama'
         
         -A string that is not a state
             -Input: 'Montreal' or '12' or 'WI'
@@ -141,20 +172,19 @@ class EnergyProductionAPI:
         try:
             if state in self.state_list:
                 state_for_each_month = self.energy_df.loc[(self.energy_df["Location"] == state)
-                                                        & (self.energy_df["Category of Production"] == 'All fuels')]
+                                                         & (self.energy_df["Category of Production"] == 'All fuels')]
                 print(state_for_each_month)
                 return state_for_each_month.to_dict('records')[0]
             else:
-                raise("Invalid state input")
+                raise ("Invalid state input")
 
         except Exception as e:
-            print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
+            print(
+                'Please enter the full name of a state in the United States (abbreviations are not accepted)')
             print("Error:")
             print(e)
             return False
     """
-    NEEDED
-
     Equivalence Classes:
         -Valid state (as a string):
             -Input: "Alabama"
@@ -181,45 +211,41 @@ class EnergyProductionAPI:
                 for the current state in the current working dataset
 
         '''
-
+        # Old command line output
         # print("The total energy generated renewable was 14 billion KWH")
-        # Try to run the function as normal 
+
+        # Try to run the function as normal
         try:
-            #If the state is a valid input run the function as normal
+            # If the state is a valid input run the function as normal
             if state in self.state_list:
-                #Filter down the dataframe to just the specified state's renewable forms of energy
+                # Filter down the dataframe to just the specified state's renewable forms of energy
                 state_only = self.energy_df.loc[(
                     self.energy_df["Location"] == state)]
                 state_only = state_only[state_only['Category of Production'].str.contains(
                     'All fuels') == False]
                 state_only.drop(
                     ['Location', 'Category of Production'], axis=1, inplace=True)
-                
-                #Sum up the total amount of renewable produced for the specified state
+
+                # Sum up the total amount of renewable produced for the specified state
                 state_only = state_only.sum(axis=1)
                 state_only = state_only.sum(axis=0)
 
                 return state_only
-            
-            #If the state inputted is not valid, raise an exception
+
+            # If the state inputted is not valid, raise an exception
             else:
-                raise("Invalid state input")
-            
-        #Handle an exception by telling the user to enter a valid state, printing out the exception
-        #and returning false
-    
+                raise ("Invalid state input")
+
+        # Handle an exception by telling the user to enter a valid state, printing out the exception
+        # and returning false
         except Exception as e:
-            print("Please enter the full name of a state in the United States (abbreviations are not accepted)")
+            print(
+                "Please enter the full name of a state in the United States (abbreviations are not accepted)")
             print("Error")
             print(e)
             return False
 
 
 if __name__ == "__main__":
-    energy = EnergyProductionAPI('../Data/total_energy_production_modified.csv')
-    # print(energy.getEnergyForState('Ohio'));
-    # print(energy.getEnergyForState('Colorado'));
-    # print(energy.getEnergyForState('Alabama'));
-    print(energy.getEnergyByCategoryForState('Wisconsin'))
-    # print(energy.getEnergyByCategoryForState('Wisconsin'))
-    # print(energy.getTotalEnergyForMonthByState('Wisconsin'))
+    energy = EnergyProductionAPI(
+        '../Data/total_energy_production_modified.csv')
