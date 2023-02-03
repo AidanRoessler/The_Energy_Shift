@@ -118,10 +118,13 @@ class EnergyProductionAPI:
             in the year for the given state. Note: the list will be in sequential order (Jan, Feb, ... Dec)
 
         """
-        state_for_each_month = energy.energy_df.loc[(energy.energy_df["Location"] == state)
-                                        & (energy.energy_df["Category of Production"] == 'All fuels')]
+        if self.stateInputCheck(state):  
+            state_for_each_month = energy.energy_df.loc[(energy.energy_df["Location"] == state)
+                                            & (energy.energy_df["Category of Production"] == 'All fuels')]
+            
+            return state_for_each_month.to_dict('records')[0]
         
-        return state_for_each_month.to_dict('records')[0]
+        return self.stateInputCheck(state)
 
     """
     NEEDED
@@ -178,18 +181,6 @@ class EnergyProductionAPI:
             return True
         return False 
             
-        
-<<<<<<< HEAD
-=======
-        state_only = self.energy_df.loc[(self.energy_df["Location"] == state)]
-        state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
-        state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
-        state_only = state_only.sum(axis = 1)
-        state_only = state_only.sum(axis = 0)
-
-        return state_only
-
->>>>>>> 22b838ae0a62d5c16345c85e7ad83928ed042993
 
 if __name__ == "__main__":
     energy = EnergyProductionAPI('./Data/total_energy_production_modified.csv')
