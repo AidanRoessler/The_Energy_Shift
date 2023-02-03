@@ -136,7 +136,7 @@ class EnergyProductionAPI:
             -Input: 56 or 'Test' or True or 'Bilbo Baggins', 'MN'       
     
     """
-    def getTotalRenewableEnergyByState(state):
+    def getTotalRenewableEnergyByState(self, state):
         '''
             Sums and returns the total amount of renewable energy for the specified state
 
@@ -155,14 +155,21 @@ class EnergyProductionAPI:
         '''
 
         # print("The total energy generated renewable was 14 billion KWH")
+        
+        state_only = energy.energy_df.loc[(energy.energy_df["Location"] == state)]
+        state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
+        state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
+        state_only = state_only.sum(axis = 1)
+        state_only = state_only.sum(axis = 0)
 
-        return 0
+        return state_only
 
 
 if __name__ == "__main__":
     energy = EnergyProductionAPI('data/total_energy_production_modified.csv')
-    print(energy.getEnergyForState('Ohio')); 
-    print(energy.getEnergyForState('Colorado')); 
-    print(energy.getEnergyForState('Wisconsin')); 
+    # print(energy.getEnergyForState('Ohio')); 
+    # print(energy.getEnergyForState('Colorado')); 
+    # print(energy.getEnergyForState('Wisconsin')); 
+    print(energy.getTotalRenewableEnergyByState('Alabama'))
 
 
