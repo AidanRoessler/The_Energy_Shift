@@ -142,7 +142,7 @@ class EnergyProductionAPI:
 
         # print("The total energy generated renewable was 14 billion KWH")
         
-        state_only = self.energy_df.loc[(energy.energy_df["Location"] == state)]
+        state_only = self.energy_df.loc[(self.energy_df["Location"] == state)]
         state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
         state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
         state_only = state_only.sum(axis = 1)
