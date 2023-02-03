@@ -40,12 +40,13 @@ class EnergyProductionAPI:
         """
 
         # We need to read and sum each row that does not contain 'All fuels' for the given state.
-        state_only = self.energy_df.loc[(energy.energy_df["Location"] == state)
-                                         & (energy.energy_df["Category of Production"] != 'All fuels')]
-        
+        state_only = self.energy_df.loc[(energy.energy_df["Location"] == state)]
+        state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
+        state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
+        state_only = state_only.sum(axis = 1)
+        state_only_list = state_only.to_list()
 
-
-        return 0
+        return state_only_list
 
     """
     NEEDED
@@ -95,7 +96,7 @@ class EnergyProductionAPI:
             -Input: 'Montreal' or '12' or 'WI'
     """
     def getTotalEnergyForMonthByState(state):
-        """Sums all electricity generation by all catagories in a given month
+        """Retrieves monthly total electricity generation throughout the year for a given state
 
         Retrieves each individual column in the row labeled 'All fuels', returing those numbers in a sequential
         list of floats.
@@ -156,4 +157,4 @@ if __name__ == "__main__":
     # print(energy.getEnergyForState('Colorado')); 
     # print(energy.getEnergyForState('Wisconsin')); 
     # print(energy.getTotalRenewableEnergyByState('Alabama'))
-    print(energy.energy_df)
+    print(energy.getEnergyByCategoryForState('Wisconsin'))
