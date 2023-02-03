@@ -1,15 +1,36 @@
 import unittest
 import api
 
+
 class APITester(unittest.TestCase):
 
-    def test_getEnergyByMonthForState(self):
+    # def test_getEnergyByMonthForState(self):
+    #     return 0
 
-    def test_ getEnergyByCategoryForState(self):
-        
-    def test_getTotalEnergyForState(self):
+    # def test_getEnergyByCategoryForState(self):
+    #     return 0
 
-    def test_getTotalRenewableEnergyByState(self):
+    # def test_getTotalEnergyForState(self):
+    #     return 0
+
+    def test_successful_getTotalRenewableEnergyByState(self):
+        """
+        Test to see if getTotalRenewableEnergyByState() can successfully return the correct float
+        value when given the valid input of "Alabama"
+        """
+        input = 'Alabama'
+        result = api.getTotalRenewableEnergyByState(input)
+        self.assertEqual(result, 62350.54)
+
+    def test_fail_getTotalRenewableEnergyByState(self):
+        """
+        Test to see if getTotalRenewableEnergyByState() can successfully return the a message to the 
+        user when their input is invalid
+        """
+        input = 56
+        result = api.getTotalRenewableEnergyByState(input)
+        self.assertEqual(
+            result, 'Please enter the full name of a state in the United States (abbreviations are not accepted)')
 
     if __name__ == '__main__':
         unittest.main()

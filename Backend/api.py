@@ -136,9 +136,9 @@ class EnergyProductionAPI:
             -Input: 56 or 'Test' or True or 'Bilbo Baggins', 'MN'       
     
     """
-    def getRenewableEnergy(state):
+    def getTotalRenewableEnergyByState(state):
         '''
-            Sums and returns the total amount of renewable energy for the specfied state
+            Sums and returns the total amount of renewable energy for the specified state
 
             Retrieves columns in the current working dataset pertaining to each category of renewable 
             electricity generation for each state in a specific month, sums the values in these columns 
