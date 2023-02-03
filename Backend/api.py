@@ -179,6 +179,17 @@ class EnergyProductionAPI:
         return False 
             
         
+<<<<<<< HEAD
+=======
+        state_only = self.energy_df.loc[(self.energy_df["Location"] == state)]
+        state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
+        state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
+        state_only = state_only.sum(axis = 1)
+        state_only = state_only.sum(axis = 0)
+
+        return state_only
+
+>>>>>>> 22b838ae0a62d5c16345c85e7ad83928ed042993
 
 if __name__ == "__main__":
     energy = EnergyProductionAPI('./Data/total_energy_production_modified.csv')
