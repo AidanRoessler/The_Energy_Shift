@@ -53,12 +53,16 @@ class EnergyProductionAPI:
                 state_only = self.energy_df.loc[(self.energy_df["Location"] == state)]
                 state_only = state_only[state_only['Category of Production'].str.contains(
                     'All fuels') == False]
+                # save the Cat of Production column as a dictionary
+                cat_col = state_only.loc[:, 'Category of Production']
                 state_only.drop(['Location', 'Category of Production'],
                                 axis=1, inplace=True)
-                state_only = state_only.sum(axis=1)
-                state_only_list = state_only.to_list()
+                state_only.insert(0, 'Sums', state_only.sum(axis=1))
+                state_only.insert(0, 'Category of Production', cat_col)
+                state_only = state_only.set_index('Category of Production')['Sums'].to_dict()
+
+                return state_only
                 
-                return state_only_list
             else:
                 raise("Invalid state input")
         except Exception as e:
@@ -124,7 +128,7 @@ class EnergyProductionAPI:
     def getTotalEnergyForMonthByState(self, state):
         """Retrieves monthly total electricity generation throughout the year for a given state
 
-        Retrieves each individual column in the row labeled 'All fuels', returing those numbers in a sequential
+        Retrieves each individual column in the row labeled 'All fuels', returning those numbers in a sequential
         list of floats.
 
         Args:
@@ -138,7 +142,7 @@ class EnergyProductionAPI:
             if state in self.state_list:
                 state_for_each_month = self.energy_df.loc[(self.energy_df["Location"] == state)
                                                         & (self.energy_df["Category of Production"] == 'All fuels')]
-
+                print(state_for_each_month)
                 return state_for_each_month.to_dict('records')[0]
             else:
                 raise("Invalid state input")
@@ -179,20 +183,31 @@ class EnergyProductionAPI:
         '''
 
         # print("The total energy generated renewable was 14 billion KWH")
+        # Try to run the function as normal 
         try:
+            #If the state is a valid input run the function as normal
             if state in self.state_list:
-
+                #Filter down the dataframe to just the specified state's renewable forms of energy
                 state_only = self.energy_df.loc[(
                     self.energy_df["Location"] == state)]
                 state_only = state_only[state_only['Category of Production'].str.contains(
                     'All fuels') == False]
                 state_only.drop(
                     ['Location', 'Category of Production'], axis=1, inplace=True)
+                
+                #Sum up the total amount of renewable produced for the specified state
                 state_only = state_only.sum(axis=1)
                 state_only = state_only.sum(axis=0)
 
-            return state_only
-        
+                return state_only
+            
+            #If the state inputted is not valid, raise an exception
+            else:
+                raise("Invalid state input")
+            
+        #Handle an exception by telling the user to enter a valid state, printing out the exception
+        #and returning false
+    
         except Exception as e:
             print("Please enter the full name of a state in the United States (abbreviations are not accepted)")
             print("Error")
@@ -201,10 +216,10 @@ class EnergyProductionAPI:
 
 
 if __name__ == "__main__":
-    energy = EnergyProductionAPI('./Data/total_energy_production_modified.csv')
+    energy = EnergyProductionAPI('../Data/total_energy_production_modified.csv')
     # print(energy.getEnergyForState('Ohio'));
     # print(energy.getEnergyForState('Colorado'));
     # print(energy.getEnergyForState('Alabama'));
-    print(energy.getTotalEnergyForMonthByState('Alabama'))
+    print(energy.getEnergyByCategoryForState('Wisconsin'))
     # print(energy.getEnergyByCategoryForState('Wisconsin'))
     # print(energy.getTotalEnergyForMonthByState('Wisconsin'))
