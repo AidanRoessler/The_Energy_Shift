@@ -49,8 +49,8 @@ class EnergyProductionAPI:
 
         """
 
-        # We need to read and sum each row that does not contain 'All fuels' for the given state.
-        state_only = self.energy_df.loc[(energy.energy_df["Location"] == state)]
+        
+        state_only = self.energy_df.loc[(self.energy_df["Location"] == state)]
         state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
         state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
         state_only = state_only.sum(axis = 1)
@@ -85,8 +85,8 @@ class EnergyProductionAPI:
 
         """
 
-        state_only = energy.energy_df.loc[(energy.energy_df["Location"] == state)
-                                        & (energy.energy_df["Category of Production"] == 'All fuels')]
+        state_only = self.energy_df.loc[(self.energy_df["Location"] == state)
+                                        & (self.energy_df["Category of Production"] == 'All fuels')]
         state_minus_strings = list(state_only)
         state_minus_strings.remove('Location')
         state_minus_strings.remove('Category of Production')
@@ -119,8 +119,8 @@ class EnergyProductionAPI:
 
         """
         if self.stateInputCheck(state):  
-            state_for_each_month = energy.energy_df.loc[(energy.energy_df["Location"] == state)
-                                            & (energy.energy_df["Category of Production"] == 'All fuels')]
+            state_for_each_month = self.energy_df.loc[(self.energy_df["Location"] == state)
+                                            & (self.energy_df["Category of Production"] == 'All fuels')]
             
             return state_for_each_month.to_dict('records')[0]
         
@@ -157,29 +157,17 @@ class EnergyProductionAPI:
 
         # print("The total energy generated renewable was 14 billion KWH")
         if self.stateInputCheck(state):           
-            state_only = self.energy_df.loc[(energy.energy_df["Location"] == state)]
+            state_only = self.energy_df.loc[(self.energy_df["Location"] == state)]
             state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
             state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
             state_only = state_only.sum(axis = 1)
-            #state_only = state_only.sum(axis = 0)
+            state_only = state_only.sum(axis = 0)
 
             return state_only
         
         return self.stateInputCheck(state)
         
-        
-    """
-    Equivalence Classes:
-    -Valid state (as a string):
-        -Input: "Alabama"
-    
-    -A not valid state (either as a string or another data-types)
-        -Input: 56 or 'Test' or True or 'Bilbo Baggins', 'MN' 
-    """
-    def stateInputCheck(self, input):
-        if input in self.state_list:
-            return True
-        return False 
+
             
 
 if __name__ == "__main__":
@@ -187,6 +175,6 @@ if __name__ == "__main__":
     # print(energy.getEnergyForState('Ohio')); 
     # print(energy.getEnergyForState('Colorado')); 
     # print(energy.getEnergyForState('Alabama')); 
-    print(energy.getTotalRenewableEnergyByState('Alabama'))
+    print(energy.getTotalEnergyForMonthByState('Alabama'))
     # print(energy.getEnergyByCategoryForState('Wisconsin'))
     # print(energy.getTotalEnergyForMonthByState('Wisconsin'))
