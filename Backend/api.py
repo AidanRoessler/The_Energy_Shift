@@ -104,6 +104,8 @@ class EnergyProductionAPI:
                 state_minus_strings_sum = state_only[state_minus_strings].sum(axis=1)
 
                 return state_minus_strings_sum.iloc[0]
+            else:
+                raise("Invalid state input")
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
             print("Error:")
@@ -138,6 +140,8 @@ class EnergyProductionAPI:
                                                         & (self.energy_df["Category of Production"] == 'All fuels')]
 
                 return state_for_each_month.to_dict('records')[0]
+            else:
+                raise("Invalid state input")
 
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
