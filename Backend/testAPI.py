@@ -14,6 +14,14 @@ class APITester(unittest.TestCase):
 
     # def test_getTotalEnergyForState(self):
     #     return 0
+    def test_getTotalEnergyForMonthByState(self):
+        """
+        Test to see if getTotalEnergyForMonthByState() can successfully return the correct float
+        value when given the valid input of "Alabama"
+        """
+        input = 'Alabama'
+        result = self.energy_test.getTotalEnergyForMonthByState(input)
+        self.assertEqual(result, 62387.66)
 
     def test_successful_getTotalRenewableEnergyByState(self):
         """

@@ -11,6 +11,16 @@ class EnergyProductionAPI:
             # self.energy_production_dictionary = list(
             #     csv.DictReader(energyFile))
             self.energy_df = pd.read_csv(energyFile)
+            
+        self.state_list = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
+                           'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
+                           'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
+                           'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 
+                           'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
+                           'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 
+                           'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 
+                           'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 
+                           'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming']
 
     """
         Equivalence Classes:
@@ -95,7 +105,7 @@ class EnergyProductionAPI:
         -A string that is not a state
             -Input: 'Montreal' or '12' or 'WI'
     """
-    def getTotalEnergyForMonthByState(state):
+    def getTotalEnergyForMonthByState(self, state):
         """Retrieves monthly total electricity generation throughout the year for a given state
 
         Retrieves each individual column in the row labeled 'All fuels', returing those numbers in a sequential
@@ -108,8 +118,10 @@ class EnergyProductionAPI:
             in the year for the given state. Note: the list will be in sequential order (Jan, Feb, ... Dec)
 
         """
-
-        return 0
+        state_for_each_month = energy.energy_df.loc[(energy.energy_df["Location"] == state)
+                                        & (energy.energy_df["Category of Production"] == 'All fuels')]
+        
+        return state_for_each_month.to_dict('records')[0]
 
     """
     NEEDED
@@ -141,20 +153,38 @@ class EnergyProductionAPI:
         '''
 
         # print("The total energy generated renewable was 14 billion KWH")
+        if self.stateInputCheck(state):           
+            state_only = self.energy_df.loc[(energy.energy_df["Location"] == state)]
+            state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
+            state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
+            state_only = state_only.sum(axis = 1)
+            #state_only = state_only.sum(axis = 0)
+
+            return state_only
         
-        state_only = self.energy_df.loc[(energy.energy_df["Location"] == state)]
-        state_only = state_only[state_only['Category of Production'].str.contains('All fuels') == False]
-        state_only.drop(['Location','Category of Production'], axis = 1, inplace = True)
-        state_only = state_only.sum(axis = 1)
-        state_only = state_only.sum(axis = 0)
-
-        return state_only
-
+        return self.stateInputCheck(state)
+        
+        
+    """
+    Equivalence Classes:
+    -Valid state (as a string):
+        -Input: "Alabama"
+    
+    -A not valid state (either as a string or another data-types)
+        -Input: 56 or 'Test' or True or 'Bilbo Baggins', 'MN' 
+    """
+    def stateInputCheck(self, input):
+        if input in self.state_list:
+            return True
+        return False 
+            
+        
 
 if __name__ == "__main__":
     energy = EnergyProductionAPI('./Data/total_energy_production_modified.csv')
     # print(energy.getEnergyForState('Ohio')); 
     # print(energy.getEnergyForState('Colorado')); 
-    # print(energy.getEnergyForState('Wisconsin')); 
-    # print(energy.getTotalRenewableEnergyByState('Alabama'))
-    print(energy.getEnergyByCategoryForState('Wisconsin'))
+    # print(energy.getEnergyForState('Alabama')); 
+    print(energy.getTotalRenewableEnergyByState('Alabama'))
+    # print(energy.getEnergyByCategoryForState('Wisconsin'))
+    # print(energy.getTotalEnergyForMonthByState('Wisconsin'))
