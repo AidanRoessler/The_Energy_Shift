@@ -81,12 +81,8 @@ class EnergyProductionAPI:
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except Exception as e:
-            print(
-                'Please enter the full name of a state in the United States (abbreviations are not accepted)')
-            print("Error:")
-            print(e)
-            return False
+        except Exception:
+            return 'Please enter the full name of a state in the United States (abbreviations are not accepted)'
     """
     
 
@@ -142,12 +138,8 @@ class EnergyProductionAPI:
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except Exception as e:
-            print(
-                'Please enter the full name of a state in the United States (abbreviations are not accepted)')
-            print("Error:")
-            print(e)
-            return False
+        except Exception:
+            return 'Please enter the full name of a state in the United States (abbreviations are not accepted)'
 
     """
     Equivalence Classes:
@@ -158,7 +150,7 @@ class EnergyProductionAPI:
             -Input: 'Montreal' or '12' or 'WI'
     """
 
-    def getTotalEnergyForMonthByState(self, state):
+    def getTotalEnergyForStateByMonth(self, state):
         """Retrieves monthly total electricity generation throughout the year for a given state
 
         Retrieves each individual column in the row labeled 'All fuels', returning those numbers in a sequential
@@ -167,8 +159,9 @@ class EnergyProductionAPI:
         Args:
             state: a string indicating one of the 50 states in America
         Returns:
-            returns a list of floats indicating the sum of the total electricity generation for each month
-            in the year for the given state. Note: the list will be in sequential order (Jan, Feb, ... Dec)
+            returns a dictionary where the keys indicate the month while the values are floats indicating the sum of 
+            the total electricity generation for each month in the year for the given state. 
+            Note: the list will be in sequential order (Jan, Feb, ... Dec)
 
         """
         try:
@@ -179,12 +172,8 @@ class EnergyProductionAPI:
             else:
                 raise ("Invalid state input")
 
-        except Exception as e:
-            print(
-                'Please enter the full name of a state in the United States (abbreviations are not accepted)')
-            print("Error:")
-            print(e)
-            return False
+        except Exception:
+            return 'Please enter the full name of a state in the United States (abbreviations are not accepted)'
     """
     Equivalence Classes:
         -Valid state (as a string):
@@ -239,12 +228,8 @@ class EnergyProductionAPI:
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except Exception as e:
-            print(
-                "Please enter the full name of a state in the United States (abbreviations are not accepted)")
-            print("Error")
-            print(e)
-            return False
+        except Exception:
+            return "Please enter the full name of a state in the United States (abbreviations are not accepted)"
 
 
 if __name__ == "__main__":
