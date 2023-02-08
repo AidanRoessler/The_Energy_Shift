@@ -33,7 +33,7 @@ class EnergyProductionAPI:
 
     def getEnergyByCategoryForState(self, state):
         """
-        Returns the total renewable energy by category of renewable energy for a specified state 
+        Returns the total energy by category of energy for a specified state 
 
         Retrieves columns in the current working dataset pertaining to the categories of renewable
         energy production for a specified state and sums up all of the values of the categories for
