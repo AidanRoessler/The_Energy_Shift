@@ -49,20 +49,6 @@ while (1):
                     "This function takes a state as a string parameter returns the total energy generated via renewable sources in the specified state as an int. \nPlease enter a US state:")
                 print(energy.getTotalRenewableEnergyByState(userInputedState))
 
-            # case "getEnergyForState":
-            #     userInputedState = input(
-            #         "This function takes a state as a string parameter and returns the total energy generated in that State as an int in KWH. \nPlease enter a state: ")
-            #     getEnergyForState(userInputedState)
-            # case "getEnergyForMonth":
-            #     userInputedMonth = input(
-            #         "This function takes an integer from 1-12 (inclusive) representing a month as a parameter and returns the total energy generated during that month as an int in KWH. \nPlease enter a month: ")
-            #     userInputedMonth = int(userInputedMonth)
-            #     getEnergyForMonth(userInputedMonth)
-            # case "getRenewableEnergy":
-            #     userInputedRenewableSource = input(
-            #         "This function returns the total energy generated via renewable sources as an int in KWH.")
-            #     getRenewableEnergy()
-
     elif userInput.lower() == "exit":
         print("Exiting the program")
         break
