@@ -238,9 +238,9 @@ class EnergyProductionAPI:
 if __name__ == "__main__":
     energy = EnergyProductionAPI(
         '../Data/total_energy_production_modified.csv')
-    load_dotenv()
-    password = os.getenv('DATABASE_PASSWORD')
-    print(password)
-    # conn = psycopg2.connect(database='states', user='keanel', password=password)
-    # print('Swag money. Database opened successfully')
+    # load_dotenv()
+    # password = os.getenv('DATABASE_PASSWORD')
+    # print(password)
+    conn = psycopg2.connect(database='states', user='keanel', password=password)
+    print('Swag money. Database opened successfully')
 
