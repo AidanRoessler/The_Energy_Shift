@@ -5,8 +5,6 @@ import psycopg2
 
 class EnergyProductionAPI:
 
-    
-
     def __init__(self, filename):
         '''
         Read in our csv data set and initialize a list of all states as an instance variable
@@ -73,8 +71,6 @@ class EnergyProductionAPI:
                 for category in listOfSumsForCategories:
                     print(category)
                     dictOfSumsForCategories[category[0]] = category[1]
-
-                print(dictOfSumsForCategories)
                 
                 return dictOfSumsForCategories
 
@@ -178,8 +174,6 @@ class EnergyProductionAPI:
                 dictOfSumsForMonths = {}
                 for i in range(12):
                     dictOfSumsForMonths[self.month_list[i]] = listOfSumsForMonths[0][i]
-
-                print(dictOfSumsForMonths)
                 
                 return dictOfSumsForMonths
 
@@ -249,9 +243,9 @@ if __name__ == "__main__":
     print('Database opened successfully')
     
     # energy.getEnergyByCategoryForState('Wisconsin')
-    energy.getTotalEnergyForStateByMonth('Colorado')
-    energy.getEnergyForState('Colorado')
-    energy.getTotalRenewableEnergyByState('Colorado')
+    print(energy.getTotalEnergyForStateByMonth('Colorado'))
+    print(energy.getEnergyForState('Colorado'))
+    print(energy.getTotalRenewableEnergyByState('Colorado'))
 
     energy.cursor.close()
 
