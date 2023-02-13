@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 import psycopg2
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 
 
 class EnergyProductionAPI:
@@ -241,6 +241,6 @@ if __name__ == "__main__":
     load_dotenv()
     password = os.getenv('DATABASE_PASSWORD')
     print(password)
-    conn = psycopg2.connect(database='states', user='keanel', password=password)
-    print('Swag money. Database opened successfully')
+    # conn = psycopg2.connect(database='states', user='keanel', password=password)
+    # print('Swag money. Database opened successfully')
 
