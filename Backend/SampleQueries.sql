@@ -79,3 +79,8 @@ SELECT categoryofproduction,
         AS Amount
 FROM colorado 
 WHERE categoryofproduction != 'All fuels';
+
+/* Alternative query that accomplishes the same thing (because a 'total' column is included) 
+   Condensd onto one line for simplicity of string input */
+
+SELECT categoryofproduction, total FROM colorado WHERE categoryofproduction != 'All fuels';
