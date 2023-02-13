@@ -169,9 +169,24 @@ class EnergyProductionAPI:
         """
         try:
             if state in self.state_list:
-                state_for_each_month = self.energy_df.loc[(self.energy_df["Location"] == state)
-                                                         & (self.energy_df["Category of Production"] == 'All fuels')]
-                return state_for_each_month.to_dict('records')[0]
+                
+                # builds the query string with the user's input
+                queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {state} WHERE categoryofproduction = 'All fuels';"
+
+                self.cursor.execute(queryStr)
+                
+                listOfSumsForMonths = self.cursor.fetchall()
+                print(listOfSumsForMonths)
+
+                dictOfSumsForMonths = {}
+                for month in listOfSumsForMonths:
+                    print(month)
+                    dictOfSumsForMonths[month[0]] = month[1]
+
+                print(dictOfSumsForMonths)
+                
+                return dictOfSumsForMonths
+
             else:
                 raise ("Invalid state input")
 
