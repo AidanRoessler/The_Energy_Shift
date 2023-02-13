@@ -67,13 +67,13 @@ class EnergyProductionAPI:
                 listOfSumsForCategories = self.cursor.fetchall()
                 print(listOfSumsForCategories)
 
-                dict = {}
+                dictOfSumsForCategories = {}
                 for category in listOfSumsForCategories:
-                    dict.update({category[0], category[1]})
+                    dictOfSumsForCategories.update({category[0], category[1]})
 
-                print(dict)
+                print(dictOfSumsForCategories)
                 
-                return dict
+                return dictOfSumsForCategories
 
             # If the state inputted is not valid, raise an exception
             else:
