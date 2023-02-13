@@ -116,7 +116,7 @@ class EnergyProductionAPI:
             # If the state is a valid input run the function as normal
             if state in self.state_list:
 
-                queryStr = f"SELECT total FROM {state} WHERE categoryofproduction == 'All fuels';"
+                queryStr = f"SELECT total FROM {state} WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryStr)
                 
@@ -216,7 +216,7 @@ class EnergyProductionAPI:
         try:
             if state in self.state_list:
                 # builds the query string with the user's input
-                queryStr = f"SELECT total FROM {state} WHERE categoryofproduction <> 'All fuels';"
+                queryStr = f"SELECT SUM(total) FROM {state} WHERE categoryofproduction <> 'All fuels';"
                 self.cursor.execute(queryStr)
                     
                 renewableEnergySumList = self.cursor.fetchall()
