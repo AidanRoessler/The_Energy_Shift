@@ -119,23 +119,18 @@ class EnergyProductionAPI:
         try:
             # If the state is a valid input run the function as normal
             if state in self.state_list:
-                # Filter down the dataframe to just include the specified state states 'All fuels' column
-                state_only = self.energy_df.loc[(self.energy_df["Location"] == state)
-                                                & (self.energy_df["Category of Production"] == 'All fuels')]
 
-                # Turn the dataframe into a list
-                state_minus_strings = list(state_only)
+                queryStr = f"SELECT total FROM {state} WHERE categoryofproduction == 'All fuels';"
 
-                # drop the non-numerical columns before we add them
-                state_minus_strings.remove('Location')
-                state_minus_strings.remove('Category of Production')
+                self.cursor.execute(queryStr)
+                
+                stateEnergySumList = self.cursor.fetchall()
+                
+                print(stateEnergySumList)
 
-                # Add all the numerical values in the list
-                state_minus_strings_sum = state_only[state_minus_strings].sum(
-                    axis=1)
+                stateEnergySum = stateEnergySumList[0][0]
 
-                # Return the sum of the operation on the previous line
-                return state_minus_strings_sum.iloc[0]
+                return stateEnergySum
 
             # If the state inputted is not valid, raise an exception
             else:
@@ -225,21 +220,17 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            # If the state is a valid input run the function as normal
             if state in self.state_list:
-                # Filter down the dataframe to just the specified state's renewable forms of energy
-                state_only = self.energy_df.loc[(
-                    self.energy_df["Location"] == state)]
-                state_only = state_only[state_only['Category of Production'].str.contains(
-                    'All fuels') == False]
-                state_only.drop(
-                    ['Location', 'Category of Production'], axis=1, inplace=True)
+                # builds the query string with the user's input
+                queryStr = f"SELECT total FROM {state} WHERE categoryofproduction <> 'All fuels';"
+                self.cursor.execute(queryStr)
+                    
+                renewableEnergySumList = self.cursor.fetchall()
+                print(renewableEnergySumList)
 
-                # Sum up the total amount of renewable produced for the specified state
-                state_only = state_only.sum(axis=1)
-                state_only = state_only.sum(axis=0)
-
-                return state_only
+                renewableEnergySum = renewableEnergySumList[0][0]
+                    
+                return renewableEnergySum
 
             # If the state inputted is not valid, raise an exception
             else:
@@ -254,14 +245,13 @@ class EnergyProductionAPI:
 if __name__ == "__main__":
     energy = EnergyProductionAPI(
         '../Data/total_energy_production_modified.csv')
-    # load_dotenv()
-    # password = os.getenv('DATABASE_PASSWORD')
-    # print(password)
     
-    print('Swag money.Database opened successfully')
+    print('Database opened successfully')
     
     # energy.getEnergyByCategoryForState('Wisconsin')
     energy.getTotalEnergyForStateByMonth('Colorado')
+    energy.getEnergyForState('Colorado')
+    energy.getTotalRenewableEnergyByState('Colorado')
 
     energy.cursor.close()
 
