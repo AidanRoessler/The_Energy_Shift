@@ -245,6 +245,7 @@ if __name__ == "__main__":
     print('Swag money.Database opened successfully')
     curr = conn.cursor()
     curr.execute("SELECT * FROM colorado")
-    conn.commit()
+    result_one = curr.fetchall()
+    print("Result retrieved:" + result_one)
     print("query run successfully")
 
