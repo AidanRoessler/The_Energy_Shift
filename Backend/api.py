@@ -178,12 +178,11 @@ class EnergyProductionAPI:
                 self.cursor.execute(queryStr)
                 
                 listOfSumsForMonths = self.cursor.fetchall()
-                print(listOfSumsForMonths)
+                print(listOfSumsForMonths[0])
 
                 dictOfSumsForMonths = {}
-                
-                for month, value in self.month_list, listOfSumsForMonths:
-                    dictOfSumsForMonths[month] = value
+                for i in range(12):
+                    dictOfSumsForMonths[self.month_list[i]] = listOfSumsForMonths[0][i]
 
                 print(dictOfSumsForMonths)
                 
