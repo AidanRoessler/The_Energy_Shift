@@ -243,4 +243,8 @@ if __name__ == "__main__":
     # print(password)
     conn = psycopg2.connect(database='keanel', user='keanel', password="summer494spring")
     print('Swag money.Database opened successfully')
+    curr = conn.cursor()
+    curr.execute("SELECT * FROM colorado")
+    conn.commit()
+    print("query run successfully")
 
