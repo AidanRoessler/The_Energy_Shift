@@ -1,5 +1,8 @@
 import pandas as pd
 import numpy as np
+import psycopg2
+import os
+from dotenv import load_dotenv
 
 
 class EnergyProductionAPI:
@@ -21,7 +24,7 @@ class EnergyProductionAPI:
                            'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
                            'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia',
                            'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming']
-
+        
     """
         Equivalence Classes:
         -Valid state (as a string):
@@ -235,3 +238,9 @@ class EnergyProductionAPI:
 if __name__ == "__main__":
     energy = EnergyProductionAPI(
         '../Data/total_energy_production_modified.csv')
+    load_dotenv()
+    password = os.getenv('DATABASE_PASSWORD')
+    print(password)
+    conn = psycopg2.connect(database='states', user='keanel', password=password)
+    print('Swag money. Database opened successfully')
+
