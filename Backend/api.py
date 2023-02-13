@@ -58,14 +58,14 @@ class EnergyProductionAPI:
             # If the state is a valid input run the function as normal
             if state in self.state_list:
 
+                # Build the query string and execute the query
                 queryStr = f"SELECT total FROM {state} WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryStr)
 
                 stateEnergySumList = self.cursor.fetchall()
 
-                print(stateEnergySumList)
-
+                # Extract the sum out of list of a single tuple returned from the query
                 stateEnergySum = stateEnergySumList[0][0]
 
                 return stateEnergySum
@@ -111,13 +111,13 @@ class EnergyProductionAPI:
         # Try to run the function as normal
         try:
             if state in self.state_list:
-                # builds the query string with the user's input
+                # Build the query string and execute the query
                 queryStr = f"SELECT SUM(total) FROM {state} WHERE categoryofproduction <> 'All fuels';"
                 self.cursor.execute(queryStr)
 
                 renewableEnergySumList = self.cursor.fetchall()
-                print(renewableEnergySumList)
 
+                # Extract the sum out of list of a single tuple returned from the query
                 renewableEnergySum = renewableEnergySumList[0][0]
 
                 return renewableEnergySum
@@ -157,7 +157,7 @@ class EnergyProductionAPI:
         try:
             if state in self.state_list:
 
-                # builds the query string with the user's input
+                # builds the query string and execute the query
                 queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {state} WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryStr)
@@ -165,7 +165,10 @@ class EnergyProductionAPI:
                 listOfSumsForMonths = self.cursor.fetchall()
                 print(listOfSumsForMonths[0])
 
+                # Create the result dictionary
                 dictOfSumsForMonths = {}
+
+                # Extract the value of each month stored in the single tuple returned from the query
                 for i in range(12):
                     dictOfSumsForMonths[self.month_list[i]
                                         ] = listOfSumsForMonths[0][i]
@@ -209,15 +212,17 @@ class EnergyProductionAPI:
         try:
             if state in self.state_list:
 
-                # builds the query string with the user's input
+                # Builds the query string and executes it
                 queryStr = f"SELECT categoryofproduction, total FROM {state} WHERE categoryofproduction != 'All fuels';"
 
                 self.cursor.execute(queryStr)
 
                 listOfSumsForCategories = self.cursor.fetchall()
-                print(listOfSumsForCategories)
 
+                """Creates a dictionary from the result of the query and where the keys are months 
+                and the values are the total amount of renewable energy produced in that month"""
                 dictOfSumsForCategories = {}
+
                 for category in listOfSumsForCategories:
                     print(category)
                     dictOfSumsForCategories[category[0]] = category[1]
@@ -241,10 +246,3 @@ if __name__ == "__main__":
         '../Data/total_energy_production_modified.csv')
 
     print('Database opened successfully')
-
-    # energy.getEnergyByCategoryForState('Wisconsin')
-    print(energy.getTotalEnergyForStateByMonth('Colorado'))
-    print(energy.getEnergyForState('Colorado'))
-    print(energy.getTotalRenewableEnergyByState('Colorado'))
-
-    energy.cursor.close()
