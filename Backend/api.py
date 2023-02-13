@@ -69,11 +69,13 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
+                print("else")
                 raise ("Invalid state input")
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except Exception:
+            print("exception")
             return 'Please enter the full name of a state in the United States (abbreviations are not accepted)'
     """
     
@@ -233,5 +235,5 @@ if __name__ == "__main__":
     
     print('Swag money.Database opened successfully')
     
-    energy.getEnergyByCategoryForState('wisconsin')
+    energy.getEnergyByCategoryForState('Wisconsin')
 
