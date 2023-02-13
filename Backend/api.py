@@ -69,7 +69,8 @@ class EnergyProductionAPI:
 
                 dictOfSumsForCategories = {}
                 for category in listOfSumsForCategories:
-                    dictOfSumsForCategories.update({category[0], category[1]})
+                    print(category)
+                    dictOfSumsForCategories[category[0]] = category[1]
 
                 print(dictOfSumsForCategories)
                 
