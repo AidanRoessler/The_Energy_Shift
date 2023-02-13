@@ -58,14 +58,22 @@ class EnergyProductionAPI:
         
         try:
             if state in self.state_list:
-                print("passed conditional")
+
                 # builds the query string with the user's input
                 queryStr = f"SELECT categoryofproduction, total FROM {state} WHERE categoryofproduction != 'All fuels';"
-                print(queryStr)
+
                 self.cursor.execute(queryStr)
-                print("exceuting")
-                result_one = self.cursor.fetchall()
-                print(result_one)
+                
+                listOfSumsForCategories = self.cursor.fetchall()
+                print(listOfSumsForCategories)
+
+                dict = {}
+                for category in listOfSumsForCategories:
+                    dict.update({category[0], category[1]})
+
+                print(dict)
+                
+                return dict
 
             # If the state inputted is not valid, raise an exception
             else:
