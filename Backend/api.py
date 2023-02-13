@@ -55,13 +55,14 @@ class EnergyProductionAPI:
         
         try:
             if state in self.state_list:
-                
+                print("passed conditional")
                 cursor = self.conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)                
-                
+                print("connection opened sucessfully")
                 # builds the query string with the user's input
                 queryStr = f"SELECT categoryofproduction, total FROM {state} WHERE categoryofproduction != 'All fuels';"
-
+                print(queryStr)
                 cursor.execute(queryStr)
+                print("exceuting")
                 result_one = cursor.fetchall()
                 print(result_one)
 
