@@ -241,6 +241,6 @@ if __name__ == "__main__":
     # load_dotenv()
     # password = os.getenv('DATABASE_PASSWORD')
     # print(password)
-    conn = psycopg2.connect(database='states', user='keanel', password="summer494spring")
+    conn = psycopg2.connect(database='List of relations', user='keanel', password="summer494spring")
     print('Swag money.Database opened successfully')
 
