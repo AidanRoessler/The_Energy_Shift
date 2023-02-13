@@ -1,5 +1,3 @@
-import pandas as pd
-import numpy as np
 import psycopg2
 # import os
 # from dotenv import load_dotenv
@@ -7,13 +5,14 @@ import psycopg2
 
 class EnergyProductionAPI:
 
+    
+
     def __init__(self, filename):
         '''
         Read in our csv data set and initialize a list of all states as an instance variable
         '''
 
-        with open(filename, newline='') as energyFile:
-            self.energy_df = pd.read_csv(energyFile)
+        self.conn = psycopg2.connect(database='keanel', user='keanel', password="summer494spring")
 
         self.state_list = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
                            'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
@@ -52,31 +51,21 @@ class EnergyProductionAPI:
             of the year
 
         """
+
+        
         try:
             if state in self.state_list:
-                # Isolate only the rows with the given state (excluding the 'All fuels' column)
-                state_only = self.energy_df.loc[(
-                    self.energy_df["Location"] == state)]
-                state_only = state_only[state_only['Category of Production'].str.contains(
-                    'All fuels') == False]
+                
+                cursor = self.conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)                
+                
+                # builds the query string with the user's input
+                queryStr = f"SELECT categoryofproduction, total FROM {state} WHERE categoryofproduction != 'All fuels';"
 
-                # save the Category of Production column
-                cat_col = state_only.loc[:, 'Category of Production']
+                cursor.execute(queryStr)
+                result_one = cursor.fetchall()
+                print(result_one)
 
-                # drop the non-numerical columns
-                state_only.drop(['Location', 'Category of Production'],
-                                axis=1, inplace=True)
-
-                # Sums the entire years categories of production and inserts the results as the column 'Sums'
-                state_only.insert(0, 'Sums', state_only.sum(axis=1))
-
-                # Inserts the Category of Production column back into the data frame
-                state_only.insert(0, 'Category of Production', cat_col)
-
-                state_only = state_only.set_index('Category of Production')[
-                    'Sums'].to_dict()
-
-                return state_only
+                cursor.close()
 
             # If the state inputted is not valid, raise an exception
             else:
@@ -241,11 +230,8 @@ if __name__ == "__main__":
     # load_dotenv()
     # password = os.getenv('DATABASE_PASSWORD')
     # print(password)
-    conn = psycopg2.connect(database='keanel', user='keanel', password="summer494spring")
+    
     print('Swag money.Database opened successfully')
-    curr = conn.cursor()
-    curr.execute("SELECT * FROM colorado")
-    result_one = curr.fetchall()
-    print("Result retrieved:" + str(result_one))
-    print("query run successfully")
+    
+    energy.getEnergyByCategoryForState()
 
