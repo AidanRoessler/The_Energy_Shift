@@ -246,6 +246,6 @@ if __name__ == "__main__":
     curr = conn.cursor()
     curr.execute("SELECT * FROM colorado")
     result_one = curr.fetchall()
-    print("Result retrieved:" + result_one)
+    print("Result retrieved:" + str(result_one))
     print("query run successfully")
 
