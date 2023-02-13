@@ -9,6 +9,8 @@ class APITester(unittest.TestCase):
     because otherwise api will not be imported 
     """
 
+    # A note on asserting exceptions: instead of asserting if equal, it would pass the test when it raises a certain exception.
+
     def setUp(self):
         '''
         Set up the test methods by creating an instance of the EnergyProductionAPI class with our
