@@ -260,6 +260,7 @@ if __name__ == "__main__":
     print('Swag money.Database opened successfully')
     
     energy.getEnergyByCategoryForState('Wisconsin')
+    energy.getTotalEnergyForStateByMonth('Colorado')
 
     energy.cursor.close()
 
