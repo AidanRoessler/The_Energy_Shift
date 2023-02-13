@@ -14,6 +14,9 @@ class EnergyProductionAPI:
 
         self.conn = psycopg2.connect(database='keanel', user='keanel', password="summer494spring")
 
+        self.cursor = self.conn.cursor()
+
+
         self.state_list = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
                            'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
                            'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
@@ -56,17 +59,13 @@ class EnergyProductionAPI:
         try:
             if state in self.state_list:
                 print("passed conditional")
-                cursor = self.conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)                
-                print("connection opened sucessfully")
                 # builds the query string with the user's input
                 queryStr = f"SELECT categoryofproduction, total FROM {state} WHERE categoryofproduction != 'All fuels';"
                 print(queryStr)
-                cursor.execute(queryStr)
+                self.cursor.execute(queryStr)
                 print("exceuting")
-                result_one = cursor.fetchall()
+                result_one = self.cursor.fetchall()
                 print(result_one)
-
-                cursor.close()
 
             # If the state inputted is not valid, raise an exception
             else:
@@ -237,4 +236,6 @@ if __name__ == "__main__":
     print('Swag money.Database opened successfully')
     
     energy.getEnergyByCategoryForState('Wisconsin')
+
+    energy.cursor.close()
 
