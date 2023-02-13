@@ -171,7 +171,7 @@ class EnergyProductionAPI:
             if state in self.state_list:
                 
                 # builds the query string with the user's input
-                queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {state} WHERE categoryofproduction = 'All fuels';"
+                queryStr = f"SELECT january AS january, february AS february, march AS march, april AS april, may AS may, june AS june, july AS july, august AS august, september AS september, october AS october, november AS november, december AS december FROM {state} WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryStr)
                 
@@ -259,7 +259,7 @@ if __name__ == "__main__":
     
     print('Swag money.Database opened successfully')
     
-    energy.getEnergyByCategoryForState('Wisconsin')
+    # energy.getEnergyByCategoryForState('Wisconsin')
     energy.getTotalEnergyForStateByMonth('Colorado')
 
     energy.cursor.close()
