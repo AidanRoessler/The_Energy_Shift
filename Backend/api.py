@@ -10,10 +10,10 @@ class EnergyProductionAPI:
         Read in our csv data set and initialize a list of all states as an instance variable
         '''
 
-        # self.conn = psycopg2.connect(
-        #     database='keanel', user='keanel', password="summer494spring")
+        self.conn = psycopg2.connect(
+            database='keanel', user='keanel', password="summer494spring")
 
-        # self.cursor = self.conn.cursor()
+        self.cursor = self.conn.cursor()
 
         self.state_list = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
                            'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
