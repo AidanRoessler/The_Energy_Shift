@@ -37,8 +37,7 @@ class APITester(unittest.TestCase):
         input = 56
         result = self.energy_test.getEnergyForState(input)
         # TODO: change this to assertRaises to catch the exception
-        self.assertEqual(
-            result, 'Please enter the full name of a state in the United States (abbreviations are not accepted)')
+        self.assertRaises(Exception, self.energy_test.getEnergyForState, input)
 
     def test_validState_getEnergyByCategoryForState(self):
         """
