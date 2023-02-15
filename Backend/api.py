@@ -72,11 +72,11 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise Exception('invalid input')
+                raise TypeError('invalid input')
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except Exception as e:
+        except TypeError as e:
             print(f'An exception was raised: {e}')
             return e
     """
@@ -125,11 +125,11 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise Exception('invalid input')
+                raise TypeError('invalid input')
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except Exception as e:
+        except TypeError as e:
             print(f'An exception was raised: {e}')
             return e
 
@@ -177,9 +177,9 @@ class EnergyProductionAPI:
                 return dictOfSumsForMonths
 
             else:
-                raise Exception('invalid input')
+                raise TypeError('invalid input')
 
-        except Exception as e:
+        except TypeError as e:
             print(f'An exception was raised: {e}')
             return e
 
@@ -232,11 +232,11 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise Exception('invalid input')
+                raise TypeError('invalid input')
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except Exception as e:
+        except TypeError as e:
             print(f'An exception was raised: {e}')
             return e
 
