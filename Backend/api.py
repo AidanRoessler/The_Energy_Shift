@@ -72,13 +72,12 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise ("Invalid state input")
+                raise Exception
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
-            print(e)
             return e
     """
     Equivalence Classes:
@@ -126,13 +125,12 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise ("Invalid state input")
+                raise Exception
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
-            print(e)
             return e
 
     """
@@ -179,11 +177,10 @@ class EnergyProductionAPI:
                 return dictOfSumsForMonths
 
             else:
-                raise ("Invalid state input")
+                raise Exception
 
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
-            print(e)
             return e
 
     """
@@ -235,13 +232,12 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise ("Invalid state input")
+                raise Exception
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
-            print(e)
             return e
 
 
