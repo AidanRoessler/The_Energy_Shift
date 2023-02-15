@@ -50,10 +50,9 @@ class APITester(unittest.TestCase):
         Test to see if getEnergyByCategoryForState() can successfully return the correct list of
         floats when given the valid input of 'Wisconsin'
         """
-        input = 'Wisconsin'
+        input = 'Alabama'
         result = self.energy_test.getEnergyByCategoryForState(input)
-        self.assertEqual(result, {'Other renewables': 3031.96, 'Conventional hydroelectric': 2144.8900000000003, 'Nuclear': 9970.199999999999,
-                         'Utility-scale photovoltaic': 366.82, 'All utility-scale solar': 366.82, 'All solar': 548.86, 'Wind': 1593.48})
+        self.assertEqual(result, {'Other renewables': 3805.24, 'Conventional hydroelectric': 11520.8, 'Nuclear': 46036.5, 'Utility-scale photovoltaic': 494.0, 'All utility-scale solar': 494.0, 'All solar': 37.12})
 
     def test_invalidState_getEnergyByCategoryForState(self):
         """
@@ -79,8 +78,7 @@ class APITester(unittest.TestCase):
         input = 'Alabama'
         result = self.energy_test.getTotalEnergyForStateByMonth(input)
 
-        self.assertEqual(result, {'Location': 'Alabama', 'Category of Production': 'All fuels', '21-Jan': 12574.68, '21-Feb': 11267.83, '21-Mar': 10343.43, '21-Apr': 8972.6,
-                         '21-May': 11274.04, '21-Jun': 12255.95, '21-Jul': 13545.99, '21-Aug': 13862.05, '21-Sep': 12089.57, '21-Oct': 11731.84, '21-Nov': 12408.92, '21-Dec': 12406.44})
+        self.assertEqual(result, {'January': 12574.68, 'February': 11267.83, 'March': 10343.43, 'April': 8972.6, 'May': 11274.04, 'June': 12255.95, 'July': 13545.99, 'August': 13862.05, 'September': 12089.57, 'October': 11731.84, 'November': 12408.92, 'December': 12406.44})
 
     def test_invalidState_getTotalEnergyForStateByMonth(self):
         """
