@@ -78,6 +78,7 @@ class EnergyProductionAPI:
         # and returning false
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
+            print(e)
             return e
     """
     Equivalence Classes:
@@ -131,6 +132,7 @@ class EnergyProductionAPI:
         # and returning false
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
+            print(e)
             return e
 
     """
@@ -181,6 +183,7 @@ class EnergyProductionAPI:
 
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
+            print(e)
             return e
 
     """
@@ -238,6 +241,7 @@ class EnergyProductionAPI:
         # and returning false
         except Exception as e:
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
+            print(e)
             return e
 
 

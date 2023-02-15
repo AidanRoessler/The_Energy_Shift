@@ -91,7 +91,7 @@ class APITester(unittest.TestCase):
         input = 'Montreal'
         
         '''
-        we probabaly don't need the result
+        we probably don't need the result
         
         '''
         #result = self.energy_test.getTotalEnergyForStateByMonth(input)
