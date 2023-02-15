@@ -35,7 +35,14 @@ class APITester(unittest.TestCase):
         their input is invalid
         """
         input = 56
-        result = self.energy_test.getEnergyForState(input)
+        
+        '''
+        we probabaly don't need the result。
+        
+        '''
+        #result = self.energy_test.getEnergyByCategoryForState(input)
+        
+        
         # TODO: change this to assertRaises to catch the exception
         self.assertRaises(Exception, self.energy_test.getEnergyForState, input)
 
@@ -55,10 +62,16 @@ class APITester(unittest.TestCase):
         when their input is invalid
         """
         input = 56
-        result = self.energy_test.getEnergyByCategoryForState(input)
-        self.assertEqual(
-            result, 'Please enter the full name of a state in the United States (abbreviations are not accepted)')
-
+        
+        '''
+        we probabaly don't need the result。
+        
+        '''
+        #result = self.energy_test.getEnergyByCategoryForState(input)
+        
+        
+        self.assertRaises(Exception, self.energy_test.getEnergyByCategoryForState, input)
+        
     def test_validState_getTotalEnergyForStateByMonth(self):
         """
         Test to see if getTotalEnergyForStateByMonth() can successfully return the correct float
@@ -76,9 +89,15 @@ class APITester(unittest.TestCase):
         when their input is invalid
         """
         input = 'Montreal'
-        result = self.energy_test.getTotalEnergyForStateByMonth(input)
-        self.assertEqual(
-            result, 'Please enter the full name of a state in the United States (abbreviations are not accepted)')
+        
+        '''
+        we probabaly don't need the result。
+        
+        '''
+        #result = self.energy_test.getTotalEnergyForStateByMonth(input)
+        
+        self.assertRaises(Exception, self.energy_test.getTotalEnergyForStateByMonth, input)
+        
 
     def test_validState_getTotalRenewableEnergyByState(self):
         """
@@ -95,9 +114,15 @@ class APITester(unittest.TestCase):
         user when their input is invalid
         """
         input = 56
-        result = self.energy_test.getTotalRenewableEnergyByState(input)
-        self.assertEqual(
-            result, 'Please enter the full name of a state in the United States (abbreviations are not accepted)')
+        
+        '''
+        we probabaly don't need the result。
+        
+        '''
+        #result = self.energy_test.getTotalEnergyForStateByMonth(input)
+        
+        self.assertRaises(Exception, self.energy_test.getTotalRenewableEnergyByState, input)
+        
 
     if __name__ == '__main__':
         unittest.main()
