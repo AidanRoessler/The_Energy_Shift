@@ -37,7 +37,7 @@ class APITester(unittest.TestCase):
         input = 56
         
         '''
-        we probabaly don't need the result。
+        we probabaly don't need the result
         
         '''
         #result = self.energy_test.getEnergyByCategoryForState(input)
@@ -64,7 +64,7 @@ class APITester(unittest.TestCase):
         input = 56
         
         '''
-        we probabaly don't need the result。
+        we probabaly don't need the result
         
         '''
         #result = self.energy_test.getEnergyByCategoryForState(input)
@@ -91,7 +91,7 @@ class APITester(unittest.TestCase):
         input = 'Montreal'
         
         '''
-        we probabaly don't need the result。
+        we probabaly don't need the result
         
         '''
         #result = self.energy_test.getTotalEnergyForStateByMonth(input)
@@ -116,7 +116,7 @@ class APITester(unittest.TestCase):
         input = 56
         
         '''
-        we probabaly don't need the result。
+        we probabaly don't need the result
         
         '''
         #result = self.energy_test.getTotalEnergyForStateByMonth(input)
