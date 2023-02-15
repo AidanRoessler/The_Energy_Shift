@@ -42,9 +42,10 @@ class APITester(unittest.TestCase):
         '''
         #result = self.energy_test.getEnergyByCategoryForState(input)
         
-        
-        # TODO: change this to assertRaises to catch the exception
-        self.assertRaises(Exception, self.energy_test.getEnergyForState, input)
+        with self.assertRaises(Exception):
+            self.energy_test.getEnergyForState(input)
+
+        # self.assertRaises(Exception, self.energy_test.getEnergyForState, input)
 
     def test_validState_getEnergyByCategoryForState(self):
         """
@@ -69,8 +70,10 @@ class APITester(unittest.TestCase):
         '''
         #result = self.energy_test.getEnergyByCategoryForState(input)
         
-        
-        self.assertRaises(Exception, self.energy_test.getEnergyByCategoryForState, input)
+        with self.assertRaises(Exception):
+            self.energy_test.getEnergyByCategoryForState(input)
+
+        #self.assertRaises(Exception, self.energy_test.getEnergyByCategoryForState, input)
         
     def test_validState_getTotalEnergyForStateByMonth(self):
         """
@@ -95,8 +98,10 @@ class APITester(unittest.TestCase):
         
         '''
         #result = self.energy_test.getTotalEnergyForStateByMonth(input)
-        
-        self.assertRaises(Exception, self.energy_test.getTotalEnergyForStateByMonth, input)
+        with self.assertRaises(Exception):
+            self.energy_test.getTotalEnergyForStateByMonth(input)
+
+        # self.assertRaises(Exception, self.energy_test.getTotalEnergyForStateByMonth, input)
         
 
     def test_validState_getTotalRenewableEnergyByState(self):
@@ -120,8 +125,10 @@ class APITester(unittest.TestCase):
         
         '''
         #result = self.energy_test.getTotalEnergyForStateByMonth(input)
-        
-        self.assertRaises(Exception, self.energy_test.getTotalRenewableEnergyByState, input)
+        with self.assertRaises(Exception):
+            self.energy_test.getTotalRenewableEnergyByState(input)
+
+        # self.assertRaises(Exception, self.energy_test.getTotalRenewableEnergyByState, input)
         
 
     if __name__ == '__main__':
