@@ -77,6 +77,7 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except Exception as e:
+            print(e)
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
             return e
     """
@@ -130,6 +131,7 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except Exception as e:
+            print(e)
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
             return e
 
@@ -180,6 +182,7 @@ class EnergyProductionAPI:
                 raise Exception
 
         except Exception as e:
+            print(e)
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
             return e
 
@@ -237,6 +240,7 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except Exception as e:
+            print(e)
             print('Please enter the full name of a state in the United States (abbreviations are not accepted)')
             return e
 
