@@ -78,7 +78,7 @@ class EnergyProductionAPI:
         # and returning false
         except TypeError as e:
             print(f'An exception was raised: {e}')
-            return e
+            return TypeError
     """
     Equivalence Classes:
         -Valid state (as a string):
@@ -131,7 +131,7 @@ class EnergyProductionAPI:
         # and returning false
         except TypeError as e:
             print(f'An exception was raised: {e}')
-            return e
+            return TypeError
 
     """
     Equivalence Classes:
@@ -181,7 +181,7 @@ class EnergyProductionAPI:
 
         except TypeError as e:
             print(f'An exception was raised: {e}')
-            return e
+            return TypeError
 
     """
         Equivalence Classes:
@@ -238,7 +238,7 @@ class EnergyProductionAPI:
         # and returning false
         except TypeError as e:
             print(f'An exception was raised: {e}')
-            return e
+            return TypeError
 
 
 if __name__ == "__main__":
