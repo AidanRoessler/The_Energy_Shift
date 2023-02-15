@@ -72,13 +72,12 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise TypeError
+                raise Exception('invalid input')
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except TypeError as e:
-            print(f'An exception was raised: {e}')
-            return TypeError
+        except TypeError:
+            return 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)'
     """
     Equivalence Classes:
         -Valid state (as a string):
@@ -125,13 +124,12 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise TypeError
+                raise Exception('invalid input')
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except TypeError as e:
-            print(f'An exception was raised: {e}')
-            return TypeError
+        except TypeError:
+            return 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)'
 
     """
     Equivalence Classes:
@@ -177,11 +175,10 @@ class EnergyProductionAPI:
                 return dictOfSumsForMonths
 
             else:
-                raise TypeError
+                raise Exception('invalid input')
 
-        except TypeError as e:
-            print(f'An exception was raised: {e}')
-            return TypeError
+        except TypeError:
+            return 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)'
 
     """
         Equivalence Classes:
@@ -232,13 +229,12 @@ class EnergyProductionAPI:
 
             # If the state inputted is not valid, raise an exception
             else:
-                raise TypeError
+                raise Exception('invalid input')
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except TypeError as e:
-            print(f'An exception was raised: {e}')
-            return TypeError
+        except TypeError:
+            return 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)'
 
 
 if __name__ == "__main__":

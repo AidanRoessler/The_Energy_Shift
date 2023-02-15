@@ -35,17 +35,15 @@ class APITester(unittest.TestCase):
         their input is invalid
         """
         input = 56
-        
+
         '''
         we probabaly don't need the result
         
         '''
-        #result = self.energy_test.getEnergyByCategoryForState(input)
-        
-        # with self.assertRaises(TypeError):
-        #     self.energy_test.getEnergyForState(input)
+        result = self.energy_test.getEnergyByCategoryForState(input)
 
-        self.assertRaises(TypeError, self.energy_test.getEnergyForState, input)
+        self.assertEqual(
+            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
 
     def test_validState_getEnergyByCategoryForState(self):
         """
@@ -63,18 +61,16 @@ class APITester(unittest.TestCase):
         when their input is invalid
         """
         input = 56
-        
+
         '''
         we probabaly don't need the result
         
         '''
-        #result = self.energy_test.getEnergyByCategoryForState(input)
-        
-        # with self.assertRaises(TypeError):
-        #     self.energy_test.getEnergyByCategoryForState(input)
+        result = self.energy_test.getEnergyByCategoryForState(input)
 
-        self.assertRaises(TypeError, self.energy_test.getEnergyByCategoryForState, input)
-        
+        self.assertEqual(
+            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
+
     def test_validState_getTotalEnergyForStateByMonth(self):
         """
         Test to see if getTotalEnergyForStateByMonth() can successfully return the correct float
@@ -92,17 +88,15 @@ class APITester(unittest.TestCase):
         when their input is invalid
         """
         input = 'Montreal'
-        
+
         '''
         we probably don't need the result
         
         '''
-        #result = self.energy_test.getTotalEnergyForStateByMonth(input)
-        # with self.assertRaises(TypeError):
-        #     self.energy_test.getTotalEnergyForStateByMonth(input)
+        result = self.energy_test.getTotalEnergyForStateByMonth(input)
 
-        self.assertRaises(TypeError, self.energy_test.getTotalEnergyForStateByMonth, input)
-        
+        self.assertEqual(
+            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
 
     def test_validState_getTotalRenewableEnergyByState(self):
         """
@@ -119,17 +113,15 @@ class APITester(unittest.TestCase):
         user when their input is invalid
         """
         input = 56
-        
+
         '''
         we probabaly don't need the result
         
         '''
-        #result = self.energy_test.getTotalEnergyForStateByMonth(input)
-        # with self.assertRaises(TypeError):
-        #     self.energy_test.getTotalRenewableEnergyByState(input)
+        result = self.energy_test.getTotalEnergyForStateByMonth(input)
 
-        self.assertRaises(TypeError, self.energy_test.getTotalRenewableEnergyByState, input)
-        
+        self.assertEqual(
+            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
 
     if __name__ == '__main__':
         unittest.main()
