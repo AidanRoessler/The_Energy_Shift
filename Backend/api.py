@@ -4,7 +4,7 @@ import psqlConfig
 
 class EnergyProductionAPI:
 
-    def __init__(self, filename):
+    def __init__(self):
         '''
         Read in our csv data set and initialize a list of all states as an instance variable
         '''
