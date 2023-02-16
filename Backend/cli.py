@@ -6,8 +6,7 @@ Written by: Liam Keane, Aidan Roessler, Rachel Tan
 '''
 from api import *
 
-energy = EnergyProductionAPI(
-    '../Data/total_energy_production_modified.csv')
+energy = EnergyProductionAPI()
 
 # The command line program should allow the user to keep selecting functions until they decide to quit.
 # what data will be expected by each function, in what format, etc. It should also demonstrate what data the function calls will return (and in what format).
