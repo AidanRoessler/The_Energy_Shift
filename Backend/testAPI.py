@@ -36,10 +36,6 @@ class APITester(unittest.TestCase):
         """
         input = 56
 
-        '''
-        we probabaly don't need the result
-        
-        '''
         result = self.energy_test.getEnergyByCategoryForState(input)
 
         self.assertEqual(
@@ -52,7 +48,8 @@ class APITester(unittest.TestCase):
         """
         input = 'Alabama'
         result = self.energy_test.getEnergyByCategoryForState(input)
-        self.assertEqual(result, {'Other renewables': 3805.24, 'Conventional hydroelectric': 11520.8, 'Nuclear': 46036.5, 'Utility-scale photovoltaic': 494.0, 'All utility-scale solar': 494.0, 'All solar': 37.12})
+        self.assertEqual(result, {'Other renewables': 3805.24, 'Conventional hydroelectric': 11520.8, 'Nuclear': 46036.5,
+                         'Utility-scale photovoltaic': 494.0, 'All utility-scale solar': 494.0, 'All solar': 37.12})
 
     def test_invalidState_getEnergyByCategoryForState(self):
         """
@@ -60,11 +57,6 @@ class APITester(unittest.TestCase):
         when their input is invalid
         """
         input = 56
-
-        '''
-        we probabaly don't need the result
-        
-        '''
         result = self.energy_test.getEnergyByCategoryForState(input)
 
         self.assertEqual(
@@ -78,7 +70,8 @@ class APITester(unittest.TestCase):
         input = 'Alabama'
         result = self.energy_test.getTotalEnergyForStateByMonth(input)
 
-        self.assertEqual(result, {'January': 12574.68, 'February': 11267.83, 'March': 10343.43, 'April': 8972.6, 'May': 11274.04, 'June': 12255.95, 'July': 13545.99, 'August': 13862.05, 'September': 12089.57, 'October': 11731.84, 'November': 12408.92, 'December': 12406.44})
+        self.assertEqual(result, {'January': 12574.68, 'February': 11267.83, 'March': 10343.43, 'April': 8972.6, 'May': 11274.04, 'June': 12255.95,
+                         'July': 13545.99, 'August': 13862.05, 'September': 12089.57, 'October': 11731.84, 'November': 12408.92, 'December': 12406.44})
 
     def test_invalidState_getTotalEnergyForStateByMonth(self):
         """
@@ -112,10 +105,6 @@ class APITester(unittest.TestCase):
         """
         input = 56
 
-        '''
-        we probabaly don't need the result
-        
-        '''
         result = self.energy_test.getTotalEnergyForStateByMonth(input)
 
         self.assertEqual(

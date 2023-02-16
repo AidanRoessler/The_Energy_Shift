@@ -15,6 +15,7 @@ functionNames = ["(1) getEnergyForState : \n     Sums all electricity generation
                  "(2) getTotalRenewableEnergyByState : \n     Sums and returns the total amount of renewable energy throughout the year for a given state",
                  "(3) getTotalEnergyForStateByMonth : \n     Retrieves monthly total electricity generation throughout the year for a given state",
                  "(4) getEnergyByCategoryForState : \n     Returns the total renewable energy by category of renewable energy for a specified state"]
+
 # display a list of possible functions and how to properly call them
 while (1):
     print("*Note: all numerical return values for energy production will be floats in thousand megawatt hours*\nPlease enter one of the following numbers corresponding to a function name: \n ---")
@@ -37,17 +38,20 @@ while (1):
         elif userInput == "2":
             userInputedState = input(
                 "This function takes a state as a string parameter returns the total energy generated via renewable sources in the specified state as an int. \nPlease enter a US state: ")
-            print(energy.getTotalRenewableEnergyByState(userInputedState.capitalize()))
+            print(energy.getTotalRenewableEnergyByState(
+                userInputedState.capitalize()))
 
         elif userInput == "3":
             userInputedState = input(
                 "This function takes a state as a string parameter and returns a dictionary where the keys are a month in 2021 and the values are the total energy produced in that month in the specified state. \nPlease enter a US state: ")
-            print(energy.getTotalEnergyForStateByMonth(userInputedState.capitalize()))
+            print(energy.getTotalEnergyForStateByMonth(
+                userInputedState.capitalize()))
 
         elif userInput == "4":
             userInputedState = input(
                 "This function takes a state as string parameter and returns a dictionary where the keys are a category of energy production and the values are the total energy produced for that category. \nPlease enter a US state: ")
-            print(energy.getEnergyByCategoryForState(userInputedState.capitalize()))
+            print(energy.getEnergyByCategoryForState(
+                userInputedState.capitalize()))
 
     elif userInput.lower() == "exit":
         print("Exiting the program")
