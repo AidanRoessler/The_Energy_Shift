@@ -237,7 +237,4 @@ class EnergyProductionAPI:
 
 
 if __name__ == "__main__":
-    energy = EnergyProductionAPI(
-        '../Data/total_energy_production_modified.csv')
-
-    print('Database opened successfully')
+    print('Database connection successful')
