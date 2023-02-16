@@ -1,4 +1,5 @@
 import psycopg2
+import psqlConfig
 
 
 class EnergyProductionAPI:
@@ -9,7 +10,7 @@ class EnergyProductionAPI:
         '''
 
         self.conn = psycopg2.connect(
-            database='keanel', user='keanel', password="summer494spring")
+            database=psqlConfig.database, user=psqlConfig.user, password=psqlConfig.password)
 
         self.cursor = self.conn.cursor()
 
