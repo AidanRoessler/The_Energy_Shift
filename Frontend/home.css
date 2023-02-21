@@ -1,19 +1,18 @@
-
 body {
   font-family: "Libre Baskerville", serif;
   font-weight: 400;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 
 h1 {
-    font-family: "Libre Baskerville";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 79px;
-    text-align: center;
-    color: #323954;
-  }
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 79px;
+  text-align: center;
+  color: #323954;
+}
 
 h2,
 h3,
@@ -22,6 +21,51 @@ h5,
 h6 {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
+}
+
+div.titlecontainer {
+  display: flex;
+  justify-content: center;
+}
+
+div.navcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+    display: flex;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+nav li a {
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 16px;
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  color: #323954;
+}
+
+nav li a:hover {
+  text-decoration: underline;
 }
 
 .button {
