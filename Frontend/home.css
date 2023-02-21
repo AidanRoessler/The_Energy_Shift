@@ -96,10 +96,37 @@ div.content {
   margin-bottom: 10px;
 }
 
-.button {
+div.homebutton {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-right: 80%;
+  gap: 10px;
+}
+
+button {
+  background-color: #ea5147;
+  border-radius: 10px;
+  box-shadow: none;
+  text-shadow: none;
+  border-color: #ea5147;
+}
+
+button:hover {
+  background-color: #41c2ab;
+  border-color: #41c2ab;
+}
+
+button:active {
+  background-color: #359c8a;
+  border-color: #359c8a;
+}
+
+p.buttontext {
+  margin-top: 2px;
+  margin-bottom: 2px;
   font-family: "Work Sans", sans-serif;
   font-weight: 700;
   font-size: 21px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+  color: #ffffff;
 }
