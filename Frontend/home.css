@@ -8,19 +8,37 @@ h1 {
   font-family: "Libre Baskerville";
   font-style: normal;
   font-weight: 700;
-  font-size: 64px;
+  font-size: 63px;
   line-height: 79px;
   text-align: center;
   color: #323954;
 }
 
-h2,
+h2 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-size: 47;
+  font-style: normal;
+  color: #323954;
+}
+
 h3,
 h4,
 h5,
 h6 {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
+}
+
+p {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 50px;
+  text-align: justify;
+
+  color: #323954;
 }
 
 div.titlecontainer {
@@ -34,7 +52,7 @@ div.navcontainer {
 }
 
 nav {
-    display: flex;
+  display: flex;
 }
 
 nav ul {
@@ -68,10 +86,20 @@ nav li a:hover {
   text-decoration: underline;
 }
 
+div.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 13px;
+  margin-right: 180px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .button {
   font-family: "Work Sans", sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 21px;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
