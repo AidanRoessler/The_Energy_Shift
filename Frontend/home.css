@@ -46,4 +46,10 @@ p.buttontext {
   font-weight: 700;
   font-size: 21px;
   color: #ffffff;
+  text-decoration: none;
 }
+
+a.buttonlink{
+  text-decoration: none;
+}
+
