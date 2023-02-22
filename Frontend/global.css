@@ -1,3 +1,4 @@
+/* Text styling for all forms of text on the site */
 body {
   font-family: "Libre Baskerville", serif;
   font-weight: 400;
@@ -17,7 +18,7 @@ h1 {
 h2 {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
-  font-size: 47;
+  font-size: 47px;
   font-style: normal;
   color: #323954;
 }
@@ -38,10 +39,10 @@ p {
   font-size: 21px;
   line-height: 50px;
   text-align: justify;
-
   color: #323954;
 }
 
+/* Styling for the divs that contain the title and navbar respectively */
 div.titlecontainer {
   display: flex;
   justify-content: center;
@@ -52,6 +53,7 @@ div.navcontainer {
   justify-content: center;
 }
 
+/* Styling for the nav bar and all of its elements */
 nav {
   display: flex;
 }

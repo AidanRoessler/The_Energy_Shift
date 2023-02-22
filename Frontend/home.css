@@ -1,3 +1,4 @@
+/* Div that contains all of the content */
 div.content {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@ div.content {
   margin-bottom: 10px;
 }
 
+/* Styling for the button that appears on the home page and the text inside it */
 div.homebutton {
   display: flex;
   flex-direction: row;
