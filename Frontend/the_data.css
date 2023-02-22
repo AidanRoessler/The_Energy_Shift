@@ -1,17 +1,54 @@
 div.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    margin-left: 13px;
-    margin-right: 180px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
 
-option {
-    background-color: #947fd5;
-    color: #333;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-  }
-  
+label {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  color: #323954;
+  font-size: 37;
+  width: 100%;
+}
+
+div.formcontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+select {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: #ea5147;
+  color: #ffffff;
+  border: 6px solid #ea5147;
+  border-radius: 5px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: #ffffff;
+  text-decoration: none;
+  width: 100%;
+}
+
+select:hover {
+  border: 6px solid #323954;
+  border-radius: 5px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.selected {
+  display: flex;
+}
