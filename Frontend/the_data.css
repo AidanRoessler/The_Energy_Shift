@@ -7,4 +7,11 @@ div.content {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
+option {
+    background-color: #947fd5;
+    color: #333;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+  }
   
