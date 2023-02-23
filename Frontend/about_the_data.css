@@ -1,3 +1,7 @@
+/* 
+this selctor styles all the content within
+our about_the_data.html
+*/
 div.content {
     display: flex;
     flex-direction: column;
