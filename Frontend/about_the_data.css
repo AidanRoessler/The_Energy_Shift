@@ -3,12 +3,21 @@ this selector styles all the content within
 our about_the_data.html
 */
 div.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    margin-left: 13px;
-    margin-right: 180px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 13px;
+  margin-right: 180px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+li.bulletpoint {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 100px;
+  line-height: 50px;
+  text-align: justify;
+  color: #323954;
+}
