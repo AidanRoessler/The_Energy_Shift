@@ -38,11 +38,13 @@ select {
   color: #ffffff;
   text-decoration: none;
   width: 100%;
+  transition: padding 0.5s ease;
 }
 
 select:hover {
   border: 6px solid #323954;
   border-radius: 5px;
+  padding: 12px 24px;
 }
 
 select:focus {
