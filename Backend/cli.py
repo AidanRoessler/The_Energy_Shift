@@ -32,25 +32,25 @@ while (1):
         if userInput == "1":
             userInputedState = input(
                 "This function takes a state as a string parameter and returns the total energy generated in that state as an int. \nPlease enter a US state: ")
-            print(energy.getEnergyForState(userInputedState.upper()))
+            print(energy.getEnergyForState(userInputedState))
 
         elif userInput == "2":
             userInputedState = input(
                 "This function takes a state as a string parameter returns the total energy generated via renewable sources in the specified state as an int. \nPlease enter a US state: ")
             print(energy.getTotalRenewableEnergyByState(
-                userInputedState.upper()))
+                userInputedState))
 
         elif userInput == "3":
             userInputedState = input(
                 "This function takes a state as a string parameter and returns a dictionary where the keys are a month in 2021 and the values are the total energy produced in that month in the specified state. \nPlease enter a US state: ")
             print(energy.getTotalEnergyForStateByMonth(
-                userInputedState.upper()))
+                userInputedState))
 
         elif userInput == "4":
             userInputedState = input(
                 "This function takes a state as string parameter and returns a dictionary where the keys are a category of energy production and the values are the total energy produced for that category. \nPlease enter a US state: ")
             print(energy.getEnergyByCategoryForState(
-                userInputedState.upper()))
+                userInputedState))
 
     elif userInput.lower() == "exit":
         print("Exiting the program")
