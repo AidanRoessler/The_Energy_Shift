@@ -28,17 +28,17 @@ class EnergyProductionAPI:
                            'July', 'August', 'September', 'October', 'November', 'December']
 
         self.abbreviation_to_state_dictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
-                                                'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
-                                                'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho','IL': 'Illinois',
-                                                'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
-                                                'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
-                                                'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
-                                                'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
-                                                'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota',
-                                                'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 
-                                                'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee',
-                                                'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
-                                                'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
+                                                 'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
+                                                 'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
+                                                 'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
+                                                 'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
+                                                 'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
+                                                 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
+                                                 'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota',
+                                                 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+                                                 'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee',
+                                                 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
+                                                 'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
 
     """
     Equivalence Classes:
@@ -68,7 +68,7 @@ class EnergyProductionAPI:
         try:
             # Turn abbreviation into valid full name of state here:
             fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
-            
+
             # If the state is a valid input run the function as normal
             if fullStateName in self.state_list:
 
@@ -118,15 +118,16 @@ class EnergyProductionAPI:
                 for the current state in the current working dataset
 
         '''
-        
+
         # Try to run the function as normal
         try:
-            # Turn abbreviation into valid full name of state here:
-            fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
+            if stateAbbreviation in self.abbreviation_to_state_dictionary:
 
-            # If the state is a valid input run the function as normal
+                # Turn abbreviation into valid full name of state here:
+                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
-            if fullStateName in self.state_list:
+                # If the state is a valid input run the function as normal
+
                 # Build the query string and execute the query
                 queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels';"
                 self.cursor.execute(queryStr)
@@ -138,13 +139,13 @@ class EnergyProductionAPI:
 
                 return renewableEnergySum
 
-            # If the state inputted is not valid, raise an exception
+                # If the state inputted is not valid, raise an exception
             else:
                 raise Exception('invalid input')
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except TypeError:
+        except KeyError:
             return 'Invalid input. Please enter a state abbreviation not a (full name)'
 
     """
@@ -173,7 +174,7 @@ class EnergyProductionAPI:
         try:
             # Turn abbreviation into valid full name of state here:
             fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
-            
+
             # If the state is a valid input run the function as normal
             if fullStateName in self.state_list:
 
@@ -231,7 +232,7 @@ class EnergyProductionAPI:
         try:
             # Turn abbreviation into valid full name of state here:
             fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
-            
+
             # If the state is a valid input run the function as normal
             if fullStateName in self.state_list:
 
