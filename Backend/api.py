@@ -89,7 +89,7 @@ class EnergyProductionAPI:
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except TypeError:
+        except:
             return 'Invalid input. Please enter a state abbreviation (not a full name)'
     """
     Equivalence Classes:
@@ -194,7 +194,7 @@ class EnergyProductionAPI:
             else:
                 raise Exception('invalid input')
 
-        except TypeError:
+        except:
             return 'Invalid input. Please enter a state abbreviation (not a full name)'
 
     """
@@ -253,7 +253,7 @@ class EnergyProductionAPI:
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except TypeError:
+        except:
             return 'Invalid input. Please enter a state abbreviation (not a full name)'
 
 

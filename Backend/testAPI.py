@@ -1,7 +1,6 @@
 import unittest
 import api
 
-
 class APITester(unittest.TestCase):
     """
     A suite of tests for the EnergyProductionAPI classes' methods
@@ -24,7 +23,7 @@ class APITester(unittest.TestCase):
         Test to see if getEnergyForState() can successfully return the correct float
         when given the valid input of 'Alabama'
         """
-        result = self.energy_test.getEnergyForState("Alabama")
+        result = self.energy_test.getEnergyForState("Al")
         self.assertEqual(result, 142733.34)
 
     def test_invalidState_getEnergyForState(self):
@@ -42,7 +41,7 @@ class APITester(unittest.TestCase):
         Test to see if getEnergyByCategoryForState() can successfully return the correct list of
         floats when given the valid input of 'Wisconsin'
         """
-        result = self.energy_test.getEnergyByCategoryForState("Alabama")
+        result = self.energy_test.getEnergyByCategoryForState("Al")
         self.assertEqual(result, {'Other renewables': 3805.24, 'Conventional hydroelectric': 11520.8, 'Nuclear': 46036.5,
                          'Utility-scale photovoltaic': 494.0, 'All utility-scale solar': 494.0, 'All solar': 37.12})
 
@@ -61,7 +60,7 @@ class APITester(unittest.TestCase):
         Test to see if getTotalEnergyForStateByMonth() can successfully return the correct float
         value when given the valid input of "Alabama"
         """
-        result = self.energy_test.getTotalEnergyForStateByMonth("Alabama")
+        result = self.energy_test.getTotalEnergyForStateByMonth("Al")
 
         self.assertEqual(result, {'January': 12574.68, 'February': 11267.83, 'March': 10343.43, 'April': 8972.6, 'May': 11274.04, 'June': 12255.95,
                          'July': 13545.99, 'August': 13862.05, 'September': 12089.57, 'October': 11731.84, 'November': 12408.92, 'December': 12406.44})
@@ -81,7 +80,7 @@ class APITester(unittest.TestCase):
         Test to see if getTotalRenewableEnergyByState() can successfully return the correct float
         value when given the valid input of "Alabama"
         """
-        result = self.energy_test.getTotalRenewableEnergyByState("Alabama")
+        result = self.energy_test.getTotalRenewableEnergyByState("Al")
         self.assertEqual(result, 62387.66)
 
     def test_invalidState_getTotalRenewableEnergyByState(self):
