@@ -63,8 +63,9 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
+                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute("SELECT total FROM %s WHERE categoryofproduction = 'All fuels'", (fullStateName,))
+                self.cursor.execute(queryString)
 
                 stateEnergySumList = self.cursor.fetchall()
 
