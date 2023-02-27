@@ -21,8 +21,8 @@ class APITester(unittest.TestCase):
 
     def test_validState_getEnergyForState(self):
         """
-        Test to see if getEnergyForState() can successfully return the correct list of
-        floats when given the valid input of 'Alabama'
+        Test to see if getEnergyForState() can successfully return the correct float
+        when given the valid input of 'Alabama'
         """
         result = self.energy_test.getEnergyForState("Alabama")
         self.assertEqual(result, 142733.34)
