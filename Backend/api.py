@@ -57,6 +57,8 @@ class EnergyProductionAPI:
         # Try to run the function as normal
         try:
             correctedStateAbbreviation = stateAbbreviation.upper()
+            print(correctedStateAbbreviation)
+            print(correctedStateAbbreviation in self.abbreviation_to_state_dictionary)
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
                 # Turn abbreviation into valid full name of state here:
