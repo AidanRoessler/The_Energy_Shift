@@ -27,6 +27,19 @@ class EnergyProductionAPI:
         self.month_list = ['January', 'February', 'March', 'April', 'May', 'June',
                            'July', 'August', 'September', 'October', 'November', 'December']
 
+        self.abbreviation_to_state_dictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
+                                                'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
+                                                'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho','IL': 'Illinois',
+                                                'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
+                                                'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
+                                                'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
+                                                'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
+                                                'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota',
+                                                'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 
+                                                'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee',
+                                                'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
+                                                'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
+
     """
     Equivalence Classes:
         -Valid state (as a string):
@@ -37,7 +50,7 @@ class EnergyProductionAPI:
             
     """
 
-    def getEnergyForState(self, state):
+    def getEnergyForState(self, stateAbbreviation):
         """Sums all electricity generation by all catagories in a given state
 
         Retrieves columns in the current working dataset pertaining to each category of electricity 
@@ -54,11 +67,15 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
+
+            # Turn abbreviation into valid full name of state here:
+            fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
             # If the state is a valid input run the function as normal
-            if state in self.state_list:
+
+            if fullStateName in self.state_list:
 
                 # Build the query string and execute the query
-                queryStr = f"SELECT total FROM {state} WHERE categoryofproduction = 'All fuels';"
+                queryStr = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryStr)
 
@@ -104,8 +121,6 @@ class EnergyProductionAPI:
                 for the current state in the current working dataset
 
         '''
-        # Old command line output
-        # print("The total energy generated renewable was 14 billion KWH")
 
         # Try to run the function as normal
         try:
