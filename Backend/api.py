@@ -14,19 +14,6 @@ class EnergyProductionAPI:
 
         self.cursor = self.conn.cursor()
 
-        self.state_list = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
-                           'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
-                           'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-                           'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-                           'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
-                           'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
-                           'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
-                           'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia',
-                           'Washington', 'Washington DC', 'West Virginia', 'Wisconsin', 'Wyoming']
-
-        self.month_list = ['January', 'February', 'March', 'April', 'May', 'June',
-                           'July', 'August', 'September', 'October', 'November', 'December']
-
         self.abbreviation_to_state_dictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
                                                  'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
                                                  'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
@@ -39,6 +26,9 @@ class EnergyProductionAPI:
                                                  'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee',
                                                  'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
                                                  'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
+
+        self.month_list = ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December']
 
     """
     Equivalence Classes:
@@ -66,11 +56,11 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            stateAbbreviation = stateAbbreviation.upper()
+            correctedStateAbbreviation = stateAbbreviation.upper()
             # If the state valid input run the function as normal
-            if stateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
+                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
                 queryStr = f"SELECT total FROM details WHERE categoryofproduction = 'All fuels';"
@@ -121,15 +111,15 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            stateAbbreviation = stateAbbreviation.upper()
+            correctedStateAbbreviation = stateAbbreviation.upper()
             # If the state valid input run the function as normal
-            if stateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
+                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
                 queryStr = f"SELECT SUM(total) FROM details WHERE categoryofproduction <> 'All fuels';"
-                
+
                 self.cursor.execute(queryStr, (fullStateName))
 
                 renewableEnergySumList = self.cursor.fetchall()
@@ -172,11 +162,11 @@ class EnergyProductionAPI:
 
         """
         try:
-            stateAbbreviation = stateAbbreviation.upper()
+            correctedStateAbbreviation = stateAbbreviation.upper()
             # If the state valid input run the function as normal
-            if stateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
+                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # builds the query string and execute the query
                 queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM details WHERE categoryofproduction = 'All fuels';"
@@ -230,11 +220,11 @@ class EnergyProductionAPI:
         """
 
         try:
-            stateAbbreviation = stateAbbreviation.upper()
+            correctedStateAbbreviation = stateAbbreviation.upper()
             # If the state valid input run the function as normal
-            if stateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
+                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Builds the query string and executes it
                 queryStr = f"SELECT categoryofproduction, total FROM details WHERE categoryofproduction != 'All fuels';"
