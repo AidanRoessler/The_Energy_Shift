@@ -63,9 +63,8 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                queryStr = "SELECT total FROM %s WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute(queryStr, (fullStateName))
+                self.cursor.execute("SELECT total FROM %s WHERE categoryofproduction = 'All fuels';", (fullStateName))
 
                 stateEnergySumList = self.cursor.fetchall()
 
@@ -120,7 +119,7 @@ class EnergyProductionAPI:
                 # Build the query string and execute the query
                 queryStr = "SELECT SUM(total) FROM %s WHERE categoryofproduction <> 'All fuels';"
 
-                self.cursor.execute(queryStr, (fullStateName))
+                self.cursor.execute(queryStr, (fullStateName,))
 
                 renewableEnergySumList = self.cursor.fetchall()
 
@@ -171,7 +170,7 @@ class EnergyProductionAPI:
                 # builds the query string and execute the query
                 queryStr = "SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM %s WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute(queryStr, (fullStateName))
+                self.cursor.execute(queryStr, (fullStateName,))
 
                 listOfSumsForMonths = self.cursor.fetchall()
 
@@ -229,7 +228,7 @@ class EnergyProductionAPI:
                 # Builds the query string and executes it
                 queryStr = "SELECT categoryofproduction, total FROM %s WHERE categoryofproduction != 'All fuels';"
 
-                self.cursor.execute(queryStr, (fullStateName))
+                self.cursor.execute(queryStr, (fullStateName,))
 
                 listOfSumsForCategories = self.cursor.fetchall()
 
