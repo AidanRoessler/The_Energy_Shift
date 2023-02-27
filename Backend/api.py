@@ -70,7 +70,7 @@ class EnergyProductionAPI:
                 
                 print(queryStringImproved)
 
-                self.cursor.execute()
+                self.cursor.execute(queryStringImproved)
 
                 stateEnergySumList = self.cursor.fetchall()
 
