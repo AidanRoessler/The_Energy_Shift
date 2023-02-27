@@ -66,11 +66,10 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            # Turn abbreviation into valid full name of state here:
-            fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
-
-            # If the state is a valid input run the function as normal
-            if fullStateName in self.state_list:
+            # If the state valid input run the function as normal
+            if stateAbbreviation in self.abbreviation_to_state_dictionary:
+                # Turn abbreviation into valid full name of state here:
+                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
                 # Build the query string and execute the query
                 queryStr = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
@@ -91,7 +90,7 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except TypeError:
-            return 'Invalid input. Please enter a state abbreviation not a (full name)'
+            return 'Invalid input. Please enter a state abbreviation (not a full name)'
     """
     Equivalence Classes:
         -Valid state (as a string):
@@ -121,12 +120,10 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
+            # If the state valid input run the function as normal
             if stateAbbreviation in self.abbreviation_to_state_dictionary:
-
                 # Turn abbreviation into valid full name of state here:
                 fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
-
-                # If the state is a valid input run the function as normal
 
                 # Build the query string and execute the query
                 queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels';"
@@ -145,8 +142,8 @@ class EnergyProductionAPI:
 
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
-        except KeyError:
-            return 'Invalid input. Please enter a state abbreviation not a (full name)'
+        except:
+            return 'Invalid input. Please enter a state abbreviation (not a full name)'
 
     """
     Equivalence Classes:
@@ -154,7 +151,7 @@ class EnergyProductionAPI:
             -Input: "WI" or "wi" or "Wi" or even "wI"
         
         -A string that is not a state
-            -Input: 'Montreal' or '12' or 'WI'
+            -Input: 'Montreal' or '12'
     """
 
     def getTotalEnergyForStateByMonth(self, stateAbbreviation):
@@ -172,11 +169,10 @@ class EnergyProductionAPI:
 
         """
         try:
-            # Turn abbreviation into valid full name of state here:
-            fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
-
-            # If the state is a valid input run the function as normal
-            if fullStateName in self.state_list:
+            # If the state valid input run the function as normal
+            if stateAbbreviation in self.abbreviation_to_state_dictionary:
+                # Turn abbreviation into valid full name of state here:
+                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
                 # builds the query string and execute the query
                 queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
@@ -199,15 +195,15 @@ class EnergyProductionAPI:
                 raise Exception('invalid input')
 
         except TypeError:
-            return 'Invalid input. Please enter a state abbreviation not a (full name)'
+            return 'Invalid input. Please enter a state abbreviation (not a full name)'
 
     """
-        Equivalence Classes:
-        -Valid state (as a string):
-            -Input: 'Wisconsin'
+    Equivalence Classes:
+        -A valid state (only in America)
+            -Input: "WI" or "wi" or "Wi" or even "wI"
         
-        -A not valid state (either as a string or another data-types)
-            -Input: 56 or 'Test' or True or 'Bilbo Baggins' or 'MN'   
+        -A string that is not a state
+            -Input: 'Montreal' or '12'
     """
 
     def getEnergyByCategoryForState(self, stateAbbreviation):
@@ -230,11 +226,10 @@ class EnergyProductionAPI:
         """
 
         try:
-            # Turn abbreviation into valid full name of state here:
-            fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
-
-            # If the state is a valid input run the function as normal
-            if fullStateName in self.state_list:
+            # If the state valid input run the function as normal
+            if stateAbbreviation in self.abbreviation_to_state_dictionary:
+                # Turn abbreviation into valid full name of state here:
+                fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
                 # Builds the query string and executes it
                 queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels';"
@@ -259,7 +254,7 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         # and returning false
         except TypeError:
-            return 'Invalid input. Please enter a state abbreviation not a (full name)'
+            return 'Invalid input. Please enter a state abbreviation (not a full name)'
 
 
 if __name__ == "__main__":

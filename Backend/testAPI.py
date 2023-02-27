@@ -35,7 +35,7 @@ class APITester(unittest.TestCase):
         result = self.energy_test.getEnergyByCategoryForState(56)
 
         self.assertEqual(
-            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
+            result, 'Invalid input. Please enter a state abbreviation (not a full name)')
 
     def test_validState_getEnergyByCategoryForState(self):
         """
@@ -54,7 +54,7 @@ class APITester(unittest.TestCase):
         result = self.energy_test.getEnergyByCategoryForState(56)
 
         self.assertEqual(
-            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
+            result, 'Invalid input. Please enter a state abbreviation (not a full name)')
 
     def test_validState_getTotalEnergyForStateByMonth(self):
         """
@@ -74,7 +74,7 @@ class APITester(unittest.TestCase):
         result = self.energy_test.getTotalEnergyForStateByMonth("Montreal")
 
         self.assertEqual(
-            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
+            result, 'Invalid input. Please enter a state abbreviation (not a full name)')
 
     def test_validState_getTotalRenewableEnergyByState(self):
         """
@@ -92,7 +92,7 @@ class APITester(unittest.TestCase):
         result = self.energy_test.getTotalEnergyForStateByMonth(56)
 
         self.assertEqual(
-            result, 'Invalid input. Please enter the full name of a valid US state (abbreviations not accepted)(first letter must be capitalized)')
+            result, 'Invalid input. Please enter a state abbreviation (not a full name)')
 
     if __name__ == '__main__':
         unittest.main()
