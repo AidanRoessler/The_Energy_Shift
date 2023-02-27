@@ -57,15 +57,13 @@ class EnergyProductionAPI:
         # Try to run the function as normal
         try:
             correctedStateAbbreviation = stateAbbreviation.upper()
-            print(correctedStateAbbreviation)
-            print(correctedStateAbbreviation in self.abbreviation_to_state_dictionary)
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
                 # Turn abbreviation into valid full name of state here:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                queryStr = f"SELECT total FROM details WHERE categoryofproduction = 'All fuels';"
+                queryStr = "SELECT total FROM %s WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryStr, (fullStateName))
 
@@ -120,7 +118,7 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                queryStr = f"SELECT SUM(total) FROM details WHERE categoryofproduction <> 'All fuels';"
+                queryStr = "SELECT SUM(total) FROM %s WHERE categoryofproduction <> 'All fuels';"
 
                 self.cursor.execute(queryStr, (fullStateName))
 
@@ -171,7 +169,7 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # builds the query string and execute the query
-                queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM details WHERE categoryofproduction = 'All fuels';"
+                queryStr = "SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM %s WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryStr, (fullStateName))
 
@@ -229,7 +227,7 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Builds the query string and executes it
-                queryStr = f"SELECT categoryofproduction, total FROM details WHERE categoryofproduction != 'All fuels';"
+                queryStr = "SELECT categoryofproduction, total FROM %s WHERE categoryofproduction != 'All fuels';"
 
                 self.cursor.execute(queryStr, (fullStateName))
 
