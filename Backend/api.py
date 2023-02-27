@@ -64,7 +64,7 @@ class EnergyProductionAPI:
 
                 # Build the query string and execute the query
 
-                self.cursor.execute("SELECT total FROM %s WHERE categoryofproduction = 'All fuels';", (fullStateName))
+                self.cursor.execute("SELECT total FROM %s WHERE categoryofproduction = 'All fuels'", (fullStateName,))
 
                 stateEnergySumList = self.cursor.fetchall()
 
@@ -117,7 +117,7 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                queryStr = "SELECT SUM(total) FROM %s WHERE categoryofproduction <> 'All fuels';"
+                queryStr = "SELECT SUM(total) FROM %s WHERE categoryofproduction <> 'All fuels'"
 
                 self.cursor.execute(queryStr, (fullStateName,))
 
@@ -168,7 +168,7 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # builds the query string and execute the query
-                queryStr = "SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM %s WHERE categoryofproduction = 'All fuels';"
+                queryStr = "SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM %s WHERE categoryofproduction = 'All fuels'"
 
                 self.cursor.execute(queryStr, (fullStateName,))
 
@@ -226,7 +226,7 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Builds the query string and executes it
-                queryStr = "SELECT categoryofproduction, total FROM %s WHERE categoryofproduction != 'All fuels';"
+                queryStr = "SELECT categoryofproduction, total FROM %s WHERE categoryofproduction != 'All fuels'"
 
                 self.cursor.execute(queryStr, (fullStateName,))
 
