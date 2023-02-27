@@ -73,9 +73,9 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
                 # Build the query string and execute the query
-                queryStr = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                queryStr = f"SELECT total FROM details WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute(queryStr)
+                self.cursor.execute(queryStr, (fullStateName))
 
                 stateEnergySumList = self.cursor.fetchall()
 
@@ -128,8 +128,9 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
                 # Build the query string and execute the query
-                queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels';"
-                self.cursor.execute(queryStr)
+                queryStr = f"SELECT SUM(total) FROM details WHERE categoryofproduction <> 'All fuels';"
+                
+                self.cursor.execute(queryStr, (fullStateName))
 
                 renewableEnergySumList = self.cursor.fetchall()
 
@@ -178,9 +179,9 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
                 # builds the query string and execute the query
-                queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM details WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute(queryStr)
+                self.cursor.execute(queryStr, (fullStateName))
 
                 listOfSumsForMonths = self.cursor.fetchall()
 
@@ -236,9 +237,9 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[stateAbbreviation]
 
                 # Builds the query string and executes it
-                queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels';"
+                queryStr = f"SELECT categoryofproduction, total FROM details WHERE categoryofproduction != 'All fuels';"
 
-                self.cursor.execute(queryStr)
+                self.cursor.execute(queryStr, (fullStateName))
 
                 listOfSumsForCategories = self.cursor.fetchall()
 
