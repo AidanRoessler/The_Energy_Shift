@@ -1,4 +1,5 @@
 import psycopg2
+from psycopg2 import sql
 import psqlConfig
 
 
@@ -20,12 +21,12 @@ class EnergyProductionAPI:
                                                  'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
                                                  'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
                                                  'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
-                                                 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
-                                                 'NM': 'New Mexico', 'NY': 'New York', 'NC': 'North Carolina', 'ND': 'North Dakota',
+                                                 'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New_Hampshire', 'NJ': 'New_Jersey',
+                                                 'NM': 'New_Mexico', 'NY': 'New_York', 'NC': 'North_Carolina', 'ND': 'North_Dakota',
                                                  'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
-                                                 'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee',
+                                                 'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
                                                  'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
-                                                 'WV': 'West Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
+                                                 'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
 
         self.month_list = ['January', 'February', 'March', 'April', 'May', 'June',
                            'July', 'August', 'September', 'October', 'November', 'December']
@@ -63,9 +64,9 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                queryString = "SELECT total FROM %s WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute(queryString)
+                self.cursor.execute(sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName)))
 
                 stateEnergySumList = self.cursor.fetchall()
 
