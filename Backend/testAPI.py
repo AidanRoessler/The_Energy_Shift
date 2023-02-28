@@ -93,5 +93,6 @@ class APITester(unittest.TestCase):
         self.assertEqual(
             result, 'Invalid input. Please enter a state abbreviation (not a full name)')
 
-    if __name__ == '__main__':
+
+if __name__ == '__main__':
         unittest.main()
