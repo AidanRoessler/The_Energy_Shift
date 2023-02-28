@@ -57,7 +57,7 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            if isinstance(stateAbbreviation, str):
+            if type(stateAbbreviation) == str:
                 correctedStateAbbreviation = stateAbbreviation.upper()
                 # If the state valid input run the function as normal
                 if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
@@ -118,7 +118,7 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            if isinstance(stateAbbreviation, str):
+            if type(stateAbbreviation) == str:
                 correctedStateAbbreviation = stateAbbreviation.upper()
                 # If the state valid input run the function as normal
                 if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
@@ -169,7 +169,7 @@ class EnergyProductionAPI:
 
         """
         try:
-            if isinstance(stateAbbreviation, str):
+            if type(stateAbbreviation) == str:
                 correctedStateAbbreviation = stateAbbreviation.upper()
                 # If the state valid input run the function as normal
                 if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
@@ -231,7 +231,7 @@ class EnergyProductionAPI:
         """
 
         try:
-            if isinstance(stateAbbreviation, str):
+            if type(stateAbbreviation) == str:
                 correctedStateAbbreviation = stateAbbreviation.upper()
                 # If the state valid input run the function as normal
                 if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
