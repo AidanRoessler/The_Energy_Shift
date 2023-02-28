@@ -76,7 +76,7 @@ class EnergyProductionAPI:
                 #dyanmics SQL queries for Postgresql 
                 # print(queryString)
 
-                self.cursor.execute(queryString)
+                self.cursor.execute(dynamicQueryString)
 
                 stateEnergySumList = self.cursor.fetchall()
 
