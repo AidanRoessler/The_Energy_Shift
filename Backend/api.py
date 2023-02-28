@@ -68,7 +68,7 @@ class EnergyProductionAPI:
 
                 # queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
                 
-                print(queryString)
+                # print(queryString)
 
                 self.cursor.execute(queryString)
 
