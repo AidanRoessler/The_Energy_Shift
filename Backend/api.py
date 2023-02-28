@@ -59,36 +59,36 @@ class EnergyProductionAPI:
         try:
             if isinstance(stateAbbreviation, str):
                 correctedStateAbbreviation = stateAbbreviation.upper()
-            # If the state valid input run the function as normal
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
-                # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                # If the state valid input run the function as normal
+                if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+                    # Turn abbreviation into valid full name of state here:
+                    fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
-                # Build the query string and execute the query
-                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                    # Build the query string and execute the query
+                    queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
-                
-                queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
-                #dyanmics SQL queries for Postgresql 
-                # print(queryString)
+                    dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
+                    
+                    queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
+                    #dyanmics SQL queries for Postgresql 
+                    # print(queryString)
 
-                self.cursor.execute(queryString)
+                    self.cursor.execute(queryString)
 
-                stateEnergySumList = self.cursor.fetchall()
+                    stateEnergySumList = self.cursor.fetchall()
 
-                # Extract the sum out of list of a single tuple returned from the query
-                stateEnergySum = stateEnergySumList[0][0]
+                    # Extract the sum out of list of a single tuple returned from the query
+                    stateEnergySum = stateEnergySumList[0][0]
 
-                return stateEnergySum
+                    return stateEnergySum
 
-            # If the state inputted is not valid, tell the user
-            else:
-                return 'Invalid input. Please enter a state abbreviation (not a full name)'
+                # If the state inputted is not valid, tell the user
+                else:
+                    return 'Invalid input. Please enter a state abbreviation (not a full name)'
             
         # Handle an exception by telling the user to enter a valid state and printing out the exception
-        except:
-            raise Exception('Error, invalid input. Please enter a state abbreviation (not a full name)')
+        except Exception as e:
+            raise Exception('Fatal error', e)
     """
     Equivalence Classes:
         -Valid state (as a string):
@@ -120,30 +120,30 @@ class EnergyProductionAPI:
         try:
             if isinstance(stateAbbreviation, str):
                 correctedStateAbbreviation = stateAbbreviation.upper()
-            # If the state valid input run the function as normal
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
-                # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                # If the state valid input run the function as normal
+                if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+                    # Turn abbreviation into valid full name of state here:
+                    fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
-                # Build the query string and execute the query
-                queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels'"
+                    # Build the query string and execute the query
+                    queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels'"
 
-                self.cursor.execute(queryStr)
+                    self.cursor.execute(queryStr)
 
-                renewableEnergySumList = self.cursor.fetchall()
+                    renewableEnergySumList = self.cursor.fetchall()
 
-                # Extract the sum out of list of a single tuple returned from the query
-                renewableEnergySum = renewableEnergySumList[0][0]
+                    # Extract the sum out of list of a single tuple returned from the query
+                    renewableEnergySum = renewableEnergySumList[0][0]
 
-                return renewableEnergySum
+                    return renewableEnergySum
 
-            # If the state inputted is not valid, tell the user
-            else:
-                return 'Invalid input. Please enter a state abbreviation (not a full name)'
-            
+                # If the state inputted is not valid, tell the user
+                else:
+                    return 'Invalid input. Please enter a state abbreviation (not a full name)'
+                
         # Handle an exception by telling the user to enter a valid state, printing out the exception
-        except:
-            raise Exception('Fatal error')
+        except Exception as e:
+            raise Exception('Fatal error', e)
 
     """
     Equivalence Classes:
@@ -171,36 +171,36 @@ class EnergyProductionAPI:
         try:
             if isinstance(stateAbbreviation, str):
                 correctedStateAbbreviation = stateAbbreviation.upper()
-            # If the state valid input run the function as normal
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
-                # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                # If the state valid input run the function as normal
+                if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+                    # Turn abbreviation into valid full name of state here:
+                    fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
-                # builds the query string and execute the query
-                queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels'"
+                    # builds the query string and execute the query
+                    queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels'"
 
-                self.cursor.execute(queryStr)
+                    self.cursor.execute(queryStr)
 
-                listOfSumsForMonths = self.cursor.fetchall()
+                    listOfSumsForMonths = self.cursor.fetchall()
 
-                # Create the result dictionary
-                dictOfSumsForMonths = {}
+                    # Create the result dictionary
+                    dictOfSumsForMonths = {}
 
-                # Extract the value of each month stored in the single tuple returned from the query
-                for i in range(12):
-                    dictOfSumsForMonths[self.month_list[i]
-                                        ] = listOfSumsForMonths[0][i]
+                    # Extract the value of each month stored in the single tuple returned from the query
+                    for i in range(12):
+                        dictOfSumsForMonths[self.month_list[i]
+                                            ] = listOfSumsForMonths[0][i]
 
-                return dictOfSumsForMonths
-                
-            # If the state inputted is not valid, tell the user
+                    return dictOfSumsForMonths
+                    
+                # If the state inputted is not valid, tell the user
 
-            else:
-                return 'Invalid input. Please enter a state abbreviation (not a full name)'
+                else:
+                    return 'Invalid input. Please enter a state abbreviation (not a full name)'
             
         # Handle an exception by telling the user to enter a valid state and printing out the exception
-        except:
-            raise Exception('Fatal error')
+        except Exception as e:
+            raise Exception('Fatal error', e)
 
     """
     Equivalence Classes:
@@ -233,34 +233,34 @@ class EnergyProductionAPI:
         try:
             if isinstance(stateAbbreviation, str):
                 correctedStateAbbreviation = stateAbbreviation.upper()
-            # If the state valid input run the function as normal
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
-                # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                # If the state valid input run the function as normal
+                if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+                    # Turn abbreviation into valid full name of state here:
+                    fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
-                # Builds the query string and executes it
-                queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels'"
+                    # Builds the query string and executes it
+                    queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels'"
 
-                self.cursor.execute(queryStr)
+                    self.cursor.execute(queryStr)
 
-                listOfSumsForCategories = self.cursor.fetchall()
+                    listOfSumsForCategories = self.cursor.fetchall()
 
-                """Creates a dictionary from the result of the query and where the keys are months 
-                and the values are the total amount of renewable energy produced in that month"""
-                dictOfSumsForCategories = {}
+                    """Creates a dictionary from the result of the query and where the keys are months 
+                    and the values are the total amount of renewable energy produced in that month"""
+                    dictOfSumsForCategories = {}
 
-                for category in listOfSumsForCategories:
-                    dictOfSumsForCategories[category[0]] = category[1]
+                    for category in listOfSumsForCategories:
+                        dictOfSumsForCategories[category[0]] = category[1]
 
-                return dictOfSumsForCategories
+                    return dictOfSumsForCategories
 
-            # If the state inputted is not valid, tell the user
-            else:
-                return 'Invalid input. Please enter a state abbreviation (not a full name)'
+                # If the state inputted is not valid, tell the user
+                else:
+                    return 'Invalid input. Please enter a state abbreviation (not a full name)'
             
         # Handle an exception by telling the user to enter a valid state and printing out the exception
-        except:
-            raise Exception('Fatal error')
+        except Exception as e:
+            raise Exception('Fatal error', e)
 
 
 if __name__ == "__main__":
