@@ -57,7 +57,8 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            correctedStateAbbreviation = stateAbbreviation.upper()
+            if(isinstance(stateAbbreviation, str)):
+                correctedStateAbbreviation = stateAbbreviation.upper()
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
                 # Turn abbreviation into valid full name of state here:
@@ -66,6 +67,8 @@ class EnergyProductionAPI:
                 # Build the query string and execute the query
                 queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
+                dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
+                
                 queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
                 #dyanmics SQL queries for Postgresql 
                 # print(queryString)
