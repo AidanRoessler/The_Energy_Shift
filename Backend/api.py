@@ -66,8 +66,8 @@ class EnergyProductionAPI:
                 # Build the query string and execute the query
                 queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                # queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
-                
+                queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
+                #dyanmics SQL queries for Postgresql 
                 # print(queryString)
 
                 self.cursor.execute(queryString)
@@ -79,14 +79,13 @@ class EnergyProductionAPI:
 
                 return stateEnergySum
 
-            # If the state inputted is not valid, raise an exception
+            # If the state inputted is not valid, tell the user
             else:
-                raise Exception('invalid input')
-
-        # Handle an exception by telling the user to enter a valid state, printing out the exception
-        # and returning false
+                return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            
+        # Handle an exception by telling the user to enter a valid state and printing out the exception
         except:
-            return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            raise Exception('Fatal error')
     """
     Equivalence Classes:
         -Valid state (as a string):
@@ -134,14 +133,13 @@ class EnergyProductionAPI:
 
                 return renewableEnergySum
 
-                # If the state inputted is not valid, raise an exception
+            # If the state inputted is not valid, tell the user
             else:
-                raise Exception('invalid input')
-
+                return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            
         # Handle an exception by telling the user to enter a valid state, printing out the exception
-        # and returning false
         except:
-            return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            raise Exception('Fatal error')
 
     """
     Equivalence Classes:
@@ -189,12 +187,15 @@ class EnergyProductionAPI:
                                         ] = listOfSumsForMonths[0][i]
 
                 return dictOfSumsForMonths
+                
+            # If the state inputted is not valid, tell the user
 
             else:
-                raise Exception('invalid input')
-
+                return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            
+        # Handle an exception by telling the user to enter a valid state and printing out the exception
         except:
-            return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            raise Exception('Fatal error')
 
     """
     Equivalence Classes:
@@ -247,14 +248,13 @@ class EnergyProductionAPI:
 
                 return dictOfSumsForCategories
 
-            # If the state inputted is not valid, raise an exception
+            # If the state inputted is not valid, tell the user
             else:
-                raise Exception('invalid input')
-
-        # Handle an exception by telling the user to enter a valid state, printing out the exception
-        # and returning false
+                return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            
+        # Handle an exception by telling the user to enter a valid state and printing out the exception
         except:
-            return 'Invalid input. Please enter a state abbreviation (not a full name)'
+            raise Exception('Fatal error')
 
 
 if __name__ == "__main__":
