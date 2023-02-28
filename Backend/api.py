@@ -52,13 +52,13 @@ class EnergyProductionAPI:
 
         Returns:
             returns a float indicating the sum of the total electricity generation for the
-            provided state      
+            provided state     
         """
 
         # Try to run the function as normal
         try:
             if isinstance(stateAbbreviation, str):
-                print(isinstance(stateAbbreviation, str))
+                print(stateAbbreviation)
                 correctedStateAbbreviation = stateAbbreviation.upper()
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
