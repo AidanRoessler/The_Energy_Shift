@@ -21,7 +21,7 @@ class APITester(unittest.TestCase):
     def test_validState_getEnergyForState(self):
         """
         Test to see if getEnergyForState() can successfully return the correct float
-        when given the valid input of 'Alabama'
+        when given the valid input of 'Al'
         """
         result = self.energy_test.getEnergyForState("Al")
         self.assertEqual(result, 142733.34)
@@ -58,7 +58,7 @@ class APITester(unittest.TestCase):
     def test_validState_getTotalEnergyForStateByMonth(self):
         """
         Test to see if getTotalEnergyForStateByMonth() can successfully return the correct float
-        value when given the valid input of "Alabama"
+        value when given the valid input of "Al"
         """
         result = self.energy_test.getTotalEnergyForStateByMonth("Al")
 
@@ -78,7 +78,7 @@ class APITester(unittest.TestCase):
     def test_validState_getTotalRenewableEnergyByState(self):
         """
         Test to see if getTotalRenewableEnergyByState() can successfully return the correct float
-        value when given the valid input of "Alabama"
+        value when given the valid input of "Al"
         """
         result = self.energy_test.getTotalRenewableEnergyByState("Al")
         self.assertEqual(result, 62387.66)
