@@ -57,7 +57,7 @@ class EnergyProductionAPI:
 
         # Try to run the function as normal
         try:
-            if(isinstance(stateAbbreviation, str)):
+            if isinstance(stateAbbreviation, str):
                 correctedStateAbbreviation = stateAbbreviation.upper()
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
@@ -88,7 +88,7 @@ class EnergyProductionAPI:
             
         # Handle an exception by telling the user to enter a valid state and printing out the exception
         except:
-            raise Exception('Fatal error')
+            raise Exception('Error, invalid input. Please enter a state abbreviation (not a full name)')
     """
     Equivalence Classes:
         -Valid state (as a string):
