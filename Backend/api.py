@@ -68,7 +68,8 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                sqlTableToInsert = fullStateName
+                queryString = "SELECT total FROM % WHERE categoryofproduction = 'All fuels';"
 
                 # dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
                 
@@ -76,7 +77,7 @@ class EnergyProductionAPI:
                 # #dyanmics SQL queries for Postgresql 
                 # # print(queryString)
 
-                self.cursor.execute(queryString)
+                self.cursor.execute(queryString, fullStateName)
 
                 stateEnergySumList = self.cursor.fetchall()
 
