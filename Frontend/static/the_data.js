@@ -1,6 +1,7 @@
 const statesSelect = document.getElementById("statesSelect");
 const statesForm = document.getElementById("statesForm")
 
-selectElement.addEventListener("change", () => {
+statesSelect.addEventListener("change", () => {
   statesForm.submit() 
+  console.log("event listener entered")
 })
