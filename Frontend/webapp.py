@@ -33,8 +33,8 @@ def theData():
     '''
     if request.method == 'POST':
         result = request.form
+        print(result)
 
-    print(result)
         # Here is where you would call one or more database methods with the form data.
     energy = EnergyProductionAPI()
 
