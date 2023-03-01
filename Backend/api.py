@@ -81,7 +81,7 @@ class EnergyProductionAPI:
                 quoted_state_name = sql.Identifier(fullStateName)
                 # print(sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(quoted_state_name))
 
-                self.cursor.execute(sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(quoted_state_name))
+                self.cursor.execute(sql.SQL("SELECT total FROM {} WHERE categoryofproduction = 'All fuels';").format(quoted_state_name))
 
                 stateEnergySumList = self.cursor.fetchall()
 
