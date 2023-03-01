@@ -28,11 +28,10 @@ def home():
 @app.route('/theData', methods=['POST', 'GET'])
 def theData():
     '''
-    This method is executed once you submit the simple form. It embeds the form responses
-    into a web page.
+    
     '''
     if request.method == 'POST':
-        result = request.form
+        result = request.form.get('states')
         print(result)
 
         # Here is where you would call one or more database methods with the form data.
@@ -40,6 +39,10 @@ def theData():
 
     # energy.getEnergyForState(result)
     return render_template('the_data.html')
+
+@app.route('/aboutTheData')
+def aboutTheData():
+    pass
 
 # @app.route('/helloAgain')
 # def templateHome():
