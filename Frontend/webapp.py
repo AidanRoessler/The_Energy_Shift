@@ -9,8 +9,8 @@ import flask
 from flask import render_template, request
 import json
 import sys
-
-from ..Backend.api import EnergyProductionAPI
+sys.path.insert('../Backend/')
+from api import EnergyProductionAPI
 
 
 app = flask.Flask(__name__)
