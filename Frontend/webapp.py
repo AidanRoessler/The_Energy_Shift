@@ -31,14 +31,14 @@ def theData():
     This method is executed once you submit the simple form. It embeds the form responses
     into a web page.
     '''
-    # if request.method == 'POST':
-    #     result = request.form
+    if request.method == 'POST':
+        result = request.form
 
-    # print(result)
-    #     # Here is where you would call one or more database methods with the form data.
-    # energy = EnergyProductionAPI()
+    print(result)
+        # Here is where you would call one or more database methods with the form data.
+    energy = EnergyProductionAPI()
 
-    # # energy.getEnergyForState(result)
+    # energy.getEnergyForState(result)
     return render_template('the_data.html')
 
 # @app.route('/helloAgain')
