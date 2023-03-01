@@ -11,7 +11,7 @@ class EnergyProductionAPI:
         '''
 
         self.conn = psycopg2.connect(
-            database=psqlConfig.database, user=psqlConfig.user, password=psqlConfig.password)
+            database=psqlConfig.database, user=psqlConfig.user, password=psqlConfig.password, host='localhost')
 
         self.cursor = self.conn.cursor()
 
