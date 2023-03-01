@@ -9,7 +9,7 @@ import flask
 from flask import render_template, request
 import json
 import sys
-sys.path.insert('../Backend/')
+sys.path.append('../Backend/')
 from api import EnergyProductionAPI
 
 
