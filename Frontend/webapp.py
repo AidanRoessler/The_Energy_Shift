@@ -19,12 +19,26 @@ app = flask.Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.route('/')
-def simpleHome():
+def home():
     '''
     Simplest example: print something in the browser
     '''
-    return 'Hello, and welcome to your first Flask adventure!'
+    return render_template('home.html')
 
+# @app.route('/theData', methods=['POST', 'GET'])
+# def theData():
+#     '''
+#     This method is executed once you submit the simple form. It embeds the form responses
+#     into a web page.
+#     '''
+#     if request.method == 'POST':
+#         result = request.form
+
+#         # Here is where you would call one or more database methods with the form data.
+#     energy = EnergyProductionAPI()
+
+#     energy.getEnergyForState(result)
+#     return render_template('the_data.html', results=result)
 
 # @app.route('/helloAgain')
 # def templateHome():
@@ -68,20 +82,6 @@ def simpleHome():
 #     return render_template('index.html')    
 
 
-# @app.route('/theData', methods=['POST', 'GET'])
-# def theData():
-#     '''
-#     This method is executed once you submit the simple form. It embeds the form responses
-#     into a web page.
-#     '''
-#     if request.method == 'POST':
-#         result = request.form
-
-#         # Here is where you would call one or more database methods with the form data.
-#     energy = EnergyProductionAPI()
-
-#     energy.getEnergyForState(result)
-#     return render_template('the_data.html', results=result)
 
 '''
 Run the program by typing 'python3 localhost [port]', where [port] is one of 
