@@ -69,20 +69,17 @@ class EnergyProductionAPI:
 
                 # Build the query string and execute the query
                 # sqlTableToInsert = fullStateName
-                # queryString = "SELECT total FROM %s WHERE categoryofproduction = 'All fuels';"
+                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
                 # dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
                 
-                queryStringImproved = sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(table_name = sql.Identifier(fullStateName))
-                # #dyanmics SQL queries for Postgresql 
-                # # print(queryString)
-                
+                # queryStringImproved = sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(table_name = sql.Identifier(fullStateName))
+                #dyanmics SQL queries for Postgresql 
+                #print(queryString)
+                improvedQueryStringImproved = sql.SQL("SELECT total FROM {name} WHERE categoryofproduction = 'All fuels';").format(name = quoted_state_name)
                 
                 quoted_state_name = sql.Identifier(fullStateName)
-                # print(sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(quoted_state_name))
-
-                self.cursor.execute(sql.SQL("SELECT total FROM {} WHERE categoryofproduction = 'All fuels';").format(quoted_state_name))
-
+                
                 stateEnergySumList = self.cursor.fetchall()
 
                 # Extract the sum out of list of a single tuple returned from the query
