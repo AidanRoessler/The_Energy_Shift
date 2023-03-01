@@ -68,16 +68,20 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                sqlTableToInsert = fullStateName
-                queryString = "SELECT total FROM %s WHERE categoryofproduction = 'All fuels';"
+                # sqlTableToInsert = fullStateName
+                # queryString = "SELECT total FROM %s WHERE categoryofproduction = 'All fuels';"
 
                 # dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
                 
-                queryStringImproved = sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(table_name=sql.Identifier(fullStateName))
+                queryStringImproved = sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(table_name= sql.Identifier(fullStateName))
                 # #dyanmics SQL queries for Postgresql 
                 # # print(queryString)
-
-                self.cursor.execute(queryStringImproved)
+                
+                
+                quoted_state_name = sql.Identifier(fullStateName)
+                print(sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(quoted_state_name))
+                
+                self.cursor.execute(sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(quoted_state_name))
 
                 stateEnergySumList = self.cursor.fetchall()
 
