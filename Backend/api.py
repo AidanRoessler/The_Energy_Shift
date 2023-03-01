@@ -70,11 +70,11 @@ class EnergyProductionAPI:
                 # Build the query string and execute the query
                 queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
+                # dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
                 
-                queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
-                #dyanmics SQL queries for Postgresql 
-                # print(queryString)
+                # queryStringImproved = sql.SQL("SELECT total FROM {table} WHERE categoryofproduction = 'All fuels';").format(table=sql.Identifier(fullStateName))
+                # #dyanmics SQL queries for Postgresql 
+                # # print(queryString)
 
                 self.cursor.execute(queryString)
 
