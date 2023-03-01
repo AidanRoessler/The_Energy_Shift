@@ -38,11 +38,12 @@ def theData():
     energy = EnergyProductionAPI()
 
     # energy.getEnergyForState(result)
-    return render_template('the_data.html')
+    return render_template('the_data.html', )
 
 @app.route('/aboutTheData')
 def aboutTheData():
-    pass
+    
+    return render_template('about_the_data.html')
 
 # @app.route('/helloAgain')
 # def templateHome():

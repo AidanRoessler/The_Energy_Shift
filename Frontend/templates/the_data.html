@@ -19,20 +19,20 @@
     <div class="navcontainer">
         <nav>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#the_data.html">The Data</a></li>
-                <li><a href="about_the_data.html">About the Data</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/theData">The Data</a></li>
+                <li><a href="/aboutTheData">About the Data</a></li>
             </ul>
         </nav>
     </div>
 
     <div class="content">
-        <form method="POST">
+        <form method="POST" name="statesForm">
              <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
                 <br>
-                <select name="states" id="states">
+                <select name="statesSelect" id="states">
                     <option value="AL">Alabama</option>
                     <option value="Alaska">Alaska</option>
                     <option value="Arizona">Arizona</option>
@@ -88,6 +88,9 @@
         </form>
         <!-- The result according to the selected option -->
         <p>Results from queries will go here!</p>
+
+        <script src="../static/the_data.js"> </script>
+
 
     </div>
 
