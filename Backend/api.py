@@ -76,7 +76,7 @@ class EnergyProductionAPI:
                 # queryStringImproved = sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(table_name = sql.Identifier(fullStateName))
                 #dyanmics SQL queries for Postgresql 
                 #print(queryString)
-                improvedQueryStringImproved = sql.SQL("SELECT total FROM {name} WHERE categoryofproduction = 'All fuels';").format(name = quoted_state_name)
+                # improvedQueryStringImproved = sql.SQL("SELECT total FROM {name} WHERE categoryofproduction = 'All fuels';").format(name = quoted_state_name)
                 
                 quoted_state_name = sql.Identifier(fullStateName)
                 
