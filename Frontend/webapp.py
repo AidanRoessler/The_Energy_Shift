@@ -30,6 +30,7 @@ def theData():
     '''
     
     '''
+    energy = EnergyProductionAPI()
     result = None
     totalEnergy = None
 
@@ -39,7 +40,7 @@ def theData():
         print(result)
 
         # Here is where you would call one or more database methods with the form data.
-    energy = EnergyProductionAPI()
+    
 
     
     return render_template('the_data.html', result = result, totalEnergy = totalEnergy)
