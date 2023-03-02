@@ -38,7 +38,7 @@ def theDataResults():
     result = None
 
     if request.method == 'POST':
-        result = request.form
+        result = request.form.get("statesSelect")
         print(result)
 
         # Here is where you would call one or more database methods with the form data.
