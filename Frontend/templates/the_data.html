@@ -42,7 +42,7 @@
                     <option value="CO">Colorado</option>
                     <option value="Connecticut">Connecticut</option>
                     <option value="Delaware" 
-                    {% if result == "Delaware" %} selected {% endif %}
+                    {% if result.stateSelect == "Delaware" %} selected {% endif %}
                     >
                     Delaware
                     </option>
@@ -94,7 +94,7 @@
         </form>
         <!-- The result according to the selected option -->
         {% if result != None %}
-            <p>Showing results for {{ result }} </p>
+            <p>Showing results for {{ result.stateSelect }} </p>
         {% endif %}
         <script src="../static/the_data.js""></script>
 
