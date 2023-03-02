@@ -71,15 +71,6 @@ class EnergyProductionAPI:
                 # sqlTableToInsert = fullStateName
                 queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                # dynamicQueryString= f"EXEC SQL BEGIN DECLARE SECTION; const char *stmt = 'SELECT total FROM (?) WHERE categoryofproduction = 'All fuels';'; EXEC SQL END DECLARE SECTION; EXEC SQL EXECUTE mystmt USING {fullStateName};"
-                
-                # queryStringImproved = sql.SQL("SELECT total FROM {table_name} WHERE categoryofproduction = 'All fuels';").format(table_name = sql.Identifier(fullStateName))
-                #dyanmics SQL queries for Postgresql 
-                #print(queryString)
-                # improvedQueryStringImproved = sql.SQL("SELECT total FROM {name} WHERE categoryofproduction = 'All fuels';").format(name = quoted_state_name)
-                
-                # quoted_state_name = sql.Identifier(fullStateName)
-
                 self.cursor.execute(queryString)
                 
                 stateEnergySumList = self.cursor.fetchall()
@@ -207,7 +198,6 @@ class EnergyProductionAPI:
                 return dictOfSumsForMonths
                 
             # If the state inputted is not valid, tell the user
-
             else:
                 return 'Invalid input. Please enter a state abbreviation (not a full name)'
             
