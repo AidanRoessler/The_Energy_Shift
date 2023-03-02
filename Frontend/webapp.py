@@ -25,13 +25,8 @@ def home():
     '''
     return render_template('home.html')
 
-# @app.route('/theData')
-# def theData():
-
-#     return render_template('the_data.html')
-
 @app.route('/theData', methods=['POST', 'GET'])
-def theDataResults():
+def theData():
     '''
     
     '''
@@ -45,7 +40,6 @@ def theDataResults():
     energy = EnergyProductionAPI()
 
     # energy.getEnergyForState(result)
-
     return render_template('the_data.html', result = result)
 
 @app.route('/aboutTheData')
@@ -108,4 +102,3 @@ if __name__ == '__main__':
     host = sys.argv[1]
     port = sys.argv[2]
     app.run(host=host, port=port)
-
