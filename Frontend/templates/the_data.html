@@ -33,6 +33,7 @@
                 <label for="states">Choose a state</label>
                 <br>
                 <select name="statesSelect" id="states">
+                    <option value="Select a State" selected>Select a State</option>
                     <option value="AL">Alabama</option>
                     <option value="Alaska">Alaska</option>
                     <option value="Arizona">Arizona</option>
@@ -89,7 +90,7 @@
         </form>
         <!-- The result according to the selected option -->
         {% if result != None %}
-            <p>Showing results for {{ result }} </p>
+            <p>Showing results for {{ result.statesSelect }} </p>
         {% endif %}
         <script src="../static/the_data.js""></script>
 
