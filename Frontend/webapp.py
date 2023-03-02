@@ -36,7 +36,7 @@ def theData():
 
     if request.method == 'POST':
         result = request.form
-        totalEnergy = energy.getEnergyForState(result[0])
+        totalEnergy = result[0]
         print(result)
 
         # Here is where you would call one or more database methods with the form data.
