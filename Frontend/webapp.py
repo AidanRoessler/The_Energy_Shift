@@ -30,6 +30,8 @@ def theData():
     '''
     
     '''
+    result = None
+
     if request.method == 'POST':
         result = request.form
         print(result)

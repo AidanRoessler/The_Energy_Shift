@@ -10,7 +10,7 @@
 <!-- The body consists of the visible parts of the web page. -->
 
 <body>
-     <!-- the title of our project -->
+    <!-- the title of our project -->
     <div class="titlecontainer">
         <h1>The Energy Shift</h1>
     </div>
@@ -28,7 +28,7 @@
 
     <div class="content">
         <form method="POST" name="statesForm">
-             <!-- The options bar of states -->
+            <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
                 <br>
@@ -88,8 +88,9 @@
             <input type="submit" value="Submit">
         </form>
         <!-- The result according to the selected option -->
-        <p>Showing results for {{ result }} </p>
-
+        {% if result != None %}
+            <p>Showing results for {{ result }} </p>
+        {% endif %}
         <script src="../static/the_data.js""></script>
 
     </div>
