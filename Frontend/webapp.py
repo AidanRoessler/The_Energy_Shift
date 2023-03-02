@@ -25,12 +25,12 @@ def home():
     '''
     return render_template('home.html')
 
-@app.route('/theData')
-def theData():
+# @app.route('/theData')
+# def theData():
 
-    return render_template('the_data.html')
+#     return render_template('the_data.html')
 
-@app.route('/theDataResults', methods=['POST', 'GET'])
+@app.route('/theData', methods=['POST', 'GET'])
 def theDataResults():
     '''
     
@@ -46,7 +46,7 @@ def theDataResults():
 
     # energy.getEnergyForState(result)
 
-    return render_template('the_data_results.html', result = result)
+    return render_template('the_data.html', result = result)
 
 @app.route('/aboutTheData')
 def aboutTheData():
