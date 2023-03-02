@@ -46,7 +46,7 @@ def theDataResults():
 
     # energy.getEnergyForState(result)
 
-    return render_template('the_data_results.html')
+    return render_template('the_data_results.html', result = result)
 
 @app.route('/aboutTheData')
 def aboutTheData():
