@@ -33,7 +33,7 @@
                 <label for="states">Choose a state</label>
                 <br>
                 <select name="statesSelect" id="states">
-                    <option value="Select a State" selected>Select a State</option>
+                    <option value="Select a State">Select a State</option>
                     <option value="AL">Alabama</option>
                     <option value="Alaska">Alaska</option>
                     <option value="Arizona">Arizona</option>
@@ -41,7 +41,11 @@
                     <option value="California">California
                     <option value="CO">Colorado</option>
                     <option value="Connecticut">Connecticut</option>
-                    <option value="Delaware">Delaware</option>
+                    <option value="Delaware" 
+                    {% if results.statesSelect == "Delaware"} selected {% endif %}
+                    >
+                    Delaware
+                    </option>
                     <option value="Florida">Florida</option>
                     <option value="Georgia">Georgia</option>
                     <option value="Hawaii">Hawaii</option>
