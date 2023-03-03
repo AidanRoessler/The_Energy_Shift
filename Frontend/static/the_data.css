@@ -25,6 +25,7 @@ div.formcontent {
   width: 100%;
 }
 
+/*Styling for the dropdown menu */
 select {
   margin-bottom: 10px;
   padding: 10px 20px;
@@ -52,6 +53,7 @@ select:focus {
   outline: none;
 }
 
+/*Styling for the "Go" button underneath the dropdown menu */
 input {
   margin-top: 10px;
   padding: 10px 20px;
