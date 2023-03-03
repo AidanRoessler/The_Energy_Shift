@@ -40,7 +40,6 @@ select {
   color: #ffffff;
   text-decoration: none;
   width: 100%;
-  /* transition: padding 0.5s ease; */
 }
 
 select:hover {
@@ -49,6 +48,32 @@ select:hover {
 }
 
 select:focus {
+  outline: none;
+}
+
+input {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: #ea5147;
+  color: #ffffff;
+  border: 6px solid #ea5147;
+  border-radius: 5px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: #ffffff;
+  text-decoration: none;
+  width: 60%;
+}
+
+input:hover {
+  border: 6px solid #323954;
+  border-radius: 5px;
+}
+
+input:focus {
   outline: none;
 }
 
