@@ -35,13 +35,11 @@ def theData():
     totalEnergy = None
 
     if request.method == 'POST':
-        result = request.form
-        totalEnergy = energy.getEnergyForState(result["statesSelect"])
-        print(result)
+        #Getting data from form
+        result = request.form["statesSelect"]
 
-        # Here is where you would call one or more database methods with the form data.
-    
-
+        #Call the api with the data retrieved
+        totalEnergy = energy.getEnergyForState(result)
     
     return render_template('the_data.html', result = result, totalEnergy = totalEnergy)
 
