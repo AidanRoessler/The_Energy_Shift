@@ -23,11 +23,11 @@ button {
   border-radius: 10px;
   text-shadow: none;
   border-color: #ea5147;
-  transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease, width 0.3s ease;
+  /* transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease, width 0.3s ease; */
 }
 
 button:hover {
-  width: 55%;
+  /* width: 50%; */
   background-color: #323954;
   border-color: #323954;  
 }
