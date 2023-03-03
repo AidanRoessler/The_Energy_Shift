@@ -56,7 +56,7 @@ input {
   margin-top: 10px;
   padding: 10px 20px;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 25px;
   cursor: pointer;
   background-color: #de5a48;
   color: #ffffff;
@@ -65,21 +65,22 @@ input {
   font-size: 21px;
   color: #ffffff;
   text-decoration: none;
-  width: 60%;
+  width: 50%;
   border-radius: 10px;
   text-shadow: none;
   border-color: #de5a48;
-  transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease;
+  transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease;
 }
 
 input:hover {
-  background-color: #323954;
-  border-color: #323954;  
+  background-color: #4b5478;
+  border-color: #4b5478;  
+  width: 55%;
 }
 
 input:focus {
-  background-color: #5557aa;
-  border-color: #5557aa;
+  background-color: #5354a8;
+  border-color: #5354a8;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
