@@ -27,7 +27,7 @@ button {
 }
 
 button:hover {
-  transform: translateY(3px);
+  width: 55%;
   background-color: #323954;
   border-color: #323954;  
 }
