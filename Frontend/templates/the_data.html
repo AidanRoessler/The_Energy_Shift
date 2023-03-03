@@ -201,51 +201,55 @@
                 <canvas id="renewableEnergyLineChartCanvas"></canvas>
             </div>
         </div>
-    
-    
+
+
         {% endif %}
-        <script>
-            /* A line chart generated with the Chart.js package */
 
-            //Insert the line chart into the HTML at one of the canvas tags
-            let renewableEnergyLineChart = document.getElementById("renewableEnergyLineChartCanvas");
+    </div>
 
-            //Data for chart
-            let renewableEnergyLineChartData = [3166.79, 2317.7, 3447.83, 3489.79, 3338.46, 3235.11, 3375.9, 3477.93, 3236.92, 3356.97, 3425.45, 4090.41];
+    <script>
+        /* A line chart generated with the Chart.js package */
 
-            //Font styling for chart
-            Chart.defaults.font.size = 21
-            Chart.defaults.font.family = "Montserrat"
+        //Insert the line chart into the HTML at one of the canvas tags
+        let renewableEnergyLineChart = document.getElementById("renewableEnergyLineChartCanvas");
 
-            //Line chart for the results of the getRenewableEnergyForState() function
-            new Chart(renewableEnergyLineChart, {
-                type: 'line',
-                //Defines the line on the chart and its styling
-                data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                    datasets: [{
-                        label: 'Total Renewable Energy Usage for Colorado in 2021 (thousand megawatt hours)',
-                        data: renewableEnergyLineChartData,
-                        borderWidth: 5,
-                        backgroundColor: "#ea5147",
-                        borderColor: "#ea5147"
-                    }]
-                },
-                //Labels axes
-                options: {
-                    scales: {
-                        y: {
-                            title: {
-                                display: true,
-                                text: "Thousand Megawatt Hours"
-                            }
+        //Data for chart
+        let renewableEnergyLineChartData = [3166.79, 2317.7, 3447.83, 3489.79, 3338.46, 3235.11, 3375.9, 3477.93, 3236.92, 3356.97, 3425.45, 4090.41];
+
+        //Font styling for chart
+        Chart.defaults.font.size = 21
+        Chart.defaults.font.family = "Montserrat"
+
+        //Line chart for the results of the getRenewableEnergyForState() function
+        new Chart(renewableEnergyLineChart, {
+            type: 'line',
+            //Defines the line on the chart and its styling
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: 'Total Renewable Energy Usage for Colorado in 2021 (thousand megawatt hours)',
+                    data: renewableEnergyLineChartData,
+                    borderWidth: 5,
+                    backgroundColor: "#ea5147",
+                    borderColor: "#ea5147"
+                }]
+            },
+            //Labels axes
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Thousand Megawatt Hours"
                         }
                     }
                 }
-            });
-        </script>
+            }
+        });
+    </script>
 
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </body>
 
