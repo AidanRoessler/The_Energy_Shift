@@ -34,25 +34,51 @@
                 <br>
                 <select name="statesSelect" id="states">
                     <option value="Select a State">Select a State</option>
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="CA">California
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE"
-                    {% if selectedState == "DE" %} selected {% endif %}
-                    >
-                    Delaware
+                    <option value="AL" {% if selectedState=="AL" %} selected {% endif %}>
+                        Alabama
                     </option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
+                    <option value="AK" {% if selectedState=="AK" %} selected {% endif %}>
+                        Alaska
+                    </option>
+                    <option value="AZ" {% if selectedState=="AZ" %} selected {% endif %}>
+                        Arizona
+                    </option>
+                    <option value="AR" {% if selectedState=="AR" %} selected {% endif %}>
+                        Arkansas
+                    </option>
+                    <option value="CA" {% if selectedState=="CA" %} selected {% endif %}>
+                        California
+                    </option>
+                    <option value="CO" {% if selectedState=="CO" %} selected {% endif %}>
+                        Colorado
+                    </option>
+                    <option value="CT" {% if selectedState=="CT" %} selected {% endif %}>
+                        Connecticut
+                    </option>
+                    <option value="DE" {% if selectedState=="DE" %} selected {% endif %}>
+                        Delaware
+                    </option>
+                    <option value="FL" {% if selectedState=="FL" %} selected {% endif %}>
+                        Florida
+                    </option>
+                    <option value="GA" {% if selectedState=="GA" %} selected {% endif %}>
+                        Georgia
+                    </option>
+                    <option value="HI" {% if selectedState=="HI" %} selected {% endif %}>
+                        Hawaii
+                    </option>
+                    <option value="ID" {% if selectedState=="ID" %} selected {% endif %}>
+                        Idaho
+                    </option>
+                    <option value="IL" {% if selectedState=="IL" %} selected {% endif %}>
+                        Illinois
+                    </option>
+                    <option value="IN" {% if selectedState=="IN" %} selected {% endif %}>
+                        Indiana
+                    </option>
+                    <option value="IA" {% if selectedState=="IA" %} selected {% endif %}>
+                        Iowa
+                    </option>
                     <option value="KS">Kansas</option>
                     <option value="KY">Kentucky</option>
                     <option value="LA"> Louisiana </option>
@@ -94,8 +120,8 @@
         </form>
         <!-- The result according to the selected option -->
         {% if selectedState != None %}
-            <p>Showing results for {{ selectedState }} </p>
-            <p> {{ totalEnergy }} </p>
+        <h2>Total Annual Output for {{ selectedState }}:</h2>
+        <h3>{{ totalEnergy }}<br>Kilowatt Hours</h3>
         {% endif %}
         <script src="../static/the_data.js""></script>
 
