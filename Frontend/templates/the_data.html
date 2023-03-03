@@ -42,7 +42,7 @@
                     <option value="CO">Colorado</option>
                     <option value="CT">Connecticut</option>
                     <option value="DE"
-                    {% if result == "DE" %} selected {% endif %}
+                    {% if selectedState == "DE" %} selected {% endif %}
                     >
                     Delaware
                     </option>
@@ -93,8 +93,8 @@
             <input type="submit" value="Submit">
         </form>
         <!-- The result according to the selected option -->
-        {% if result != None %}
-            <p>Showing results for {{ result }} </p>
+        {% if selectedState != None %}
+            <p>Showing results for {{ selectedState }} </p>
             <p> {{ totalEnergy }} </p>
         {% endif %}
         <script src="../static/the_data.js""></script>

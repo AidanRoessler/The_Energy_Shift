@@ -31,17 +31,17 @@ def theData():
     
     '''
     energy = EnergyProductionAPI()
-    result = None
+    selectedState = None
     totalEnergy = None
 
     if request.method == 'POST':
         #Getting data from form
-        result = request.form["statesSelect"]
+        selectedState = request.form["statesSelect"]
 
         #Call the api with the data retrieved
-        totalEnergy = energy.getEnergyForState(result)
+        totalEnergy = energy.getEnergyForState(selectedState)
     
-    return render_template('the_data.html', result = result, totalEnergy = totalEnergy)
+    return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy)
 
 @app.route('/aboutTheData')
 def aboutTheData():
