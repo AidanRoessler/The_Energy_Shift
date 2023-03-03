@@ -201,8 +201,6 @@
                 <canvas id="renewableEnergyLineChartCanvas"></canvas>
             </div>
         </div>
-
-
         {% endif %}
 
     </div>
@@ -212,6 +210,7 @@
 
         //Insert the line chart into the HTML at one of the canvas tags
         let renewableEnergyLineChart = document.getElementById("renewableEnergyLineChartCanvas");
+        let renewableEnergyLineChart_ctx = renewableEnergyLineChart.getContext('2d');
 
         //Data for chart
         let renewableEnergyLineChartData = [3166.79, 2317.7, 3447.83, 3489.79, 3338.46, 3235.11, 3375.9, 3477.93, 3236.92, 3356.97, 3425.45, 4090.41];
@@ -221,7 +220,7 @@
         Chart.defaults.font.family = "Montserrat"
 
         //Line chart for the results of the getRenewableEnergyForState() function
-        new Chart(renewableEnergyLineChart, {
+        new Chart(renewableEnergyLineChart_ctx, {
             type: 'line',
             //Defines the line on the chart and its styling
             data: {
