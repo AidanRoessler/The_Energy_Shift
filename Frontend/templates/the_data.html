@@ -29,7 +29,7 @@
     </div>
 
     <div class="content">
-        <form method="POST" name="statesForm">
+        <form method="POST" name="statesForm" onsubmit="clearCanvas(); updateCanvas();">
             <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
@@ -186,7 +186,7 @@
                         Wyoming
                     </option>
                 </select>
-                <input type="submit" value="Go" onclick="clearCanvas(); updateCanvas();">
+                <input type="submit" value="Go" >
             </div>
 
         </form>
