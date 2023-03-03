@@ -33,6 +33,7 @@ def theData():
     energy = EnergyProductionAPI()
     selectedState = None
     totalEnergy = None
+    totalRenewableEnergy = None
 
     if request.method == 'POST':
         #Getting data from form
