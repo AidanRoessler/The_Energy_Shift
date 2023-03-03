@@ -19,14 +19,15 @@ div.homebutton {
 }
 
 button {
-  background-color: #c96b6b;
+  background-color: #ea5147;;
   border-radius: 10px;
   text-shadow: none;
   border-color: #ea5147;
-  transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease, width 0.3s ease;
 }
 
 button:hover {
+  transform: translateY(3px);
   background-color: #323954;
   border-color: #323954;  
 }
