@@ -40,6 +40,7 @@ def theData():
 
         #Call the api with the data retrieved
         totalEnergy = energy.getEnergyForState(selectedState)
+        
     
     return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy)
 
