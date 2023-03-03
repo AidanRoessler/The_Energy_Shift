@@ -25,14 +25,11 @@ button {
   text-shadow: none;
   border-color: #ea5147;
   transition: background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease;
-  
 }
 
 button:hover {
   background-color: #323954;
-  border-color: #323954;
-  transform: translateY(-5px)
-  
+  border-color: #323954;  
 }
 
 button:active {
