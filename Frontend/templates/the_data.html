@@ -32,7 +32,7 @@
             <div class="formcontent">
                 <label for="states">Choose a state</label>
                 <br>
-                    <option value="Select a State">Select a State</option>
+                <select name="statesSelect" id="states">
                     <option value="AL" {% if selectedState=="AL" %} selected {% endif %}>
                         Alabama
                     </option>
@@ -186,7 +186,7 @@
                 </select>
                 <input type="submit" value="Go">
             </div>
-            
+
         </form>
         <!-- The result according to the selected option -->
         {% if selectedState != None %}
