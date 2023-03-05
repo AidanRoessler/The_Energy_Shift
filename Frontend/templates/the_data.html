@@ -251,20 +251,22 @@
                 // renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
                 // renewableEnergyLineChart.update();
 
-                chart.data.labels.push("foo");
-                renewableEnergyLineChart.data.datasets.forEach((dataset) => {
-                    dataset.data.push(100);
-                })
-                chart.update();
-                alert("The form was submitted");
-            }
-    
+                addData(renewableEnergyLineChart, "foo", 100)
             // function clearCanvas() {
             //     if (renewableEnergyLineChart != 0) {
             //         renewableEnergyLineChart.destroy();
             //         renewableEnergyLineChart = 0;
             //     }
             // }
+            }
+
+            function addData(chart, label, data) {
+                chart.data.labels.push(label);
+                chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+            });
+                chart.update();
+            }
         </script>
     
         {% endif %}
