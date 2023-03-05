@@ -220,7 +220,7 @@
             
     
             //Line chart for the results of the getRenewableEnergyForState() function
-            const renewableEnergyLineChart = new Chart(renewableEnergyLineChartCanvas, {
+            let renewableEnergyLineChart = new Chart(renewableEnergyLineChartCanvas, {
                     type: 'line',
                     //Defines the line on the chart and its styling
                     data: {
