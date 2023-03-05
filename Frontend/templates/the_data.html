@@ -251,8 +251,10 @@
             function updateCanvas() {
                 // renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
                 // renewableEnergyLineChart.update();
-
+                removeData(renewableEnergyLineChart)
                 addData(renewableEnergyLineChart, "foo", 100)
+                addData(renewableEnergyLineChart, "bar", 200)
+
             // function clearCanvas() {
             //     if (renewableEnergyLineChart != 0) {
             //         renewableEnergyLineChart.destroy();
@@ -266,6 +268,14 @@
                 chart.data.datasets.forEach((dataset) => {
                 dataset.data.push(data);
             });
+                chart.update();
+            }
+
+            function removeData(chart) {
+                chart.data.labels.pop();
+                chart.data.datasets.forEach((dataset) => {
+                    dataset.data.pop();
+                });
                 chart.update();
             }
 
