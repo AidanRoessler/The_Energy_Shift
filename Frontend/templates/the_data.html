@@ -29,7 +29,7 @@
     </div>
 
     <div class="content">
-        <form method="POST" name="statesForm" onsubmit="initializeChart(); updateCanvas()">
+        <form method="POST" name="statesForm">
             <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
@@ -248,6 +248,7 @@
                 });
                 
             }
+
             function updateCanvas() {
                 // renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
                 // renewableEnergyLineChart.update();
@@ -268,6 +269,9 @@
             });
                 chart.update();
             }
+
+            initializeChart();
+            updateCanvas();
         </script>
     
         {% endif %}
