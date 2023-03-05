@@ -29,7 +29,7 @@
     </div>
 
     <div class="content">
-        <form method="POST" name="statesForm" onsubmit="updateCanvas();">
+        <form method="POST" name="statesForm" onsubmit="updateCanvas()">
             <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
@@ -217,6 +217,7 @@
             //Font styling for chart
             Chart.defaults.font.size = 21
             Chart.defaults.font.family = "Montserrat"
+            
     
             //Line chart for the results of the getRenewableEnergyForState() function
             const renewableEnergyLineChart = new Chart(renewableEnergyLineChartCanvas, {
