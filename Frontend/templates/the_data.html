@@ -214,7 +214,7 @@
             // let renewableEnergyLineChartCtx = renewableEnergyLineChartCanvas.getContext('2d');
     
             //Data for chart
-            let renewableEnergyLineChartData = totalEnergyByMonth
+            let renewableEnergyLineChartData = {{ totalEnergyByMonth }};
             //Font styling for chart
             Chart.defaults.font.size = 21
             Chart.defaults.font.family = "Montserrat"
@@ -228,7 +228,7 @@
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
                             label: 'Total Renewable Energy Usage for Colorado in 2021 (thousand megawatt hours)',
-                            data: totalEnergyByMonth,
+                            data: renewableEnergyLineChartData,
                             borderWidth: 5,
                             backgroundColor: "#ea5147",
                             borderColor: "#ea5147"
