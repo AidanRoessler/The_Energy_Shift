@@ -34,6 +34,7 @@ def theData():
     selectedState = None
     totalEnergy = None
     totalRenewableEnergy = None
+    totalEnergyByMonth = None
 
     if request.method == 'POST':
         #Getting data from form
@@ -42,8 +43,9 @@ def theData():
         #Call the api with the data retrieved
         totalEnergy = energy.getEnergyForState(selectedState)
         totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
+        totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
     
-    return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy, totalRenewableEnergy = totalRenewableEnergy)
+    return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy, totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth)
 
 @app.route('/aboutTheData')
 def aboutTheData():
