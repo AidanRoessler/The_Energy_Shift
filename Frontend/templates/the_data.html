@@ -226,7 +226,7 @@
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
                             label: 'Total Renewable Energy Usage for Colorado in 2021 (thousand megawatt hours)',
-                            data: renewableEnergyLineChartData,
+                            data: [3166.79, 2317.7, 3447.83, 3489.79, 3338.46, 3235.11, 3375.9, 3477.93, 3236.92, 3356.97, 3425.45, 4090.41],
                             borderWidth: 5,
                             backgroundColor: "#ea5147",
                             borderColor: "#ea5147"
@@ -250,7 +250,7 @@
                 // renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
                 // renewableEnergyLineChart.update();
 
-                // chart.data.labels.push(label);
+                chart.data.labels.push("foo");
                 renewableEnergyLineChart.data.datasets.forEach((dataset) => {
                     dataset.data.push(100);
                 })
