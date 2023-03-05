@@ -208,8 +208,8 @@
             /* A line chart generated with the Chart.js package */
             // let renewableEnergyLineChart = 0
             //Insert the line chart into the HTML at one of the canvas tags
-            function initializeChart() {
-                let renewableEnergyLineChartCanvas = document.getElementById("renewableEnergyLineChartCanvas");
+           
+            let renewableEnergyLineChartCanvas = document.getElementById("renewableEnergyLineChartCanvas");
             // let renewableEnergyLineChartCtx = renewableEnergyLineChartCanvas.getContext('2d');
     
             //Data for chart
@@ -247,7 +247,6 @@
                     }
                 });
                 
-            }
 
             function updateCanvas() {
                 // renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
@@ -270,7 +269,6 @@
                 chart.update();
             }
 
-            initializeChart();
             updateCanvas();
         </script>
     
