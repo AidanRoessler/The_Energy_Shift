@@ -274,7 +274,9 @@
             function removeData(chart) {
                 chart.data.labels.pop();
                 chart.data.datasets.forEach((dataset) => {
-                    dataset.data.pop();
+                    data.data.forEach((month) => {
+                        month.pop();
+                    })
                 });
                 chart.update();
             }
