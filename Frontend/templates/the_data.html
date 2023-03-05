@@ -213,11 +213,12 @@
             let renewableEnergyLineChartCanvas = document.getElementById("renewableEnergyLineChartCanvas");
             
             //Obtain the name of the selected state
-            let selectElement = document.getElementById("states");
-            let selectedState = selectElement.options[selectElement.selectedIndex].value;
+            // let selectElement = document.getElementById("states");
+            // let selectedState = selectElement.options[selectElement.selectedIndex].value;
     
             //Data for chart
             let renewableEnergyLineChartData = {{ totalEnergyByMonth }};
+            let selectedStateInput = {{ selectedState }}
             //Font styling for chart
             Chart.defaults.font.size = 21;
             Chart.defaults.font.family = "Montserrat";
@@ -230,7 +231,7 @@
                     data: {
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
-                            label: 'Total Renewable Energy Usage for'+ selectedState + 'in 2021 (thousand megawatt hours)',
+                            label: 'Total Renewable Energy Usage for '+ selectedStateInput + ' in 2021 (thousand megawatt hours)',
                             data: renewableEnergyLineChartData,
                             borderWidth: 5,
                             backgroundColor: "#ea5147",
