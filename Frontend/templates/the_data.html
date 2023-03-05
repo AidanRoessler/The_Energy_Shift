@@ -29,7 +29,7 @@
     </div>
 
     <div class="content">
-        <form method="POST" name="statesForm" onsubmit="clearCanvas(); updateCanvas();">
+        <form method="POST" name="statesForm" onsubmit="updateCanvas();">
             <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
@@ -247,9 +247,14 @@
                 
                 
             function updateCanvas() {
-                renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
-                renewableEnergyLineChart.update();
-    //Font styling for chart
+                // renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
+                // renewableEnergyLineChart.update();
+
+                // chart.data.labels.push(label);
+                renewableEnergyLineChart.data.datasets.forEach((dataset) => {
+                    dataset.data.push(100);
+                })
+                chart.update();
             }
     
             // function clearCanvas() {
