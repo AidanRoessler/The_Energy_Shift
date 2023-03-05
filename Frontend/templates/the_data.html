@@ -29,7 +29,7 @@
     </div>
 
     <div class="content">
-        <form method="POST" name="statesForm" onsubmit="updateCanvas()">
+        <form method="POST" name="statesForm" onsubmit="initializeChart(); updateCanvas()">
             <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
@@ -208,7 +208,8 @@
             /* A line chart generated with the Chart.js package */
             // let renewableEnergyLineChart = 0
             //Insert the line chart into the HTML at one of the canvas tags
-            let renewableEnergyLineChartCanvas = document.getElementById("renewableEnergyLineChartCanvas");
+            function initializeChart() {
+                let renewableEnergyLineChartCanvas = document.getElementById("renewableEnergyLineChartCanvas");
             // let renewableEnergyLineChartCtx = renewableEnergyLineChartCanvas.getContext('2d');
     
             //Data for chart
@@ -246,7 +247,7 @@
                     }
                 });
                 
-                
+            }
             function updateCanvas() {
                 // renewableEnergyLineChart.data = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
                 // renewableEnergyLineChart.update();
