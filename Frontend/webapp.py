@@ -53,7 +53,6 @@ def theData():
         categories = list(totalEnergyByCategory.keys())
         categoryValue = list(totalEnergyByCategory.values())
         
-        
     
     return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy, 
     totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth, categories = categories, categoryValue = categoryValue)
