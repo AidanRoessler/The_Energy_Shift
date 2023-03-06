@@ -43,9 +43,13 @@ def theData():
         #Call the api with the data retrieved
         totalEnergy = energy.getEnergyForState(selectedState)
         totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
-        totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
+        totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)[1]
+        selectedStateFullName = energy.getTotalEnergyForStateByMonth(selectedState)[0]
+        
     
-    return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy, totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth)
+    return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy, 
+    totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth, 
+    selectedStateFullName = selectedStateFullName)
 
 @app.route('/aboutTheData')
 def aboutTheData():

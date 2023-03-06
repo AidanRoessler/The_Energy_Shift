@@ -187,14 +187,16 @@ class EnergyProductionAPI:
 
                 listOfSumsForMonths = self.cursor.fetchall()
 
-                # Create the result dictionary
+                # Create the list to be returned in the result dictionary
                 parcedListOfSumsForMonths = []
 
                 # Extract the value of each month stored in the single tuple returned from the query
                 for i in range(12):
                     parcedListOfSumsForMonths.append(listOfSumsForMonths[0][i])
+                
+                
 
-                return parcedListOfSumsForMonths
+                return (fullStateName, parcedListOfSumsForMonths)
                 
             # If the state inputted is not valid, tell the user
             else:
@@ -257,7 +259,7 @@ class EnergyProductionAPI:
                 for category in listOfSumsForCategories:
                     dictOfSumsForCategories[category[0]] = category[1]
 
-                return dictOfSumsForCategories
+                return (fullStateName, dictOfSumsForCategories)
 
             # If the state inputted is not valid, tell the user
             else:
