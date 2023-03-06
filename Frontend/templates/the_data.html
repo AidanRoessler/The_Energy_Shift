@@ -202,6 +202,7 @@
             <!-- Line chart for the results from getRenewableEnergyForState() generated with the Chart.js package -->
             <div class="renewableEnergyLineChartContainer">
                 <canvas id="renewableEnergyLineChartCanvas"></canvas>
+                <canvas id="renewableEnergyPieChartCanvas"></canvas>
             </div>
         </div>
 
@@ -220,15 +221,30 @@
                                                 'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
                                                 'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
                                                 'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
-                                                'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
+                                                'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'};
             
 
             //Insert the line chart into the HTML at one of the canvas tags
             let renewableEnergyLineChartCanvas = document.getElementById("renewableEnergyLineChartCanvas");
+            let renewableEnergyPieChartCanvas = document.getElementById("renewableEnergyPieChartCanvas");
             
             //Obtain the name of the selected state
             let selectElement = document.getElementById("states");
-    
+
+            //Colors
+            var colors = [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)',
+            'rgba(255, 206, 86, 0.8)',
+            'rgba(75, 192, 192, 0.8)',
+            'rgba(153, 102, 255, 0.8)',
+            'rgba(255, 159, 64, 0.8)',
+            'rgba(244, 67, 54, 0.8)',
+            'rgba(33, 150, 243, 0.8)',
+            'rgba(76, 175, 80, 0.8)',
+            'rgba(219, 68, 55, 0.8)'
+            ];
+
             //Data for chart
             let renewableEnergyLineChartData = {{ totalEnergyByMonth }};
             let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
@@ -264,7 +280,33 @@
                         }
                     }
                 });
-                
+            
+                let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
+                    type: 'pie',
+                    data: {
+                        labels: ["Wind", "All solar", "All utility-scale solar",
+                                "Utility-scale photovoltaic", "Nuclear", "Conventional hydroelectric",
+                                "Other renewables"],
+                        datasets: [{
+                            labels: ["Wind", "All solar", "All utility-scale solar",
+                            "Utility-scale photovoltaic", "Nuclear", "Conventional hydroelectric",
+                            "Other renewables"],
+                            data: [1593.48, 548.86, 366.82, 366.82, 9970.2, 2144.89, 3031.96],
+                            backgroundColor: colors.slice(0, 7)
+                        }]
+                    }
+                    ,
+                    options: {
+                        layout: {
+                        padding: {
+                            left: 50,
+                            right: 50,
+                            top: 0,
+                            bottom: 50
+                        }
+                        }
+                    }
+                    });
         </script>
     
         {% endif %}
