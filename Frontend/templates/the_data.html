@@ -193,9 +193,11 @@
         <!-- The result according to the selected option -->
         {% if selectedState != None %}
         <h2>Total Annual Output:</h2>
-        <h3>{{ totalEnergy }}<br>Thousand Megawatt Hours</h3>
+        <h3>{{ totalEnergy }}</h3>
+        <h4>Thousand Megawatt Hours</h4>
         <h2>Total Annual <em>Renewable</em> Output</h2>
-        <h3>{{ totalRenewableEnergy }}<br>Thousand Megawatt Hours</h3>
+        <h3>{{ totalRenewableEnergy }}</h3>
+        <h4>Thousand Megawatt Hours</h4>
         <div class="resultsContainer">
             <h2>Total Renewable Energy Use:</h2>
             <p>{{ totalEnergyByMonth }}</p>
