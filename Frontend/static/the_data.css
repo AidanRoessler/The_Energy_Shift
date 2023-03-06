@@ -126,3 +126,12 @@ div.renewableEnergyLineChartContainer {
   font-family: "Montserrat", sans-serif;
   font-size: 21;
 }
+
+div.renewableEnergyPieChartContainer{
+  position: relative;
+  /* height: 100vh;
+  width: 80vw; */
+  margin: auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 21;
+}

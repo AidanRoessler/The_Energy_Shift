@@ -202,6 +202,8 @@
             <!-- Line chart for the results from getRenewableEnergyForState() generated with the Chart.js package -->
             <div class="renewableEnergyLineChartContainer">
                 <canvas id="renewableEnergyLineChartCanvas"></canvas>
+            </div>
+            <div class="renewableEnergyPieChartContainer">
                 <canvas id="renewableEnergyPieChartCanvas"></canvas>
             </div>
         </div>
@@ -295,17 +297,17 @@
                             backgroundColor: colors.slice(0, 7)
                         }]
                     }
-                    ,
-                    options: {
-                        layout: {
-                        padding: {
-                            left: 50,
-                            right: 50,
-                            top: 0,
-                            bottom: 50
-                        }
-                        }
-                    }
+                    // ,
+                    // options: {
+                    //     layout: {
+                    //     padding: {
+                    //         left: 50,
+                    //         right: 50,
+                    //         top: 0,
+                    //         bottom: 50
+                    //     }
+                    //     }
+                    // }
                     });
         </script>
     
