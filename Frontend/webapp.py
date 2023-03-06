@@ -35,7 +35,10 @@ def theData():
     totalEnergy = None
     totalRenewableEnergy = None
     totalEnergyByMonth = None
-    selectedStateFullName = None
+    totalEnergyByCategory = None
+    categories = None
+    categoryValue = None
+    
 
     if request.method == 'POST':
         #Getting data from form
@@ -45,10 +48,15 @@ def theData():
         totalEnergy = energy.getEnergyForState(selectedState)
         totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
         totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
+        totalEnergyByCategory = energy.getEnergyByCategoryForState(selectedState)
+
+        categories = totalEnergyByCategory.keys()
+        categoryValue = totalEnergyByCategory.categoryValue()
+        
         
     
     return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy, 
-    totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth)
+    totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth, categories = categories, categoryValue = categoryValue)
 
 @app.route('/aboutTheData')
 def aboutTheData():
