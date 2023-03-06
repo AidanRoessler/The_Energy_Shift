@@ -188,15 +188,13 @@ class EnergyProductionAPI:
                 listOfSumsForMonths = self.cursor.fetchall()
 
                 # Create the list to be returned in the result dictionary
-                parcedListOfSumsForMonths = []
+                parsedListOfSums = []
 
                 # Extract the value of each month stored in the single tuple returned from the query
                 for i in range(12):
-                    parcedListOfSumsForMonths.append(listOfSumsForMonths[0][i])
+                    parsedListOfSums.append(listOfSumsForMonths[0][i])
                 
-                
-
-                return (fullStateName, parcedListOfSumsForMonths)
+                return parsedListOfSums
                 
             # If the state inputted is not valid, tell the user
             else:
