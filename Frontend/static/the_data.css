@@ -134,5 +134,7 @@ div.renewableEnergyPieChartContainer{
   margin: auto;
   font-family: "Montserrat", sans-serif;
   font-size: 21;
-  padding-top: 10%;
+  padding-top: 10% 5%;
+  justify-content: center;
+  align-items: center;
 }
