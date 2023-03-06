@@ -125,6 +125,10 @@ div.renewableEnergyLineChartContainer {
   margin: auto;
   font-family: "Montserrat", sans-serif;
   font-size: 21;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 div.renewableEnergyPieChartContainer{
