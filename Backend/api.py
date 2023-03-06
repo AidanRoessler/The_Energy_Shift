@@ -257,7 +257,7 @@ class EnergyProductionAPI:
                 for category in listOfSumsForCategories:
                     dictOfSumsForCategories[category[0]] = category[1]
 
-                return (fullStateName, dictOfSumsForCategories)
+                return dictOfSumsForCategories
 
             # If the state inputted is not valid, tell the user
             else:
