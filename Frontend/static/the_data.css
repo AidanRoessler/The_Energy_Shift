@@ -120,7 +120,7 @@ div.resultsContainer {
 
 div.renewableEnergyLineChartContainer {
   position: relative;
-  height: 100vh;
+  height: 60vh;
   width: 80vw;
   margin: auto;
   font-family: "Montserrat", sans-serif;
@@ -129,8 +129,8 @@ div.renewableEnergyLineChartContainer {
 
 div.renewableEnergyPieChartContainer{
   position: relative;
-  height: 80vh;
-  width: 60vw;
+  height: 60vh;
+  width: 80vw;
   margin: auto;
   font-family: "Montserrat", sans-serif;
   font-size: 21;
