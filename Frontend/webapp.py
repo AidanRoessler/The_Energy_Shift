@@ -51,7 +51,7 @@ def theData():
         totalEnergyByCategory = energy.getEnergyByCategoryForState(selectedState)
 
         categories = totalEnergyByCategory.keys()
-        categoryValue = totalEnergyByCategory.categoryValue()
+        categoryValue = totalEnergyByCategory.values()
         
         
     
