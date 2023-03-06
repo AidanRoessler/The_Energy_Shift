@@ -35,6 +35,7 @@ def theData():
     totalEnergy = None
     totalRenewableEnergy = None
     totalEnergyByMonth = None
+    selectedStateFullName = None
 
     if request.method == 'POST':
         #Getting data from form
