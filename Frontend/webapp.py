@@ -50,8 +50,8 @@ def theData():
         totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
         totalEnergyByCategory = energy.getEnergyByCategoryForState(selectedState)
 
-        categories = totalEnergyByCategory.keys()
-        categoryValue = totalEnergyByCategory.values()
+        categories = list(totalEnergyByCategory.keys())
+        categoryValue = list(totalEnergyByCategory.values())
         
         
     
