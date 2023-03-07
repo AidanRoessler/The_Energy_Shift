@@ -255,10 +255,10 @@
             //Data for charts
             let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
 
-            let renewableEnergyLineChartData = {{ totalEnergyByMonth }};
+            var renewableEnergyLineChartData = '{{ totalEnergyByMonth }}';
 
-            let renewableEnergyPieChartLabels = {{ categories }};
-            let renewableEnergyPieChartData = {{ categoryValue }};
+            var renewableEnergyPieChartLabels = '{{ categories }}';
+            var renewableEnergyPieChartData = '{{ categoryValue }}';
             let numberOfLabels = renewableEnergyPieChartLabels.length;
 
         
