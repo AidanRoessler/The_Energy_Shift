@@ -255,10 +255,10 @@
             //Data for charts
             let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
 
-            var renewableEnergyLineChartData = {{ totalEnergyByMonth|tojson }};
+            let renewableEnergyLineChartData = {{ totalEnergyByMonth|tojson }};
 
-            var renewableEnergyPieChartLabels = {{ categories|tojson }};
-            var renewableEnergyPieChartData = {{ categoryValue|tojson }};
+            let renewableEnergyPieChartLabels = {{ categories|tojson }};
+            let renewableEnergyPieChartData = {{ categoryValue|tojson }};
             let numberOfLabels = renewableEnergyPieChartLabels.length;
 
         
@@ -299,9 +299,8 @@
                 data: {
                     labels: renewableEnergyPieChartLabels,
                     datasets: [{
-                        // labels: renewableEnergyPieChartLabels,
-                        data: renewableEnergyPieChartData
-                        //backgroundColor: colors.slice(0, numberOfLabels)
+                        data: renewableEnergyPieChartData,
+                        backgroundColor: colors.slice(0, numberOfLabels)
                     }]
                 }
                 // options: {
