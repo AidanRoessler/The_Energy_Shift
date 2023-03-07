@@ -255,7 +255,7 @@
             //Data for charts
             let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
 
-            var renewableEnergyLineChartData = '{{ totalEnergyByMonth }}';
+            var renewableEnergyLineChartData = {{ totalEnergyByMonth|tojson }};
 
             var renewableEnergyPieChartLabels = '{{ categories }}';
             var renewableEnergyPieChartData = '{{ categoryValue }}';
