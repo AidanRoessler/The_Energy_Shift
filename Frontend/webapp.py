@@ -54,13 +54,13 @@ def theData():
         categoryValue = list(totalEnergyByCategory.values())
         
     
-    return render_template('the_data.html', selectedState = selectedState, totalEnergy = totalEnergy, 
+    return render_template('theData.html', selectedState = selectedState, totalEnergy = totalEnergy, 
     totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth, categories = categories, categoryValue = categoryValue)
 
 @app.route('/aboutTheData')
 def aboutTheData():
     
-    return render_template('about_the_data.html')
+    return render_template('aboutTheData.html')
 
 """Code can be run with 'python3 webapp.py perlman.mathcs.carleton.edu [ port# ]'"""
 if __name__ == '__main__':
