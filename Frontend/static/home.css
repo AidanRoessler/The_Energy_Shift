@@ -1,14 +1,3 @@
-/* Div that contains all of the content */
-div.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  margin-left: 13px;
-  margin-right: 180px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 /* Styling for the button that appears on the home page and the text inside it */
 div.homebutton {
   display: flex;

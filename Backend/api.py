@@ -154,7 +154,7 @@ class EnergyProductionAPI:
         -A string that is not a state
             -Input: 'Montreal' or '12'
     """
-
+    # TODO: ASAP discuss whether or not this is meant to be renewable energy graph and make appropriate changes
     def getTotalEnergyForStateByMonth(self, stateAbbreviation):
         """Retrieves monthly total electricity generation throughout the year for a given state
 

@@ -90,3 +90,16 @@ nav li a:hover {
   text-decoration: underline;
   color: #944117;
 }
+
+/* Styling for the div that contains content for all of the pages
+Note: this is overriden on the theData page */
+div.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 13px;
+  margin-right: 180px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
