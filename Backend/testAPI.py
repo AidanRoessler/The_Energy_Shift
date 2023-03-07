@@ -15,7 +15,7 @@ class APITester(unittest.TestCase):
         Set up the test methods by creating an instance of the EnergyProductionAPI class with our
         csv passed in as data
         '''
-        self.energy_test = api.EnergyProductionAPI()
+        self.energyTest = api.EnergyProductionAPI()
         self.maxDiff = None
 
     def test_validState_getEnergyForState(self):
@@ -23,7 +23,7 @@ class APITester(unittest.TestCase):
         Test to see if getEnergyForState() can successfully return the correct float
         when given the valid input of 'Al'
         """
-        result = self.energy_test.getEnergyForState("Al")
+        result = self.energyTest.getEnergyForState("Al")
         self.assertEqual(result, 142733.34)
 
     def test_invalidState_getEnergyForState(self):
@@ -31,7 +31,7 @@ class APITester(unittest.TestCase):
         Test to see if getEnergyForState() can successfully return a message to the user when
         their input is invalid
         """
-        result = self.energy_test.getEnergyByCategoryForState(56)
+        result = self.energyTest.getEnergyByCategoryForState(56)
 
         self.assertEqual(
             result, 'Invalid input. Please enter a state abbreviation (not a full name)')
@@ -41,7 +41,7 @@ class APITester(unittest.TestCase):
         Test to see if getEnergyByCategoryForState() can successfully return the correct list of
         floats when given the valid input of 'Wisconsin'
         """
-        result = self.energy_test.getEnergyByCategoryForState("Al")
+        result = self.energyTest.getEnergyByCategoryForState("Al")
         self.assertEqual(result, {'Other renewables': 3805.24, 'Conventional hydroelectric': 11520.8, 'Nuclear': 46036.5,
                          'Utility-scale photovoltaic': 494.0, 'All utility-scale solar': 494.0, 'All solar': 37.12})
 
@@ -50,7 +50,7 @@ class APITester(unittest.TestCase):
         Test to see if getEnergyByCategoryForState() can successfully return a message to the user
         when their input is invalid
         """
-        result = self.energy_test.getEnergyByCategoryForState(56)
+        result = self.energyTest.getEnergyByCategoryForState(56)
 
         self.assertEqual(
             result, 'Invalid input. Please enter a state abbreviation (not a full name)')
@@ -60,7 +60,7 @@ class APITester(unittest.TestCase):
         Test to see if getTotalEnergyForStateByMonth() can successfully return the correct float
         value when given the valid input of "Al"
         """
-        result = self.energy_test.getTotalEnergyForStateByMonth("Al")
+        result = self.energyTest.getTotalEnergyForStateByMonth("Al")
 
         self.assertEqual(result, {'January': 12574.68, 'February': 11267.83, 'March': 10343.43, 'April': 8972.6, 'May': 11274.04, 'June': 12255.95,
                          'July': 13545.99, 'August': 13862.05, 'September': 12089.57, 'October': 11731.84, 'November': 12408.92, 'December': 12406.44})
@@ -70,7 +70,7 @@ class APITester(unittest.TestCase):
         Test to see if getTotalEnergyForStateByMonth() can successfully return a message to the user
         when their input is invalid
         """
-        result = self.energy_test.getTotalEnergyForStateByMonth("Montreal")
+        result = self.energyTest.getTotalEnergyForStateByMonth("Montreal")
 
         self.assertEqual(
             result, 'Invalid input. Please enter a state abbreviation (not a full name)')
@@ -80,7 +80,7 @@ class APITester(unittest.TestCase):
         Test to see if getTotalRenewableEnergyByState() can successfully return the correct float
         value when given the valid input of "Al"
         """
-        result = self.energy_test.getTotalRenewableEnergyByState("Al")
+        result = self.energyTest.getTotalRenewableEnergyByState("Al")
         self.assertEqual(result, 62387.66)
 
     def test_invalidState_getTotalRenewableEnergyByState(self):
@@ -88,7 +88,7 @@ class APITester(unittest.TestCase):
         Test to see if getTotalRenewableEnergyByState() can successfully return a message to the 
         user when their input is invalid
         """
-        result = self.energy_test.getTotalEnergyForStateByMonth(56)
+        result = self.energyTest.getTotalEnergyForStateByMonth(56)
 
         self.assertEqual(
             result, 'Invalid input. Please enter a state abbreviation (not a full name)')
