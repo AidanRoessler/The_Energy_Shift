@@ -257,8 +257,8 @@
 
             var renewableEnergyLineChartData = {{ totalEnergyByMonth|tojson }};
 
-            var renewableEnergyPieChartLabels = '{{ categories }}';
-            var renewableEnergyPieChartData = '{{ categoryValue }}';
+            var renewableEnergyPieChartLabels = {{ categories|tojson }};
+            var renewableEnergyPieChartData = {{ categoryValue|tojson }};
             let numberOfLabels = renewableEnergyPieChartLabels.length;
 
         
