@@ -155,3 +155,7 @@ div.renewableEnergyPieChartContainer{
   justify-content: center;
   align-items: center;
 }
+
+canvas.renewableEnergyPieChartCanvas{
+  width: 80%;
+}
