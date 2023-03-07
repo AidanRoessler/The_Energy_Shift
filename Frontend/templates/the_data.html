@@ -259,7 +259,7 @@
 
             let renewableEnergyPieChartLabels = {{ categories }};
             let renewableEnergyPieChartData = {{ categoryValue }};
-            const numberOfLabels = renewableEnergyPieChartLabels.length;
+            let numberOfLabels = renewableEnergyPieChartLabels.length;
 
         
             //Font styling for charts
@@ -294,24 +294,24 @@
                     }
                 });
             
-                let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
-                    type: 'pie',
-                    data: {
-                        labels: renewableEnergyPieChartLabels,
-                        datasets: [{
-                            // labels: renewableEnergyPieChartLabels,
-                            data: renewableEnergyPieChartData,
-                            backgroundColor: colors.slice(0, numberOfLabels)
-                        }]
-                    }
-                    // options: {
-                    //     layout: {
-                    //     padding: {
-                    //         top: 20,
-                    //     }
-                    //     }
-                    // }
-                    });
+            let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
+                type: 'pie',
+                data: {
+                    labels: renewableEnergyPieChartLabels,
+                    datasets: [{
+                        // labels: renewableEnergyPieChartLabels,
+                        data: renewableEnergyPieChartData,
+                        //backgroundColor: colors.slice(0, numberOfLabels)
+                    }]
+                }
+                // options: {
+                //     layout: {
+                //     padding: {
+                //         top: 20,
+                //     }
+                //     }
+                // }
+                });
         </script>
     
         {% endif %}
