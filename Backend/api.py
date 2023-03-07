@@ -15,21 +15,18 @@ class EnergyProductionAPI:
 
         self.cursor = self.conn.cursor()
 
-        self.abbreviation_to_state_dictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
-                                                'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
-                                                'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
-                                                'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
-                                                'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
-                                                'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
-                                                'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New_Hampshire', 'NJ': 'New_Jersey',
-                                                'NM': 'New_Mexico', 'NY': 'New_York', 'NC': 'North_Carolina', 'ND': 'North_Dakota',
-                                                'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
-                                                'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
-                                                'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
-                                                'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
-
-        self.month_list = ['January', 'February', 'March', 'April', 'May', 'June',
-                           'July', 'August', 'September', 'October', 'November', 'December']
+        self.abbreviationToStateDictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
+                                              'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
+                                              'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
+                                              'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
+                                              'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
+                                              'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
+                                              'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New_Hampshire', 'NJ': 'New_Jersey',
+                                              'NM': 'New_Mexico', 'NY': 'New_York', 'NC': 'North_Carolina', 'ND': 'North_Dakota',
+                                              'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+                                              'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
+                                              'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
+                                              'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
 
     """
     Equivalence Classes:
@@ -61,18 +58,18 @@ class EnergyProductionAPI:
             # check if the input is a string
             if type(stateAbbreviation) == str:
                 correctedStateAbbreviation = stateAbbreviation.upper()
-            
+
             # If the state has valid input, run the function
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviationToStateDictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
                 # sqlTableToInsert = fullStateName
                 queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
                 self.cursor.execute(queryString)
-                
+
                 stateEnergySumList = self.cursor.fetchall()
 
                 # Extract the sum out of list of a single tuple returned from the query
@@ -83,7 +80,7 @@ class EnergyProductionAPI:
             # If the state inputted is not valid, tell the user
             else:
                 return 'Invalid input. Please enter a state abbreviation (not a full name)'
-        
+
         # Handle an exception by telling the user to enter a valid state and printing out the exception
         except Exception as e:
             raise Exception('Fatal error', e)
@@ -122,9 +119,9 @@ class EnergyProductionAPI:
                 correctedStateAbbreviation = stateAbbreviation.upper()
 
             # If the state valid input run the function as normal
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviationToStateDictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
                 queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels'"
@@ -141,7 +138,7 @@ class EnergyProductionAPI:
             # If the state inputted is not valid, tell the user
             else:
                 return 'Invalid input. Please enter a state abbreviation (not a full name)'
-                
+
         # Handle an exception by telling the user to enter a valid state, printing out the exception
         except Exception as e:
             raise Exception('Fatal error', e)
@@ -155,6 +152,7 @@ class EnergyProductionAPI:
             -Input: 'Montreal' or '12'
     """
     # TODO: ASAP discuss whether or not this is meant to be renewable energy graph and make appropriate changes
+
     def getTotalEnergyForStateByMonth(self, stateAbbreviation):
         """Retrieves monthly total electricity generation throughout the year for a given state
 
@@ -176,9 +174,9 @@ class EnergyProductionAPI:
                 correctedStateAbbreviation = stateAbbreviation.upper()
 
             # If the state valid input run the function as normal
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviationToStateDictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
                 # builds the query string and execute the query
                 queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels'"
@@ -193,13 +191,13 @@ class EnergyProductionAPI:
                 # Extract the value of each month stored in the single tuple returned from the query
                 for i in range(12):
                     parsedListOfSums.append(listOfSumsForMonths[0][i])
-                
+
                 return parsedListOfSums
-                
+
             # If the state inputted is not valid, tell the user
             else:
                 return 'Invalid input. Please enter a state abbreviation (not a full name)'
-            
+
         # Handle an exception by telling the user to enter a valid state and printing out the exception
         except Exception as e:
             raise Exception('Fatal error', e)
@@ -237,11 +235,11 @@ class EnergyProductionAPI:
             # check if the input is a string
             if type(stateAbbreviation) == str:
                 correctedStateAbbreviation = stateAbbreviation.upper()
-                
+
             # If the state valid input run the function as normal
-            if correctedStateAbbreviation in self.abbreviation_to_state_dictionary:
+            if correctedStateAbbreviation in self.abbreviationToStateDictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviation_to_state_dictionary[correctedStateAbbreviation]
+                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
                 # Builds the query string and executes it
                 queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels'"
@@ -262,18 +260,19 @@ class EnergyProductionAPI:
             # If the state inputted is not valid, tell the user
             else:
                 return 'Invalid input. Please enter a state abbreviation (not a full name)'
-            
+
         # Handle an exception by telling the user to enter a valid state and printing out the exception
         except Exception as e:
             raise Exception('Fatal error', e)
 
-
     """
     This helper function takes in a state abbreviation as a string and returns the corresponding full state name
     """
+
     def convertAbbreviationToFullState(self, stateAbbreviation):
-        
-        return self.abbreviation_to_state_dictionary[stateAbbreviation]
+
+        return self.abbreviationToStateDictionary[stateAbbreviation]
+
 
 if __name__ == "__main__":
     print('Database connection successful')
