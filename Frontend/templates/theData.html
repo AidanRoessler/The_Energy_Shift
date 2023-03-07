@@ -192,19 +192,19 @@
         </form>
         <!-- The result according to the selected option -->
         {% if selectedState != None %}
-        <h2>Total Annual Output:</h2>
+        <h2>Total Annual Output</h2>
         <h3>{{ totalEnergy }}</h3>
         <h4>Thousand Megawatt Hours</h4>
         <h2>Total Annual <em>Renewable</em> Output</h2>
         <h3>{{ totalRenewableEnergy }}</h3>
         <h4>Thousand Megawatt Hours</h4>
         <div class="resultsContainer">
-            <h2>Total Renewable Energy Use:</h2>
+            <h2>Total Energy Production</h2>
             <!-- Line chart for the results from getRenewableEnergyForState() generated with the Chart.js package -->
             <div class="renewableEnergyLineChartContainer">
                 <canvas id="renewableEnergyLineChartCanvas"></canvas>
             </div>
-            <h2>Categories of Renewable Energy Production:</h2>
+            <h2>Categories of Renewable Energy Production</h2>
             <div class="renewableEnergyPieChartContainer">
                 <canvas id="renewableEnergyPieChartCanvas"></canvas>
             </div>
@@ -270,7 +270,7 @@
                     data: {
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
-                            label: 'Total Renewable Energy Usage for '+ selectedState + ' in 2021 (thousand megawatt hours)',
+                            label: 'Total Energy Production for '+ selectedState + ' in 2021 (thousand megawatt hours)',
                             data: renewableEnergyLineChartData,
                             borderWidth: 5,
                             backgroundColor: "#ea5147",
