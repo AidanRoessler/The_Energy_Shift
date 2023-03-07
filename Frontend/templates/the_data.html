@@ -259,6 +259,7 @@
 
             let renewableEnergyPieChartLabels = {{ categories }};
             let renewableEnergyPieChartData = {{ categoryValue }};
+            const numberOfLabels = renewableEnergyPieChartLabels.length;
 
         
             //Font styling for charts
@@ -300,7 +301,7 @@
                         datasets: [{
                             // labels: renewableEnergyPieChartLabels,
                             data: renewableEnergyPieChartData,
-                            backgroundColor: colors.slice(0, 7)
+                            backgroundColor: colors.slice(0, numberOfLabels)
                         }]
                     }
                     // options: {
