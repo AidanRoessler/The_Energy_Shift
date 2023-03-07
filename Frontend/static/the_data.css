@@ -5,6 +5,8 @@ div.content {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  margin-right: 13px;
+  margin-left: 13px;
   margin-bottom: 10px;
 }
 

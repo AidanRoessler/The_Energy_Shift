@@ -97,6 +97,7 @@ div.content {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  align-items: center;
   margin-left: 13px;
   margin-right: 180px;
   margin-top: 10px;
