@@ -268,5 +268,12 @@ class EnergyProductionAPI:
             raise Exception('Fatal error', e)
 
 
+    """
+    This helper function takes in a state abbreviation as a string and returns the corresponding full state name
+    """
+    def convertAbbreviationToFullState(self, stateAbbreviation):
+        
+        return self.abbreviation_to_state_dictionary[stateAbbreviation]
+
 if __name__ == "__main__":
     print('Database connection successful')
