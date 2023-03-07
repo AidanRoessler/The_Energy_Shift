@@ -157,5 +157,6 @@ div.renewableEnergyPieChartContainer{
 }
 
 canvas.renewableEnergyPieChartCanvas{
+  display: flex;
   width: 80%;
 }
