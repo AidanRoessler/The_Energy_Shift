@@ -22,9 +22,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <div id="currentPage">
-                    <li id="currentPage" ><a href="/theData">The Data</a></li>
-                </div>
+                <li style="border: 5px #323954;"><a href="/theData">The Data</a></li>
                 <li><a href="/aboutTheData">About the Data</a></li>
             </ul>
         </nav>
@@ -258,6 +256,12 @@
                 '#039590'
             ];
 
+            //The sum of the number
+            var sum = 0;
+
+            for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
+                sum += renewableEnergyPieChartData[i];
+            }
             //Line chart for the results of the getRenewableEnergyForState() function
             let energyLineChart = new Chart(energyLineChartCanvas, {
                 type: 'line',
@@ -294,20 +298,20 @@
                         data: renewableEnergyPieChartData,
                         backgroundColor: colors.slice(0, numberOfLabels)
                     }]
-                    
+
                 },
                 option: {
                     tooltips: {
-                      callbacks: {
-                        label: function(tooltipItem, data) {
-                          var dataset = data.datasets[tooltipItem.datasetIndex];
-                          var value = dataset.data[tooltipItem.index];
-                          var label = data.labels[tooltipItem.index];
-                          return label + ': ' + value;
+                        callbacks: {
+                            label: function (tooltipItem, data) {
+                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                var value = dataset.data[tooltipItem.index];
+                                var label = data.labels[tooltipItem.index];
+                                return label + ': ' + value / sum * 100 + "%";
+                            }
                         }
-                      }
                     }
-                  }
+                }
             });
 
         </script>
