@@ -144,13 +144,15 @@ div.numericalResultContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   margin-left: 13px;
   margin-right: 13px;
 }
 
 div.chartTitleText{
-  margin-left: 39px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 div.energyLineChartContainer {
