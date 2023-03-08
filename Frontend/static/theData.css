@@ -158,7 +158,7 @@ div.energyLineChartContainer {
   font-size: 21;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
