@@ -23,7 +23,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <div class="currentPage">
-                    <li class="currentPage"><a href="/theData">The Data</a></li>
+                    <li class="currentPage" style="border: 50px solid black;""><a href="/theData">The Data</a></li>
                 </div>
                 <li><a href="/aboutTheData">About the Data</a></li>
             </ul>
@@ -297,13 +297,14 @@
                     
                 },
                 option: {
-                    plugins: {
-                        centerText: {
-                            display: true,
-                            text: 'Data',
-                            fontColor: '#666',
-                            fontStyle: 'bold',
-                            fontSize: 20
+                    tooltips: {
+                      callbacks: {
+                        label: function(tooltipItem, data) {
+                          var dataset = data.datasets[tooltipItem.datasetIndex];
+                          var value = dataset.data[tooltipItem.index];
+                          var label = data.labels[tooltipItem.index];
+                          return label + ': ' + value;
+                        }
                       }
                     }
                   }
