@@ -130,6 +130,8 @@ div.resultsContainer {
   align-items: flex-start;
   margin-top: 10px;
   margin-bottom: 20px;
+  margin-left: 39px;
+  margin-right: 39px;
 }
 
 div.numericalResultsRowContainer {
