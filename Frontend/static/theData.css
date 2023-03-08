@@ -151,6 +151,10 @@ div.numericalResultContainer {
   margin-right: 13px;
 }
 
+div.chartTitleText{
+  margin-left: 39px;
+}
+
 div.energyLineChartContainer {
   position: relative;
   height: 60vh;
@@ -162,7 +166,7 @@ div.energyLineChartContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 div.renewableEnergyPieChartContainer {
@@ -176,5 +180,5 @@ div.renewableEnergyPieChartContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
