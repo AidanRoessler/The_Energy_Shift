@@ -76,6 +76,10 @@ nav li {
   border: 100px #323954;
 }
 
+#currentPage {
+  border: 5px #323954;
+}
+
 nav li a {
   text-decoration: none;
   text-align: center;
