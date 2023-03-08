@@ -266,7 +266,7 @@
             //The percentage of the number
             var percentage = [];
             for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
-                percentage.push(renewableEnergyPieChartData[i]/sum);
+                percentage.push(renewableEnergyPieChartLabels[i] + 100*renewableEnergyPieChartData[i]/sum + '%');
             }
 
 
