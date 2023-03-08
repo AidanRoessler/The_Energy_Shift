@@ -153,7 +153,8 @@ div.energyLineChartContainer {
   position: relative;
   height: 60vh;
   width: 75vw;
-  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;
   font-size: 21;
   display: flex;
@@ -166,11 +167,12 @@ div.renewableEnergyPieChartContainer {
   position: relative;
   height: 80vh;
   width: 100vw;
-  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;
   font-size: 21;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
 }
