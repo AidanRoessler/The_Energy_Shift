@@ -262,6 +262,15 @@
             for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
                 sum += renewableEnergyPieChartData[i];
             }
+
+            //The percentage of the number
+            var percentage = [];
+            for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
+                percentage.push(renewableEnergyPieChartData[i]/sum);
+            }
+
+
+
             //Line chart for the results of the getRenewableEnergyForState() function
             let energyLineChart = new Chart(energyLineChartCanvas, {
                 type: 'line',
@@ -295,22 +304,10 @@
                 data: {
                     labels: renewableEnergyPieChartLabels,
                     datasets: [{
-                        data: renewableEnergyPieChartData,
+                        data: percentage,
                         backgroundColor: colors.slice(0, numberOfLabels)
                     }]
 
-                },
-                option: {
-                    tooltips: {
-                        callbacks: {
-                            label: (context) => {
-                                var dataset = data.datasets[tooltipItem.datasetIndex];
-                                var value = dataset.data[tooltipItem.index];
-                                var label = data.labels[tooltipItem.index];
-                                return label + ': ' + value / sum * 100 + "%";
-                            }
-                        }
-                    }
                 }
             });
 
