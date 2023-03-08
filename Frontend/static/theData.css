@@ -1,4 +1,4 @@
-/* Custom styling for the div that wraps all of the content on this page */ 
+/* Custom styling for the div that wraps all of the content on this page */
 div.content {
   display: flex;
   flex-direction: column;
@@ -73,12 +73,13 @@ input {
   border-radius: 10px;
   text-shadow: none;
   border-color: #de5a48;
-  transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease;
+  transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease,
+    box-shadow 0.2s ease;
 }
 
 input:hover {
   background-color: #4b5478;
-  border-color: #4b5478;  
+  border-color: #4b5478;
   width: 55%;
 }
 
@@ -96,7 +97,7 @@ h2 {
   font-weight: 700;
   font-size: 32px;
   line-height: 40px;
-  text-align: center
+  text-align: center;
 }
 
 h3 {
@@ -105,7 +106,7 @@ h3 {
   font-size: 50px;
   line-height: 79px;
   text-align: center;
-  color: #EA5147;
+  color: #ea5147;
   margin-top: 10px;
   margin-bottom: 5px;
 }
@@ -116,7 +117,7 @@ h4 {
   font-weight: 700;
   font-size: 30px;
   line-height: 79px;
-  color: #EA5147;
+  color: #ea5147;
   margin-top: 5px;
   margin-bottom: 10px;
 }
@@ -131,11 +132,18 @@ div.resultsContainer {
   margin-bottom: 20px;
 }
 
-div.numberResultsContainer {
+div.numericalResultsRowContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+div.numericalResultContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 div.energyLineChartContainer {
@@ -151,7 +159,7 @@ div.energyLineChartContainer {
   align-items: center;
 }
 
-div.renewableEnergyPieChartContainer{
+div.renewableEnergyPieChartContainer {
   position: relative;
   height: 80vh;
   width: 100vw;

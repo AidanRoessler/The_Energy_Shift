@@ -193,14 +193,18 @@
         <!-- The result according to the selected option -->
         {% if selectedState != None %}
         <div class="resultsContainer">
-            <div class="numberResultsContainer"> 
-                <h2>Total Annual Output</h2>
-                <h3>{{ totalEnergy }}</h3>
-                <h4>Thousand Megawatt Hours</h4>
+            <div class="numericalResultsRowContainer"> 
+                <div class="numericalResultContainer">
+                    <h2>Total Annual Output</h2>
+                    <h3>{{ totalEnergy }}</h3>
+                    <h4>Thousand Megawatt Hours</h4>
+                </div>
 
-                <h2>Total Annual <em>Renewable</em> Output</h2>
-                <h3>{{ totalRenewableEnergy }}</h3>
-                <h4>Thousand Megawatt Hours</h4>
+                <div class="numericalResultContainer">
+                    <h2>Total Annual <em>Renewable</em> Output</h2>
+                    <h3>{{ totalRenewableEnergy }}</h3>
+                    <h4>Thousand Megawatt Hours</h4>
+                </div>
             </div>
 
             <h2>Total Energy Production</h2>
