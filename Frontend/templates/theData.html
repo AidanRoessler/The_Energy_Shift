@@ -251,7 +251,7 @@
             //Data for charts
             // let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
 
-            let stateFullName = {{ selectedStateFullName }};
+            let selectedStateFullNameForCharts = {{ selectedStateFullName }};
 
             let energyLineChartData = {{ totalEnergyByMonth|tojson }};
 
@@ -272,7 +272,7 @@
                     data: {
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
-                            label: 'Total Energy Production for '+ {{ selectedStateFullName }} + ' in 2021 (thousand megawatt hours)',
+                            label: 'Total Energy Production for '+ selectedStateFullNameForCharts + ' in 2021 (thousand megawatt hours)',
                             data: energyLineChartData,
                             borderWidth: 5,
                             backgroundColor: "#ea5147",
