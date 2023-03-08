@@ -22,7 +22,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li style="border: 5px solid #323954;"><a href="/theData">The Data</a></li>
+                <li><a href="/theData" class="currentPage">The Data</a></li>
                 <li><a href="/aboutTheData">About the Data</a></li>
             </ul>
         </nav>
@@ -303,7 +303,7 @@
                 option: {
                     tooltips: {
                         callbacks: {
-                            label: function (tooltipItem, data) {
+                            label: (context) => {
                                 var dataset = data.datasets[tooltipItem.datasetIndex];
                                 var value = dataset.data[tooltipItem.index];
                                 var label = data.labels[tooltipItem.index];

@@ -86,6 +86,10 @@ nav li a {
   transition: color 0.1s ease;
 }
 
+.currentPage {
+  text-decoration: underline;
+}
+
 nav li a:hover {
   text-decoration: underline;
   color: #944117;
