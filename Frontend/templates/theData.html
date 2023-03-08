@@ -22,7 +22,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/theData" class="currentPage">The Data</a></li>
+                <lisolid ><a href="/theData" class="currentPage">The Data</a></li>
                 <li><a href="/aboutTheData">About the Data</a></li>
             </ul>
         </nav>
@@ -258,7 +258,6 @@
 
             //The sum of the number
             var sum = 0;
-
             for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
                 sum += renewableEnergyPieChartData[i];
             }
@@ -304,7 +303,8 @@
                 data: {
                     labels: renewableEnergyPieChartLabels,
                     datasets: [{
-                        data: percentage,
+                        labels: percentage,
+                        data: renewableEnergyPieChartData,
                         backgroundColor: colors.slice(0, numberOfLabels)
                     }]
 
