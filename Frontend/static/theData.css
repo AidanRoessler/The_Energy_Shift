@@ -131,7 +131,7 @@ div.resultsContainer {
   margin-bottom: 20px;
 }
 
-div.renewableEnergyLineChartContainer {
+div.energyLineChartContainer {
   position: relative;
   height: 60vh;
   width: 75vw;
