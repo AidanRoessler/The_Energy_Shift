@@ -72,7 +72,7 @@ nav li {
   margin-right: 25px;
 }
 
-li.currentPage {
+.currentPage {
   float: left;
   font-size: 1.1em;
   font-weight: bold;

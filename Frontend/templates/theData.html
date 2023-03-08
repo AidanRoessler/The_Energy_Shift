@@ -22,7 +22,7 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-            <li class="currentPage"><a href="/theData" >The Data</a></li>
+                <li class="currentPage"><a href="/theData" >The Data</a></li>
                 <li><a href="/aboutTheData">About the Data</a></li>
             </ul>
         </nav>
@@ -284,7 +284,7 @@
             });
 
             let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
-                type: 'pie',
+                type: 'doughnut',
                 //Defines the data and the data labels to be used in the pie chart
                 data: {
                     labels: renewableEnergyPieChartLabels,
@@ -293,7 +293,18 @@
                         backgroundColor: colors.slice(0, numberOfLabels)
                     }]
                     
-                }
+                },
+                option: {
+                    plugins: {
+                        centerText: {
+                            display: true,
+                            text: 'Data',
+                            fontColor: '#666',
+                            fontStyle: 'bold',
+                            fontSize: 20
+                      }
+                    }
+                  }
             });
 
         </script>
