@@ -211,29 +211,24 @@
         </div>
 
         <script>
-            /* A line chart generated with the Chart.js package */
-
-            //dictionary of state abbreviations to full state names
-            // let abbreviation_to_state_dictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
-            //                                     'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
-            //                                     'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
-            //                                     'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
-            //                                     'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
-            //                                     'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
-            //                                     'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New_Hampshire', 'NJ': 'New_Jersey',
-            //                                     'NM': 'New_Mexico', 'NY': 'New_York', 'NC': 'North_Carolina', 'ND': 'North_Dakota',
-            //                                     'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
-            //                                     'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
-            //                                     'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
-            //                                     'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'};
-            
-
             //Insert the line chart into the HTML at one of the canvas tags
             let energyLineChartCanvas = document.getElementById("energyLineChartCanvas");
             let renewableEnergyPieChartCanvas = document.getElementById("renewableEnergyPieChartCanvas");
             
-            //Obtain the name of the selected state
-            let selectElement = document.getElementById("states");
+            //Data for charts
+            let energyLineChartData = {{ totalEnergyByMonth|tojson }};
+
+            let renewableEnergyPieChartLabels = {{ categories|tojson }};
+            let renewableEnergyPieChartData = {{ categoryValue|tojson }};
+            let numberOfLabels = renewableEnergyPieChartLabels.length;
+
+            //Get the full state name to use in chart titles
+            let selectedStateFullNameForCharts = {{ selectedStateFullName|tojson }};
+
+        
+            //Font styling for charts
+            Chart.defaults.font.size = 21;
+            Chart.defaults.font.family = "Montserrat";
 
             //Colors for the sections of the pie chart
             const colors = [
@@ -248,27 +243,10 @@
             '#2F4858'
             ];
 
-            //Data for charts
-            // let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
-
-            let selectedStateFullNameForCharts = {{ selectedStateFullName|tojson }};
-
-            let energyLineChartData = {{ totalEnergyByMonth|tojson }};
-
-            let renewableEnergyPieChartLabels = {{ categories|tojson }};
-            let renewableEnergyPieChartData = {{ categoryValue|tojson }};
-            let numberOfLabels = renewableEnergyPieChartLabels.length;
-
-        
-            //Font styling for charts
-            Chart.defaults.font.size = 21;
-            Chart.defaults.font.family = "Montserrat";
-            
-    
             //Line chart for the results of the getRenewableEnergyForState() function
             let energyLineChart = new Chart(energyLineChartCanvas, {
                     type: 'line',
-                    //Defines the line on the chart and its styling
+                    //Defines the data and the data labels to be used in the line chart
                     data: {
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
@@ -294,8 +272,8 @@
             
             let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
                 type: 'pie',
+                //Defines the data and the data labels to be used in the pie chart
                 data: {
-                    //Defines the data and the data labels to be used in the pie chart
                     labels: renewableEnergyPieChartLabels,
                     datasets: [{
                         data: renewableEnergyPieChartData,
@@ -303,6 +281,7 @@
                     }]
                 }
                 });
+                
         </script>
     
         {% endif %}
