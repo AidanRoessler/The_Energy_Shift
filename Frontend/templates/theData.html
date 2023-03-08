@@ -251,7 +251,7 @@
             //Data for charts
             // let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
 
-            let selectedStateFullNameForCharts = {{ selectedStateFullName }};
+            let selectedStateFullNameForCharts = {{ selectedStateFullName|tojson }};
 
             let energyLineChartData = {{ totalEnergyByMonth|tojson }};
 
