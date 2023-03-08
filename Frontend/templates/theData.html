@@ -193,13 +193,15 @@
         <!-- The result according to the selected option -->
         {% if selectedState != None %}
         <div class="resultsContainer">
-            <h2>Total Annual Output</h2>
-            <h3>{{ totalEnergy }}</h3>
-            <h4>Thousand Megawatt Hours</h4>
-            
-            <h2>Total Annual <em>Renewable</em> Output</h2>
-            <h3>{{ totalRenewableEnergy }}</h3>
-            <h4>Thousand Megawatt Hours</h4>
+            <div class="numberResultsContainer"> 
+                <h2>Total Annual Output</h2>
+                <h3>{{ totalEnergy }}</h3>
+                <h4>Thousand Megawatt Hours</h4>
+
+                <h2>Total Annual <em>Renewable</em> Output</h2>
+                <h3>{{ totalRenewableEnergy }}</h3>
+                <h4>Thousand Megawatt Hours</h4>
+            </div>
 
             <h2>Total Energy Production</h2>
             <!-- Line chart for the results from getRenewableEnergyForState() generated with the Chart.js package -->

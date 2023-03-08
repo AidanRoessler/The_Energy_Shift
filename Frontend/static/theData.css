@@ -131,6 +131,13 @@ div.resultsContainer {
   margin-bottom: 20px;
 }
 
+div.numberResultsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 div.energyLineChartContainer {
   position: relative;
   height: 60vh;
