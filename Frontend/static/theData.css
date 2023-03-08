@@ -144,6 +144,8 @@ div.numericalResultContainer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 13px;
+  margin-right: 13px;
 }
 
 div.energyLineChartContainer {
