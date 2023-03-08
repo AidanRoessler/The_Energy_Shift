@@ -73,8 +73,7 @@ nav li {
 }
 
 .currentPage {
-  border: 100px;
-  border-color: #323954;
+  border: 100px #323954;
 }
 
 nav li a {
