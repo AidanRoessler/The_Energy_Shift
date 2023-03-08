@@ -32,6 +32,7 @@ def theData():
     '''
     energy = EnergyProductionAPI()
     selectedState = None
+    selectedStateFullName = None
     totalEnergy = None
     totalRenewableEnergy = None
     totalEnergyByMonth = None
@@ -49,13 +50,14 @@ def theData():
         totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
         totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
         totalEnergyByCategory = energy.getEnergyByCategoryForState(selectedState)
+        selectedStateFullName = energy.convertAbbreviationToFullState(selectedState)
 
         categories = list(totalEnergyByCategory.keys())
         categoryValue = list(totalEnergyByCategory.values())
-        
     
     return render_template('theData.html', selectedState = selectedState, totalEnergy = totalEnergy, 
-    totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth, categories = categories, categoryValue = categoryValue)
+    totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth, 
+    categories = categories, categoryValue = categoryValue, selectedStateFullName = selectedStateFullName)
 
 @app.route('/aboutTheData')
 def aboutTheData():

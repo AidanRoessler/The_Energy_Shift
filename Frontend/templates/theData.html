@@ -214,18 +214,18 @@
             /* A line chart generated with the Chart.js package */
 
             //dictionary of state abbreviations to full state names
-            let abbreviation_to_state_dictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
-                                                'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
-                                                'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
-                                                'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
-                                                'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
-                                                'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
-                                                'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New_Hampshire', 'NJ': 'New_Jersey',
-                                                'NM': 'New_Mexico', 'NY': 'New_York', 'NC': 'North_Carolina', 'ND': 'North_Dakota',
-                                                'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
-                                                'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
-                                                'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
-                                                'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'};
+            // let abbreviation_to_state_dictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
+            //                                     'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
+            //                                     'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
+            //                                     'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
+            //                                     'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
+            //                                     'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
+            //                                     'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New_Hampshire', 'NJ': 'New_Jersey',
+            //                                     'NM': 'New_Mexico', 'NY': 'New_York', 'NC': 'North_Carolina', 'ND': 'North_Dakota',
+            //                                     'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+            //                                     'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
+            //                                     'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
+            //                                     'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'};
             
 
             //Insert the line chart into the HTML at one of the canvas tags
@@ -249,7 +249,9 @@
             ];
 
             //Data for charts
-            let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
+            // let selectedState = abbreviation_to_state_dictionary[selectElement.options[selectElement.selectedIndex].value];
+
+            let stateFullName = {{ selectedStateFullName }};
 
             let energyLineChartData = {{ totalEnergyByMonth|tojson }};
 
@@ -270,7 +272,7 @@
                     data: {
                         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                         datasets: [{
-                            label: 'Total Energy Production for '+ selectedState + ' in 2021 (thousand megawatt hours)',
+                            label: 'Total Energy Production for '+ {{ selectedStateFullName }} + ' in 2021 (thousand megawatt hours)',
                             data: energyLineChartData,
                             borderWidth: 5,
                             backgroundColor: "#ea5147",
