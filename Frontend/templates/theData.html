@@ -287,7 +287,7 @@
                             }
                         }
                     },
-                    plugins:{
+                    plugins: {
                         legend: {
                             position: "bottom",
                             display: false
@@ -296,6 +296,7 @@
                 }
             });
 
+            // Pie chart for the results of the getEnergyByCategoryForState() function
             let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
                 type: 'doughnut',
                 //Defines the data and the data labels to be used in the pie chart
@@ -307,17 +308,17 @@
                     }]
                 }
                 ,
-                    options:{
-                        plugins:{
+                options: {
+                    plugins: {
                         tooltip: {
-                          callbacks: {
-                            label: (context) => {
-                                return 100*context.parsed/sum + '%';
+                            callbacks: {
+                                label: (context) => {
+                                    return Math.floor(100 * context.parsed / sum) + '%';
+                                }
                             }
-                          }
                         }
-                      }
                     }
+                }
 
             });
 
