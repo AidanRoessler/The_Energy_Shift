@@ -1,3 +1,5 @@
+/* Custom styling for the home page */
+
 /* Custom styling for the div that wraps all of the content on this page */
 div.content {
   display: flex;
@@ -149,7 +151,7 @@ div.numericalResultContainer {
   margin-right: 13px;
 }
 
-div.chartTitleText{
+div.chartTitleText {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

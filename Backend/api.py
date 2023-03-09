@@ -65,6 +65,7 @@ class EnergyProductionAPI:
 
             # If the state has valid input, run the function
             if correctedStateAbbreviation in self.abbreviationToStateDictionary:
+                
                 # Turn abbreviation into valid full name of state here:
                 fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 

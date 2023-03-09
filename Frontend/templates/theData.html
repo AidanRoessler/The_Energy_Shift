@@ -209,7 +209,7 @@
                 </div>
             </div>
 
-            <!-- Line chart for the results from getTotalEnergyForStateByMonth() generated with the Chart.js package -->
+            <!-- line chart for the results from getTotalEnergyForStateByMonth() generated with the Chart.js package -->
             <div class="chartTitleText">
                 <h2>Total Energy Production</h2>
             </div>
@@ -217,7 +217,7 @@
                 <canvas id="energyLineChartCanvas"></canvas>
             </div>
 
-            <!-- Line chart for the results from getEnergyByCategoryForState() generated with the Chart.js package -->
+            <!-- line chart for the results from getEnergyByCategoryForState() generated with the Chart.js package -->
             <div class="chartTitleText">
                 <h2>Categories of Renewable Energy Production</h2>
             </div>
@@ -227,11 +227,11 @@
         </div>
 
         <script>
-            //Insert the line and pie chart into the HTML in the canvas tags
+            // insert the line and pie chart into the HTML in the canvas tags
             let energyLineChartCanvas = document.getElementById("energyLineChartCanvas");
             let renewableEnergyPieChartCanvas = document.getElementById("renewableEnergyPieChartCanvas");
 
-            //Data for charts
+            // data for charts
             let energyLineChartData = {{ totalEnergyByMonth| tojson }};
 
             let renewableEnergyPieChartLabels = {{ categories| tojson }};
@@ -239,14 +239,14 @@
             let numberOfLabels = renewableEnergyPieChartLabels.length;
             let totalEnergyRepresentedInPieChart = {{ totalRenewableEnergy| tojson }}
 
-            //Get the full state name to use in chart titles
+            // get the full state name to use in chart titles
             let selectedStateFullNameForCharts = {{ selectedStateFullName| tojson }};
 
-            //Font styling for charts
+            // font styling for charts
             Chart.defaults.font.size = 21;
             Chart.defaults.font.family = "Montserrat";
 
-            //Colors for the sections of the pie chart
+            // colors for the sections of the pie chart
             const colors = [
                 '#EA5147',
                 '#D04573',
@@ -260,10 +260,10 @@
                 '#039590'
             ];
 
-            //Line chart for the results of the getRenewableEnergyForState() function
+            // line chart for the results of the getRenewableEnergyForState() function
             let energyLineChart = new Chart(energyLineChartCanvas, {
                 type: 'line',
-                //Defines the data and the data labels to be used in the line chart
+                // defines the data and the data labels to be used in the line chart
                 data: {
                     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                     datasets: [{
@@ -293,10 +293,10 @@
                 }
             });
 
-            // Pie chart for the results of the getEnergyByCategoryForState() function
+            // pie chart for the results of the getEnergyByCategoryForState() function
             let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
                 type: 'doughnut',
-                //Defines the data and the data labels to be used in the pie chart
+                // defines the data and the data labels to be used in the pie chart
                 data: {
                     labels: renewableEnergyPieChartLabels,
                     datasets: [{
@@ -310,7 +310,7 @@
                         tooltip: {
                             callbacks: {
                                 label: (context) => {
-                                    return Math.round(100 * context.parsed / totalEnergyRepresentedInPieChart) + '%';
+                                    return Math.round(10000 * context.parsed / totalEnergyRepresentedInPieChart)*100 + '%';
                                 }
                             }
                         }

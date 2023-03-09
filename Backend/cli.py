@@ -5,14 +5,16 @@ from api import *
 
 energy = EnergyProductionAPI()
 
-# The command line program should allow the user to keep selecting functions until they decide to quit.
-# what data will be expected by each function, in what format, etc. It should also demonstrate what data the function calls will return (and in what format).
+'''
+The command line program should allow the user to keep selecting functions until they decide to quit.
+what data will be expected by each function, in what format, etc. It should also demonstrate what data the function calls will return (and in what format).
+'''
 functionNames = ["(1) getEnergyForState : \n     Sums all electricity generation by all catagories in a given state",
                  "(2) getTotalRenewableEnergyByState : \n     Sums and returns the total amount of renewable energy throughout the year for a given state",
                  "(3) getTotalEnergyForStateByMonth : \n     Retrieves monthly total electricity generation throughout the year for a given state",
                  "(4) getEnergyByCategoryForState : \n     Returns the total renewable energy by category of renewable energy for a specified state"]
 
-# display a list of possible functions and how to properly call them
+# displays a list of possible functions and how to properly call them
 while (1):
     print("*Note: all numerical return values for energy production will be floats in thousand megawatt hours*\nPlease enter one of the following numbers corresponding to a function name: \n ---")
     for function in functionNames:

@@ -1,14 +1,13 @@
 import unittest
 import api
 
+
 class APITester(unittest.TestCase):
     '''
     A suite of tests for the EnergyProductionAPI classes' methods
     Please note, your current working directory must be the Backend folder for all tests to work
     because otherwise api will not be imported 
     '''
-
-    # A note on asserting exceptions: instead of asserting if equal, it would pass the test when it raises a certain exception.
 
     def setUp(self):
         '''
@@ -62,7 +61,8 @@ class APITester(unittest.TestCase):
         '''
         result = self.energyTest.getTotalEnergyForStateByMonth("Al")
 
-        self.assertEqual(result, [12574.68, 11267.83, 10343.43, 8972.6, 11274.04, 12255.95, 13545.99, 13862.05, 12089.57, 11731.84, 12408.92, 12406.44])
+        self.assertEqual(result, [12574.68, 11267.83, 10343.43, 8972.6, 11274.04,
+                         12255.95, 13545.99, 13862.05, 12089.57, 11731.84, 12408.92, 12406.44])
 
     def test_invalidState_getTotalEnergyForStateByMonth(self):
         '''
@@ -94,4 +94,4 @@ class APITester(unittest.TestCase):
 
 
 if __name__ == '__main__':
-        unittest.main()
+    unittest.main()

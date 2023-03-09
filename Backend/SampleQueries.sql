@@ -1,3 +1,5 @@
+/*Sample queries for all functions in the API */
+
 /* Replaces getEnergyForState() function in the API
 
 Sums all electricity generation by all catagories in a given state
@@ -81,6 +83,6 @@ FROM colorado
 WHERE categoryofproduction != 'All fuels';
 
 /* Alternative query that accomplishes the same thing (because a 'total' column is included) 
-   Condensd onto one line for simplicity of string input */
+   Condensed onto one line for simplicity of string input */
 
 SELECT categoryofproduction, total FROM colorado WHERE categoryofproduction != 'All fuels';
