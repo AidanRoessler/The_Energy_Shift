@@ -213,21 +213,20 @@ class EnergyProductionAPI:
 
     def getEnergyByCategoryForState(self, stateAbbreviation):
         """
-        Returns the total energy by category of energy for a specified state 
+            Returns the total energy by category of energy for a specified state 
 
-        Retrieves columns in the current working dataset pertaining to the categories of renewable
-        energy production for a specified state and sums up all of the values of the categories for
-        each month's record and returns this data as a object where the keys are the category of 
-        renewable energy production and the values are the summed value that was calculated
+            Retrieves columns in the current working dataset pertaining to the categories of renewable
+            energy production for a specified state and sums up all of the values of the categories for
+            each month's record and returns this data as a object where the keys are the category of 
+            renewable energy production and the values are the summed value that was calculated
 
-        Arguments:
-            state: a string indicating a specified state (abbreviations like MN won't work)
+            Arguments:
+                state: a string indicating an abbreviation of a state
 
-        Returns:
-            an object where the keys are the category of renewable energy production and the values
-            are the total energy produced in that category in the specified state across all months
-            of the year
-
+            Returns:
+                a dictionary where the keys are the category of renewable energy production and the values
+                are the total energy produced in that category in the specified state across all months
+                of the year
         """
 
         try:
