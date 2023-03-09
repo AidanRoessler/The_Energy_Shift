@@ -309,10 +309,20 @@
                 data: {
                     labels: renewableEnergyPieChartLabels,
                     datasets: [{
-                        labels: percentage,
                         data: renewableEnergyPieChartData,
                         backgroundColor: colors.slice(0, numberOfLabels)
-                    }]
+                    }],
+                    options:{
+                        plugins:{
+                            tooltip: {
+                              callbacks: {
+                                label: (context) => {
+                                    return context.label + ':' + context.parsed/sum;
+                                }
+                              }
+                            }
+                          }
+                    }
 
                 }
             });

@@ -39,17 +39,18 @@ class EnergyProductionAPI:
     """
 
     def getEnergyForState(self, stateAbbreviation):
-        """Sums all electricity generation by all catagories in a given state
+        """
+            Sums all electricity generation by all catagories in a given state
 
-        Retrieves columns in the current working dataset pertaining to each category of electricity 
-        generation for a single state, sums the values in these columns and returns that number
+            Retrieves columns in the current working dataset pertaining to each category of electricity 
+            generation for a single state, sums the values in these columns and returns that number
 
-        Args:
-            state: a string indicating an abbreviation of a specified state
+            Args:
+                state: a string indicating an abbreviation of a specified state
 
-        Returns:
-            returns a float indicating the sum of the total electricity generation for the
-            provided state     
+            Returns:
+                returns a float indicating the sum of the total electricity generation for the
+                provided state     
         """
 
         # Try to run the function as normal
@@ -154,18 +155,17 @@ class EnergyProductionAPI:
     # TODO: ASAP discuss whether or not this is meant to be renewable energy graph and make appropriate changes
 
     def getTotalEnergyForStateByMonth(self, stateAbbreviation):
-        """Retrieves monthly total electricity generation throughout the year for a given state
+        """
+            Retrieves monthly total electricity generation throughout the year for a given state
 
-        Retrieves each individual column in the row labeled 'All fuels', returning those numbers in a sequential
-        list of floats.
+            Retrieves each individual column in the row labeled 'All fuels', returning those numbers in a sequential
+            list of floats.
 
-        Args:
-            state: a string indicating one of the 50 states in America
-        Returns:
-            returns a dictionary where the keys indicate the month while the values are floats indicating the sum of 
-            the total electricity generation for each month in the year for the given state. 
-            Note: the list will be in sequential order (Jan, Feb, ... Dec)
-
+            Args:
+                state: a string indicating one of the 50 states in America
+            Returns:
+                returns a list where each element indicates the sum of the total electricity generation of a respective 
+                month in the year for the given state. Note: the list will be in sequential order (Jan, Feb, ... Dec)
         """
         try:
             correctedStateAbbreviation = ''
