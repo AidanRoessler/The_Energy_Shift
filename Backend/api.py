@@ -1,12 +1,12 @@
-'''
-A class with methods that execute queries to retrieve data from our database
-'''
-
 import psycopg2
 from psycopg2 import sql
 import psqlConfig
 
+
 class EnergyProductionAPI:
+    '''
+    A class with methods that execute SQL queries to retrieve data from our Postgresql database
+    '''
 
     def __init__(self):
         '''
@@ -71,7 +71,7 @@ class EnergyProductionAPI:
                 # Build the query string and execute the query
                 # sqlTableToInsert = fullStateName
                 queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
-                
+
                 self.cursor.execute(queryString)
 
                 stateEnergySumList = self.cursor.fetchall()
@@ -88,7 +88,7 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state and printing out the exception
         except Exception as e:
             raise Exception('Fatal error', e)
-    
+
     '''
     Equivalence Classes:
         -Valid state (as a string):
@@ -266,7 +266,6 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state and printing out the exception
         except Exception as e:
             raise Exception('Fatal error', e)
-
 
     '''
     This helper function takes in a state abbreviation as a string and returns the corresponding full state name
