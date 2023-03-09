@@ -1,7 +1,5 @@
-<html lang="en"> <!-- all pages start and end with this tag -->
-<!-- Header information: links to external scripts and style files, other metadata about the page. -->
-
-<head>
+<html lang="en">
+    <!-- contains the title of the page, imports font(s), and imports style sheet(s) -->
     <title>The Energy Shift</title>
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Work+Sans:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -9,7 +7,6 @@
     <link type="text/css" href="{{ url_for('static', filename='theData.css') }}" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<!-- The body consists of the visible parts of the web page. -->
 
 <body>
     <!-- the title of our project -->
@@ -17,7 +14,7 @@
         <h1>The Energy Shift</h1>
     </div>
 
-    <!-- The Nav bar -->
+    <!-- this class contains the navigation bar with links to our other pages. -->
     <div class="navcontainer">
         <nav>
             <ul>
@@ -28,9 +25,9 @@
         </nav>
     </div>
 
+    <!-- this class contains the dropdown menu with each of the fifty states -->
     <div class="content">
         <form method="POST" name="statesForm">
-            <!-- The options bar of states -->
             <div class="formcontent">
                 <label for="states">Choose a state</label>
                 <br>
@@ -186,11 +183,12 @@
                         Wyoming
                     </option>
                 </select>
+                <!-- POSTs the chosen state for the webapp -->
                 <input type="submit" value="Go">
             </div>
 
         </form>
-        <!-- The result according to the selected option -->
+        <!-- The results according to the selected option -->
         {% if selectedState != None %}
         <div class="resultsContainer">
             <div class="numericalResultsRowContainer">
@@ -207,7 +205,7 @@
                 </div>
             </div>
 
-            <!-- Line chart for the results from getRenewableEnergyForState() generated with the Chart.js package -->
+            <!-- Line chart for the results from getTotalEnergyForStateByMonth() generated with the Chart.js package -->
             <div class="chartTitleText">
                 <h2>Total Energy Production</h2>
             </div>
@@ -215,6 +213,7 @@
                 <canvas id="energyLineChartCanvas"></canvas>
             </div>
 
+            <!-- Line chart for the results from getEnergyByCategoryForState() generated with the Chart.js package -->
             <div class="chartTitleText">
                 <h2>Categories of Renewable Energy Production</h2>
             </div>
@@ -224,7 +223,7 @@
         </div>
 
         <script>
-            //Insert the line chart into the HTML at one of the canvas tags
+            //Insert the line and pie chart into the HTML in the canvas tags
             let energyLineChartCanvas = document.getElementById("energyLineChartCanvas");
             let renewableEnergyPieChartCanvas = document.getElementById("renewableEnergyPieChartCanvas");
 
@@ -234,6 +233,7 @@
             let renewableEnergyPieChartLabels = {{ categories| tojson }};
             let renewableEnergyPieChartData = {{ categoryValue| tojson }};
             let numberOfLabels = renewableEnergyPieChartLabels.length;
+            let totalEnergyRepresentedInPieChart = {{ totalRenewableEnergy| tojson }}
 
             //Get the full state name to use in chart titles
             let selectedStateFullNameForCharts = {{ selectedStateFullName| tojson }};
@@ -256,11 +256,11 @@
                 '#039590'
             ];
 
-            //The sum of the number
-            var sum = 0;
-            for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
-                sum += renewableEnergyPieChartData[i];
-            }
+            // //Get the sum
+            // var sum = 0;
+            // for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
+            //     sum += renewableEnergyPieChartData[i];
+            // }
 
 
             //Line chart for the results of the getRenewableEnergyForState() function
@@ -313,7 +313,7 @@
                         tooltip: {
                             callbacks: {
                                 label: (context) => {
-                                    return Math.round(100 * context.parsed / sum) + '%';
+                                    return Math.round(100 * context.parsed / totalEnergyRepresentedInPieChart) + '%';
                                 }
                             }
                         }

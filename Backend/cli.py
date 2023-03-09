@@ -1,7 +1,5 @@
 '''
-Imports functions from api.py,
-Written by: Liam Keane, Aidan Roessler, Rachel Tan
-
+Imports functions from api.py and allows the user to run them on the command line
 '''
 from api import *
 
@@ -25,6 +23,7 @@ while (1):
 
     # scan user's inputs
     userInput = input()
+    
     # if input is valid, call the specified function
     if userInput in ['1', '2', '3', '4']:
         # conditional ladder where each corresponds to a respective function call

@@ -1,3 +1,6 @@
+'''
+Flask code to render all of our html templates with data retrieved from the backend
+'''
 
 import flask
 from flask import render_template, request
@@ -44,7 +47,7 @@ def theData():
     if request.method == 'POST':
         selectedState = request.form["statesSelect"]
 
-        #Call the api with the data retrieved
+        #Call the api to retrieve data for the chosen state
         totalEnergy = energy.getEnergyForState(selectedState)
         totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
         totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
@@ -55,9 +58,9 @@ def theData():
         categories = list(totalEnergyByCategory.keys())
         categoryValue = list(totalEnergyByCategory.values())
     
-    return render_template('theData.html', selectedState = selectedState, totalEnergy = totalEnergy, 
-    totalRenewableEnergy = totalRenewableEnergy, totalEnergyByMonth = totalEnergyByMonth, 
-    categories = categories, categoryValue = categoryValue, selectedStateFullName = selectedStateFullName)
+    return render_template('theData.html', selectedState=selectedState, totalEnergy=totalEnergy,
+                           totalRenewableEnergy=totalRenewableEnergy, totalEnergyByMonth=totalEnergyByMonth,
+                           categories=categories, categoryValue=categoryValue, selectedStateFullName=selectedStateFullName)
 
 
 @app.route('/aboutTheData')

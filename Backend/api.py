@@ -1,7 +1,10 @@
+'''
+A class with methods that execute queries to retrieve data from our database
+'''
+
 import psycopg2
 from psycopg2 import sql
 import psqlConfig
-
 
 class EnergyProductionAPI:
 
@@ -153,7 +156,6 @@ class EnergyProductionAPI:
         -A string that is not a state
             -Input: 'Montreal' or '12'
     '''
-    # TODO: ASAP discuss whether or not this is meant to be renewable energy graph and make appropriate changes
 
     def getTotalEnergyForStateByMonth(self, stateAbbreviation):
         '''
@@ -270,7 +272,6 @@ class EnergyProductionAPI:
     This helper function takes in a state abbreviation as a string and returns the corresponding full state name
     '''
     def convertAbbreviationToFullState(self, stateAbbreviation):
-
         return self.abbreviationToStateDictionary[stateAbbreviation]
 
 
