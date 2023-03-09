@@ -310,7 +310,7 @@
                         tooltip: {
                             callbacks: {
                                 label: (context) => {
-                                    return Math.round(10000 * context.parsed / totalEnergyRepresentedInPieChart)*100 + '%';
+                                    return Math.round(10000 * context.parsed / totalEnergyRepresentedInPieChart)/100 + '%';
                                 }
                             }
                         }
