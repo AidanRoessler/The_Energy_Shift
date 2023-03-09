@@ -262,13 +262,6 @@
                 sum += renewableEnergyPieChartData[i];
             }
 
-            //The percentage of the number
-            var percentage = [];
-            for (var i = 0; i < renewableEnergyPieChartData.length; i++) {
-                percentage.push(renewableEnergyPieChartLabels[i] + 100*renewableEnergyPieChartData[i]/sum + '%');
-            }
-
-
 
             //Line chart for the results of the getRenewableEnergyForState() function
             let energyLineChart = new Chart(energyLineChartCanvas, {
@@ -319,7 +312,7 @@
                         tooltip: {
                           callbacks: {
                             label: (context) => {
-                                return 2;
+                                return 100*context.parsed/sum + '%';
                             }
                           }
                         }
