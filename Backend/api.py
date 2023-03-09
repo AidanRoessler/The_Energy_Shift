@@ -28,7 +28,7 @@ class EnergyProductionAPI:
                                               'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
                                               'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
 
-    """
+    '''
     Equivalence Classes:
         -Valid state (as a string):
             -Input: "WI" or "wi" or "Wi" or even "wI"
@@ -36,10 +36,10 @@ class EnergyProductionAPI:
         -A not valid state (either as a string or another data-types)
             -Input: 'Wisconsin' or 56 or 'Test' or True or 'Bilbo Baggins'
             
-    """
+    '''
 
     def getEnergyForState(self, stateAbbreviation):
-        """
+        '''
             Sums all electricity generation by all catagories in a given state
 
             Retrieves columns in the current working dataset pertaining to each category of electricity 
@@ -51,7 +51,7 @@ class EnergyProductionAPI:
             Returns:
                 returns a float indicating the sum of the total electricity generation for the
                 provided state     
-        """
+        '''
 
         # Try to run the function as normal
         try:
@@ -85,7 +85,8 @@ class EnergyProductionAPI:
         # Handle an exception by telling the user to enter a valid state and printing out the exception
         except Exception as e:
             raise Exception('Fatal error', e)
-    """
+    
+    '''
     Equivalence Classes:
         -Valid state (as a string):
             -Input: "WI" or "wi" or "Wi" or even "wI"
@@ -93,7 +94,7 @@ class EnergyProductionAPI:
         -A not valid state (either as a string or another data-types)
             -Input: 'Wisconsin' or 56 or 'Test' or True or 'Bilbo Baggins' 
     
-    """
+    '''
 
     def getTotalRenewableEnergyByState(self, stateAbbreviation):
         '''
@@ -144,18 +145,18 @@ class EnergyProductionAPI:
         except Exception as e:
             raise Exception('Fatal error', e)
 
-    """
+    '''
     Equivalence Classes:
         -A valid state (only in America)
             -Input: "WI" or "wi" or "Wi" or even "wI"
         
         -A string that is not a state
             -Input: 'Montreal' or '12'
-    """
+    '''
     # TODO: ASAP discuss whether or not this is meant to be renewable energy graph and make appropriate changes
 
     def getTotalEnergyForStateByMonth(self, stateAbbreviation):
-        """
+        '''
             Retrieves monthly total electricity generation throughout the year for a given state
 
             Retrieves each individual column in the row labeled 'All fuels', returning those numbers in a sequential
@@ -166,7 +167,7 @@ class EnergyProductionAPI:
             Returns:
                 returns a list where each element indicates the sum of the total electricity generation of a respective 
                 month in the year for the given state. Note: the list will be in sequential order (Jan, Feb, ... Dec)
-        """
+        '''
         try:
             correctedStateAbbreviation = ''
             # check if the input is a string
@@ -202,17 +203,17 @@ class EnergyProductionAPI:
         except Exception as e:
             raise Exception('Fatal error', e)
 
-    """
+    '''
     Equivalence Classes:
         -A valid state (only in America)
             -Input: "WI" or "wi" or "Wi" or even "wI"
         
         -A string that is not a state
             -Input: 'Montreal' or '12'
-    """
+    '''
 
     def getEnergyByCategoryForState(self, stateAbbreviation):
-        """
+        '''
             Returns the total energy by category of energy for a specified state 
 
             Retrieves columns in the current working dataset pertaining to the categories of renewable
@@ -227,7 +228,7 @@ class EnergyProductionAPI:
                 a dictionary where the keys are the category of renewable energy production and the values
                 are the total energy produced in that category in the specified state across all months
                 of the year
-        """
+        '''
 
         try:
             correctedStateAbbreviation = ''
@@ -247,8 +248,8 @@ class EnergyProductionAPI:
 
                 listOfSumsForCategories = self.cursor.fetchall()
 
-                """Creates a dictionary from the result of the query and where the keys are months 
-                and the values are the total amount of renewable energy produced in that month"""
+                '''Creates a dictionary from the result of the query and where the keys are months 
+                and the values are the total amount of renewable energy produced in that month'''
                 dictOfSumsForCategories = {}
 
                 for category in listOfSumsForCategories:
@@ -264,10 +265,10 @@ class EnergyProductionAPI:
         except Exception as e:
             raise Exception('Fatal error', e)
 
-    """
-    This helper function takes in a state abbreviation as a string and returns the corresponding full state name
-    """
 
+    '''
+    This helper function takes in a state abbreviation as a string and returns the corresponding full state name
+    '''
     def convertAbbreviationToFullState(self, stateAbbreviation):
 
         return self.abbreviationToStateDictionary[stateAbbreviation]

@@ -313,7 +313,7 @@
                         tooltip: {
                             callbacks: {
                                 label: (context) => {
-                                    return Math.floor(100 * context.parsed / sum) + '%';
+                                    return Math.round(100 * context.parsed / sum) + '%';
                                 }
                             }
                         }
