@@ -18,18 +18,18 @@ class EnergyProductionAPI:
 
         self.cursor = self.conn.cursor()
 
-        self.abbreviationToStateDictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
-                                              'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
-                                              'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
-                                              'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
-                                              'ME': 'Maine', 'MD': 'Maryland', 'MA': 'Massachusetts', 'MI': 'Michigan',
-                                              'MN': 'Minnesota', 'MS': 'Mississippi', 'MO': 'Missouri', 'MT': 'Montana',
-                                              'NE': 'Nebraska', 'NV': 'Nevada', 'NH': 'New_Hampshire', 'NJ': 'New_Jersey',
-                                              'NM': 'New_Mexico', 'NY': 'New_York', 'NC': 'North_Carolina', 'ND': 'North_Dakota',
-                                              'OH': 'Ohio', 'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
-                                              'RI': 'Rhode_Island', 'SC': 'South_Carolina', 'SD': 'South_Dakota', 'TN': 'Tennessee',
-                                              'TX': 'Texas', 'UT': 'Utah', 'VT': 'Vermont', 'VA': 'Virginia', 'WA': 'Washington',
-                                              'WV': 'West_Virginia', 'WI': 'Wisconsin', 'WY': 'Wyoming'}
+        self.abbreviationToStateDictionary = {'AL': 'alabama', 'AK': 'alaska', 'AZ': 'arizona', 'AR': 'arkansas',
+                                              'CA': 'california', 'CO': 'colorado', 'CT': 'connecticut', 'DE': 'delaware',
+                                              'FL': 'florida', 'GA': 'georgia', 'HI': 'hawaii', 'ID': 'idaho', 'IL': 'illinois',
+                                              'IN': 'indiana', 'IA': 'iowa', 'KS': 'kansas', 'KY': 'kentucky', 'LA': 'louisiana',
+                                              'ME': 'maine', 'MD': 'maryland', 'MA': 'massachusetts', 'MI': 'michigan',
+                                              'MN': 'minnesota', 'MS': 'mississippi', 'MO': 'missouri', 'MT': 'montana',
+                                              'NE': 'nebraska', 'NV': 'nevada', 'NH': 'new_hampshire', 'NJ': 'new_jersey',
+                                              'NM': 'new_mexico', 'NY': 'new_York', 'NC': 'north_carolina', 'ND': 'north_dakota',
+                                              'OH': 'ohio', 'OK': 'oklahoma', 'OR': 'oregon', 'PA': 'pennsylvania',
+                                              'RI': 'rhode_island', 'SC': 'south_carolina', 'SD': 'south_dakota', 'TN': 'tennessee',
+                                              'TX': 'texas', 'UT': 'utah', 'VT': 'vermont', 'VA': 'virginia', 'WA': 'washington',
+                                              'WV': 'west_virginia', 'WI': 'wisconsin', 'WY': 'wyoming'}
 
     '''
     Equivalence Classes:
@@ -73,11 +73,11 @@ class EnergyProductionAPI:
 
                 # Build the query string and execute the query
                 # sqlTableToInsert = fullStateName
-                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                # queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute(queryString)
+                # self.cursor.execute(queryString)
                 
-                # self.cursor.execute(sql.SQL("SELECT total FROM {} WHERE categoryofproduction = 'All fuels';").format(sql.Identifier(fullStateName)))
+                self.cursor.execute(sql.SQL("SELECT total FROM {} WHERE categoryofproduction = 'All fuels';").format(sql.Identifier(fullStateName)))
 
                 stateEnergySumList = self.cursor.fetchall()
 
@@ -134,9 +134,12 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
                 # Build the query string and execute the query
-                queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels'"
+                # queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels'"
 
-                self.cursor.execute(queryStr)
+                # self.cursor.execute(queryStr)
+
+                self.cursor.execute(sql.SQL("SELECT SUM(total) FROM {} WHERE categoryofproduction <> 'All fuels'").format(sql.Identifier(fullStateName)))
+
 
                 renewableEnergySumList = self.cursor.fetchall()
 
@@ -187,9 +190,12 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
                 # builds the query string and execute the query
-                queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels'"
+                # queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels'"
 
-                self.cursor.execute(queryStr)
+                # self.cursor.execute(queryStr)
+
+                self.cursor.execute(sql.SQL("SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {} WHERE categoryofproduction = 'All fuels'").format(sql.Identifier(fullStateName)))
+
 
                 listOfSumsForMonths = self.cursor.fetchall()
 
@@ -249,9 +255,11 @@ class EnergyProductionAPI:
                 fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
                 # Builds the query string and executes it
-                queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels'"
+                # queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels'"
 
-                self.cursor.execute(queryStr)
+                # self.cursor.execute(queryStr)
+
+                self.cursor.execute(sql.SQL("SELECT categoryofproduction, total FROM {} WHERE categoryofproduction != 'All fuels'").format(sql.Identifier(fullStateName)))
 
                 listOfSumsForCategories = self.cursor.fetchall()
 
