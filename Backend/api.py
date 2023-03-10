@@ -18,7 +18,7 @@ class EnergyProductionAPI:
 
         self.cursor = self.conn.cursor()
 
-        self.abbreviationToStateDictionary = {'AL': 'alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
+        self.abbreviationToStateDictionary = {'AL': 'Alabama', 'AK': 'Alaska', 'AZ': 'Arizona', 'AR': 'Arkansas',
                                               'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
                                               'FL': 'Florida', 'GA': 'Georgia', 'HI': 'Hawaii', 'ID': 'Idaho', 'IL': 'Illinois',
                                               'IN': 'Indiana', 'IA': 'Iowa', 'KS': 'Kansas', 'KY': 'Kentucky', 'LA': 'Louisiana',
@@ -73,11 +73,11 @@ class EnergyProductionAPI:
 
                 # Build the query string and execute the query
                 # sqlTableToInsert = fullStateName
-                # queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                # self.cursor.execute(queryString)
+                self.cursor.execute(queryString)
                 
-                self.cursor.execute(sql.SQL("SELECT total FROM {} WHERE categoryofproduction = 'All fuels';").format(sql.Identifier(fullStateName)))
+                # self.cursor.execute(sql.SQL("SELECT total FROM {} WHERE categoryofproduction = 'All fuels';").format(sql.Identifier(fullStateName)))
 
                 stateEnergySumList = self.cursor.fetchall()
 
