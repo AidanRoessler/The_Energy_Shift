@@ -36,7 +36,7 @@ def calculatePercentage(selectedState):
     totalEnergy = energy.getEnergyForState(selectedState)
     totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
 
-    return (totalRenewableEnergy/totalEnergy)*100
+    return round(totalRenewableEnergy/totalEnergy*10000)/100
 
 @app.route('/theData', methods=['POST', 'GET'])
 def theData():
