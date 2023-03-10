@@ -79,14 +79,10 @@ def theData():
 
         # Call the api to retrieve data for the chosen state
         totalEnergy = energy.getEnergyForState(selectedState)
-        totalRenewableEnergy = energy.getTotalRenewableEnergyByState(
-            selectedState)
-        totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(
-            selectedState)
-        totalEnergyByCategory = energy.getEnergyByCategoryForState(
-            selectedState)
-        selectedStateFullName = energy.convertAbbreviationToFullState(
-            selectedState)
+        totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
+        totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
+        totalEnergyByCategory = energy.getEnergyByCategoryForState(selectedState)
+        selectedStateFullName = energy.convertAbbreviationToFullState(selectedState)
 
         # Parse the dictionary totalEnergyByCategory returns
         categories = extractKeys(totalEnergyByCategory)
