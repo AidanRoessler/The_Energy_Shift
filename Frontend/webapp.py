@@ -2,11 +2,11 @@
 Flask code to render all of our html templates with data retrieved from the backend
 '''
 
+from api import EnergyProductionAPI
 import flask
 from flask import render_template, request
 import sys
 sys.path.append('../Backend/')
-from api import EnergyProductionAPI
 
 # invokes Flask (creates an instance)
 app = flask.Flask(__name__)
@@ -24,6 +24,19 @@ def home():
     return render_template('home.html')
 
 
+def calculatePercentage(selectedState):
+    '''
+    This helper method calculates the percentage of total energy that comes from renewable sources for
+    the user's selected state. It is called in theData() function
+    '''
+
+    energy = EnergyProductionAPI()
+
+    totalEnergy = energy.getEnergyForState(selectedState)
+    totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
+
+    return (totalRenewableEnergy/totalEnergy)*100
+
 @app.route('/theData', methods=['POST', 'GET'])
 def theData():
     '''
@@ -33,7 +46,7 @@ def theData():
 
     energy = EnergyProductionAPI()
 
-    #Initialize all relevant variables as none so flask knows not to render the results portion of the page
+    # Initialize all relevant variables as none so flask knows not to render the results portion of the page
     selectedState = None
     selectedStateFullName = None
     totalEnergy = None
@@ -42,25 +55,34 @@ def theData():
     totalEnergyByCategory = None
     categories = None
     categoryValue = None
-    
-    #Getting data from form
+    percentageRenewableEnergy = None
+
+    # Getting data from form
     if request.method == 'POST':
         selectedState = request.form["statesSelect"]
 
-        #Call the api to retrieve data for the chosen state
+        # Call the api to retrieve data for the chosen state
         totalEnergy = energy.getEnergyForState(selectedState)
-        totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
-        totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(selectedState)
-        totalEnergyByCategory = energy.getEnergyByCategoryForState(selectedState)
-        selectedStateFullName = energy.convertAbbreviationToFullState(selectedState)
+        totalRenewableEnergy = energy.getTotalRenewableEnergyByState(
+            selectedState)
+        totalEnergyByMonth = energy.getTotalEnergyForStateByMonth(
+            selectedState)
+        totalEnergyByCategory = energy.getEnergyByCategoryForState(
+            selectedState)
+        selectedStateFullName = energy.convertAbbreviationToFullState(
+            selectedState)
 
-        #Parse the dictionary totalEnergyByCategory returns
+        # Parse the dictionary totalEnergyByCategory returns
         categories = list(totalEnergyByCategory.keys())
         categoryValue = list(totalEnergyByCategory.values())
-    
+
+        # Calculate the percentage of the states energy that is renewable
+        percentageRenewableEnergy = calculatePercentage(selectedState)
+
     return render_template('theData.html', selectedState=selectedState, totalEnergy=totalEnergy,
                            totalRenewableEnergy=totalRenewableEnergy, totalEnergyByMonth=totalEnergyByMonth,
-                           categories=categories, categoryValue=categoryValue, selectedStateFullName=selectedStateFullName)
+                           categories=categories, categoryValue=categoryValue, selectedStateFullName=selectedStateFullName, 
+                           percentageRenewableEnergy=percentageRenewableEnergy)
 
 
 @app.route('/aboutTheData')
