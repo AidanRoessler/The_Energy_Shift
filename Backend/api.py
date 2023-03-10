@@ -67,16 +67,9 @@ class EnergyProductionAPI:
             if correctedStateAbbreviation in self.abbreviationToStateDictionary:
 
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
+                fullStateName = self.convertAbbreviationToFullState(stateAbbreviation)
 
-                
-
-                # Build the query string and execute the query
-                # sqlTableToInsert = fullStateName
-                # queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
-
-                # self.cursor.execute(queryString)
-                
+                # Build the query parameterized query string and execute the query                
                 self.cursor.execute(sql.SQL("SELECT total FROM {} WHERE categoryofproduction = 'All fuels';").format(sql.Identifier(fullStateName)))
 
                 stateEnergySumList = self.cursor.fetchall()
@@ -131,15 +124,10 @@ class EnergyProductionAPI:
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviationToStateDictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
+                fullStateName = self.convertAbbreviationToFullState(stateAbbreviation)
 
-                # Build the query string and execute the query
-                # queryStr = f"SELECT SUM(total) FROM {fullStateName} WHERE categoryofproduction <> 'All fuels'"
-
-                # self.cursor.execute(queryStr)
-
+                # Build the query parameterized query string and execute the query                
                 self.cursor.execute(sql.SQL("SELECT SUM(total) FROM {} WHERE categoryofproduction <> 'All fuels'").format(sql.Identifier(fullStateName)))
-
 
                 renewableEnergySumList = self.cursor.fetchall()
 
@@ -187,15 +175,10 @@ class EnergyProductionAPI:
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviationToStateDictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
+                fullStateName = self.convertAbbreviationToFullState(stateAbbreviation)
 
-                # builds the query string and execute the query
-                # queryStr = f"SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {fullStateName} WHERE categoryofproduction = 'All fuels'"
-
-                # self.cursor.execute(queryStr)
-
+                # Build the query parameterized query string and execute the query                
                 self.cursor.execute(sql.SQL("SELECT january, february, march, april, may, june, july, august, september, october, november, december FROM {} WHERE categoryofproduction = 'All fuels'").format(sql.Identifier(fullStateName)))
-
 
                 listOfSumsForMonths = self.cursor.fetchall()
 
@@ -252,13 +235,9 @@ class EnergyProductionAPI:
             # If the state valid input run the function as normal
             if correctedStateAbbreviation in self.abbreviationToStateDictionary:
                 # Turn abbreviation into valid full name of state here:
-                fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
+                fullStateName = self.convertAbbreviationToFullState(stateAbbreviation)
 
-                # Builds the query string and executes it
-                # queryStr = f"SELECT categoryofproduction, total FROM {fullStateName} WHERE categoryofproduction != 'All fuels'"
-
-                # self.cursor.execute(queryStr)
-
+                # Build the query parameterized query string and execute the query                
                 self.cursor.execute(sql.SQL("SELECT categoryofproduction, total FROM {} WHERE categoryofproduction != 'All fuels'").format(sql.Identifier(fullStateName)))
 
                 listOfSumsForCategories = self.cursor.fetchall()
