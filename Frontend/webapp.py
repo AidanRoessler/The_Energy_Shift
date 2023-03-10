@@ -2,11 +2,12 @@
 Flask code to render all of our html templates with data retrieved from the backend
 '''
 
-from api import EnergyProductionAPI
 import flask
 from flask import render_template, request
 import sys
 sys.path.append('../Backend/')
+from api import EnergyProductionAPI
+
 
 # invokes Flask (creates an instance)
 app = flask.Flask(__name__)
