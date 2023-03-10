@@ -151,6 +151,10 @@ div.numericalResultContainer {
   margin-right: 13px;
 }
 
+h2.numericalResultHeader{
+  margin-top: 0px;
+}
+
 div.chartTitleText {
   display: flex;
   flex-direction: row;
