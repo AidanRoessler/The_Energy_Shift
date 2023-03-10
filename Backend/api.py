@@ -25,7 +25,7 @@ class EnergyProductionAPI:
                                               'ME': 'maine', 'MD': 'maryland', 'MA': 'massachusetts', 'MI': 'michigan',
                                               'MN': 'minnesota', 'MS': 'mississippi', 'MO': 'missouri', 'MT': 'montana',
                                               'NE': 'nebraska', 'NV': 'nevada', 'NH': 'new_hampshire', 'NJ': 'new_jersey',
-                                              'NM': 'new_mexico', 'NY': 'new_York', 'NC': 'north_carolina', 'ND': 'north_dakota',
+                                              'NM': 'new_mexico', 'NY': 'new_york', 'NC': 'north_carolina', 'ND': 'north_dakota',
                                               'OH': 'ohio', 'OK': 'oklahoma', 'OR': 'oregon', 'PA': 'pennsylvania',
                                               'RI': 'rhode_island', 'SC': 'south_carolina', 'SD': 'south_dakota', 'TN': 'tennessee',
                                               'TX': 'texas', 'UT': 'utah', 'VT': 'vermont', 'VA': 'virginia', 'WA': 'washington',
