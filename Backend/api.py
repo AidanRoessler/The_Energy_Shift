@@ -65,15 +65,19 @@ class EnergyProductionAPI:
 
             # If the state has valid input, run the function
             if correctedStateAbbreviation in self.abbreviationToStateDictionary:
-                
+
                 # Turn abbreviation into valid full name of state here:
                 fullStateName = self.abbreviationToStateDictionary[correctedStateAbbreviation]
 
+                
+
                 # Build the query string and execute the query
                 # sqlTableToInsert = fullStateName
-                queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
+                # queryString = f"SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';"
 
-                self.cursor.execute(queryString)
+                # self.cursor.execute(queryString)
+                
+                self.cursor.execute(sql.SQL("SELECT total FROM {fullStateName} WHERE categoryofproduction = 'All fuels';").format(sql.Identifier(fullStateName)))
 
                 stateEnergySumList = self.cursor.fetchall()
 
