@@ -28,7 +28,7 @@ def calculatePercentage(selectedState):
     totalEnergy = energy.getEnergyForState(selectedState)
     totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
 
-    return round((totalRenewableEnergy/totalEnergy)*100)/100
+    return round((totalRenewableEnergy/totalEnergy)*10000)/100
 
 def extractKeys(dict):
     '''
