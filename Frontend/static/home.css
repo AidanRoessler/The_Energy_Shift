@@ -10,16 +10,17 @@ div.homebutton {
 }
 
 button {
-  background-color: #ea5147;;
+  background-color: #ea5147;
   border-radius: 10px;
   text-shadow: none;
   border-color: #ea5147;
-  transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease, box-shadow 0.2s ease, width 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease,
+    box-shadow 0.2s ease, width 0.3s ease;
 }
 
 button:hover {
   background-color: #323954;
-  border-color: #323954;  
+  border-color: #323954;
 }
 
 button:active {
@@ -38,7 +39,6 @@ p.buttontext {
   text-decoration: none;
 }
 
-a.buttonlink{
+a.buttonlink {
   text-decoration: none;
 }
-

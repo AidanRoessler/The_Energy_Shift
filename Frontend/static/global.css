@@ -99,7 +99,7 @@ nav li a:hover {
 }
 
 /* Styling for the div that contains content for all of the pages
-Note: this is overriden on the theData page */
+Note: this is overridden on the theData page */
 div.content {
   display: flex;
   flex-direction: column;

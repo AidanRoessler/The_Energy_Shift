@@ -21,7 +21,7 @@ label {
   width: 100%;
 }
 
-div.formcontent {
+div.formContent {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,7 +74,7 @@ input {
   width: 50%;
   border-radius: 10px;
   text-shadow: none;
-  border-color: #de5a48;
+  border-color: #5d75bb;
   transition: width 0.3s ease, background-color 0.3s ease, transform 0.5s ease,
     box-shadow 0.2s ease;
 }

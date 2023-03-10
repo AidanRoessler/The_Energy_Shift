@@ -16,7 +16,6 @@ app = flask.Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 ### Helper functions for the data ###
-
 def calculatePercentage(selectedState):
     '''
     This helper function calculates the percentage of total energy that comes from renewable sources for
