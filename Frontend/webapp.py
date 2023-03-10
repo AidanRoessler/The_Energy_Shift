@@ -15,19 +15,11 @@ app = flask.Flask(__name__)
 # This line tells the web browser to *not* cache any of the files.
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-
-@app.route('/')
-def home():
-    '''
-    Renders the Home template which is a homepage that tells the user about the purpose of our
-    site and allows them to navigate to theData page
-    '''
-    return render_template('home.html')
-
+### Helper functions for the data ###
 
 def calculatePercentage(selectedState):
     '''
-    This helper method calculates the percentage of total energy that comes from renewable sources for
+    This helper function calculates the percentage of total energy that comes from renewable sources for
     the user's selected state. It is called in theData() function
     '''
 
@@ -37,6 +29,30 @@ def calculatePercentage(selectedState):
     totalRenewableEnergy = energy.getTotalRenewableEnergyByState(selectedState)
 
     return round((totalRenewableEnergy/totalEnergy)*100)/100
+
+def extractKeys(dict):
+    '''
+    This helper functions extracts the keys from a given dictionary and returns them as a list
+    It is called in theData() function
+    '''
+    return list(dict.keys())
+
+def extractValues(dict):
+    '''
+    This helper function extracts the values from a given dictionary and returns them as a list
+    It is called in theData() function
+    '''
+    return list(dict.values())
+
+### The routes ###
+@app.route('/')
+def home():
+    '''
+    Renders the Home template which is a homepage that tells the user about the purpose of our
+    site and allows them to navigate to theData page
+    '''
+    return render_template('home.html')
+
 
 @app.route('/theData', methods=['POST', 'GET'])
 def theData():
@@ -74,8 +90,8 @@ def theData():
             selectedState)
 
         # Parse the dictionary totalEnergyByCategory returns
-        categories = list(totalEnergyByCategory.keys())
-        categoryValue = list(totalEnergyByCategory.values())
+        categories = extractKeys(totalEnergyByCategory)
+        categoryValue = extractValues(totalEnergyByCategory)
 
         # Calculate the percentage of the states energy that is renewable
         percentageRenewableEnergy = calculatePercentage(selectedState)
