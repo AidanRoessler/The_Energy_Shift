@@ -272,7 +272,7 @@ class EnergyProductionAPI:
         This helper function takes in a state abbreviation as a string and returns the corresponding full state name
         '''
 
-        return self.abbreviationToStateDictionary[stateAbbreviation].upper()
+        return self.abbreviationToStateDictionary[stateAbbreviation.upper()]
 
 
 if __name__ == "__main__":
