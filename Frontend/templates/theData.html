@@ -287,6 +287,7 @@
                             }
                         }
                     },
+                    //hides the legend
                     plugins: {
                         legend: {
                             position: "bottom",
@@ -299,7 +300,7 @@
             // pie chart for the results of the getEnergyByCategoryForState() function
             let renewableEnergyPieChart = new Chart(renewableEnergyPieChartCanvas, {
                 type: 'doughnut',
-                // defines the data and the data labels to be used in the pie chart
+                // defines the data, data labels, and colors to be used in the pie chart
                 data: {
                     labels: renewableEnergyPieChartLabels,
                     datasets: [{
@@ -308,6 +309,7 @@
                     }]
                 }
                 ,
+                //displays percentage labels for each portion of the pie chart
                 options: {
                     plugins: {
                         tooltip: {
