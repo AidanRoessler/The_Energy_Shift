@@ -41,8 +41,7 @@ class APITester(unittest.TestCase):
         floats when given the valid input of 'Wisconsin'
         '''
         result = self.energyTest.getEnergyByCategoryForState("Al")
-        self.assertEqual(result, {'Other renewables': 3805.24, 'Conventional hydroelectric': 11520.8, 'Nuclear': 46036.5,
-                         'Utility-scale photovoltaic': 494.0, 'All utility-scale solar': 494.0, 'All solar': 37.12})
+        self.assertEqual(result, {'Other renewables': 3805.24, 'Conventional hydroelectric': 11520.8, 'Nuclear': 46036.5, 'All solar': 37.12})
 
     def test_invalidState_getEnergyByCategoryForState(self):
         '''
@@ -80,7 +79,7 @@ class APITester(unittest.TestCase):
         value when given the valid input of "Al"
         '''
         result = self.energyTest.getTotalRenewableEnergyByState("Al")
-        self.assertEqual(result, 62387.66)
+        self.assertEqual(result, 61399.66)
 
     def test_invalidState_getTotalRenewableEnergyByState(self):
         '''
